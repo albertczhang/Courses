@@ -1,0 +1,145 @@
+\section{Homework 8}
+
+\subsection{Markov Chains with Countably Infinite State Space}
+
+(a) If we "collapse" the markov chain, it becomes a tree. Therefore, it is reversible, and so the stationary distribution must satisfy the detailed balance equations. In particular, for $i \geq 1$, we have
+\begin{align*}
+\pi(i)\frac{i}{2i + 2} &= \pi(i + 1)\frac{1}{2} \\
+\frac{\pi(i + 1)}{\pi(i)} &= \frac{i}{i + 1}.
+\end{align*} 
+So our stationary distribution must have the form
+\[
+\left[\pi(1), \frac{1}{2}\pi(1), \dots, \frac{1}{n}\pi(1), \dots\right],
+\]
+but since $1 + 1/2 + 1/3 + \dots$ is a harmonic series which diverges, there is no way to normalize this and so no stationary distribution can exist.
+
+(b) Once again, by collapsing the chain into a tree we see that it is reversible and so any stationary distribution must satisfy the detailed balance equations. Therefore we have
+\begin{align*}
+    \pi(i)\lambda &= \pi(i + 1)\mu \\
+    \frac{\pi(i + 1)}{\pi(i)} &= \frac{\lambda}{\mu},
+\end{align*}
+and so the stationary distribution is of the form (letting $\rho = \frac{\lambda}{\mu}$):
+\[
+\left[\pi(1), \rho\pi(1), \rho^2\pi(1), \dots, \rho^n\pi(1), \dots\right].
+\]
+Normalizing, we get that $\pi(1) = 1 - \frac{\lambda}{\mu}$. Thus, we have
+\[
+\pi(i) = \left(\frac{\lambda}{\mu}\right)^{i - 1}\left(1 - \frac{\lambda}{\mu}\right).
+\]
+
+
+\subsection{Choosing Two Good Movies}
+
+(a) Let there be states $\{S, (012), 3, 4, 5, G\}$, where $S$ and $G$ are start and goals states, $(012)$ is where the highest rating seen so far is 0, 1, or 2. States 3, 4, and 5 denote the highest rating seen being a 3, 4, and 5, respectively. We get the following hitting time equations:
+\begin{align*}
+    \tau_S &= 1 + 1/2\tau_{012} + 1/6(\tau_3 + \tau_4 + \tau_5) \\
+    \tau_{012} &= 1 + 1/2\tau_{012} + 1/6(\tau_3 + \tau_4 + \tau_5) \\
+    \tau_3 &= 1 + 5/6\tau_3 + 1/6\tau_G \\
+    \tau_4 &= 1 + 2/3\tau_4 + 1/3\tau_G \\
+    \tau_5 &= 1 + 1/2\tau_5 + 1/2\tau_G \\
+    \tau_G &= 0.
+\end{align*}
+Solving, we get $\tau_{5} = 2$, $\tau_4 = 3$, $\tau_3 = 6$, $\tau_{012} = 17/3$, and $\tau_S = \boxed{17/3}$
+
+(b) We have 3 states now each denoting the interval in which the highest rating seen so far lies: $\{[0, 2.5), [2.5, 5], G\}$, where the start state is merged into $[0, 2.5)$, and $G$ is still the goal state. Using geometric probability, $P([2.5, 5], G) = 1 - P([2.5, 5], [2.5, 5]) = 1/2$. We have the following hitting time equations:
+\begin{align*}
+    \tau_{[0, 2.5)} &= 1 + 1/2\tau_{[0, 2.5)} + 1/2\tau_{[2.5, 5]} \\
+    \tau_{[2.5, 5]} &= 1 + 1/2\tau_{[2.5, 5]} + 1/2\tau_G \\
+    \tau_G &= 0.
+\end{align*}
+Solving, we get $\tau_{[0, 2.5)} = \boxed{4}$ (answer to bonus question).
+
+
+\subsection{Expected Return Times and Stationarity}
+
+(a) First, we note that $\pi_x(x) = 1$, since we can hit $x$ exactly once before hitting it again. This satisfies the balance equation for $\pi_x(x)$, as
+\begin{align*}
+    \pi_x(x) &= \E\left[\sum_{i = 0}^{T_x - 1}\mathbb{I}\{X_i = x\} | X_0 = x\right] \\
+    &= \sum_{i = 1}^{T_x - 1}\P[X_i = x | X_0 = x] \\
+    &= \sum_{i = 1}^{T_x - 1}\sum_{s}\P[X_{i - 1} = s | X_0 = x]p_{sx} \\
+    &= \sum_{s}\sum_{i = 0}^{T_x - 1}\P[X_{i - 1} = s]p_{sx} \\
+    &= \sum_s\pi_x(s)p_{sx}.
+\end{align*}
+Now, we verify $\pi_x(y)$ satisfies balance equation for each $y \neq x$:
+\begin{align*}
+    \pi_x(y) &= \E\left[\sum_{i = 0}^{T_x - 1}\mathbb{I}\{X_i = y\} | X_0 = x\right] \\
+    &= \sum_{i = 1}^{T_x}\P[X_i = y | X_0 = x] \\
+    &= \sum_{i = 1}^{T_x}\sum_{s}\P[X_{i - 1} = s | X_0 = x]p_{sy} \\
+    &= \sum_{s}\sum_{i = 0}^{T_x - 1}\P[X_{i} = s]p_{sy} \\
+    &= \sum_s\pi_x(s)p_{sy},
+\end{align*}
+and so the balance equation is satisfied for each $y \neq x$.
+
+(b) Using a SLLN argument, we see that over time the expected portion of time spent in state $x$ is $\pi_x(x)$ scaled down by its normalizing constant, which is the expected time between hitting $x$ and hitting $x$ again, or $\E_x[T_x]$. Therefore, we get
+\[
+\pi(x) = \frac{\pi_x(x)}{\E_x[T_x]} = \frac{1}{\E_x[T_x]}.
+\]
+
+
+\subsection{Poisson Branching}
+
+(a) We have that $X_1 \sim Binom(Poisson(\lambda_0), p) + Poisson(\lambda)$. But since $Binom(Poisson(\lambda_0), p) \sim Poisson(\lambda_0 p)$, and since sum of independent Poisson random variables is also Poisson, we have that 
+\[
+X_1 \sim Poisson(\lambda_0 p + \lambda).
+\]
+More generally, the distribution at generation $n$ is 
+\[
+X_n \sim Poisson(\lambda_0 p^n + \lambda(1 + p + \dots + p^{n - 1}))
+\]
+or just
+\[
+X_n \sim Poisson\left(\lambda_0 p^n + \lambda\left(\frac{1 - p^n}{1 - p}\right)\right).
+\]
+
+(b) The distribution of $X_n$ as $n \to \infty$ is
+\[
+Poisson\left(\frac{\lambda}{1 - p}\right).
+\]
+Even if the number of individuals at generation 0 is some arbitrary distribution, the distribution of $X_n$ will still converge as $n \to \infty$. It is sufficient to show for each possible $x_0$ (where $x_0$ is the number of people from generation 0), that the probability distribution converges to $Poisson\left(\frac{\lambda}{1 - p}\right)$. So fix $x_0$. We will consider the individuals who originated in generation 0 and the individuals who originated afterwards as two separate groups. Namely, denote $G_0(n)$ the distribution of the people remaining from generation 0 at generation $n$, and denote $G_{>0}(n)$ as the distribution of the people remaining from generations 1 onward at generation $n$. Then we clearly have
+\[
+X_n \sim G_0(n) + G_{>0}(n).
+\]
+But we know $G_0(n)$ converges to 0 as $n \to \infty$, since there was a finite $x_0$ people to start and each generation they remain with probability $p < 1$. Also, note that $G_{>0}(n)$ is just $X_{n - 1}$ where the initial parameter $\lambda_0 = \lambda$. Therefore since $G_{>0}(n) \sim X_{n - 1}$ converges, we get that $X_n \sim G_0(n) + G_{>0}(n) \sim G_{>0}(n)$ converges as well, in fact to the same distribution
+\[
+Poisson\left(\frac{\lambda}{1 - p}\right).
+\]
+
+
+\subsection{Customers in a Store}
+
+(a) Let $X_i \sim Exp(\lambda_i)$ be the time to first arrival. Then we want $\P[X_1 < X_2]$. This is just
+\begin{align*}
+    \int_0^\infty\P[X_1 = t]\P[X_2 > t]dt &= \int_0^\infty\lambda_1e^{-(\lambda_1 + \lambda_2)t}dt \\
+    &= \frac{\lambda_1}{\lambda_1 + \lambda_2}.
+\end{align*}
+
+(b) We have the following summation:
+\begin{align*}
+    \sum_{i = 0}^6\left(\frac{e^{-\lambda_1}\lambda_1^i}{i!}\right)\left(\frac{e^{-\lambda_2}\lambda_2^{6 - i}}{(6 - i)!}\right) &= \frac{\lambda_2^6e^{-(\lambda_1 + \lambda_2)}}{6!}\sum_{i = 0}^6\binom{6}{i}\left(\frac{\lambda_1}{\lambda_2}\right)^i \\
+    &= \frac{(\lambda_1 + \lambda_2)^6e^{-(\lambda_1 + \lambda_2)}}{6!},
+\end{align*}
+which we note is just $\P[X = 6]$ where $X \sim Poisson(\lambda_1 + \lambda_2)$, since sum of independent Poissons is Poisson with the sum of the parameters.
+
+(c) Applying Baye's Rule, we have the expression
+\[
+    \frac{\left(\frac{e^{-\lambda_1}\lambda_1^4}{4!}\right)\left(\frac{e^{-\lambda_2}\lambda_2^2}{2!}\right)}{\frac{(\lambda_1 + \lambda_2)^6e^{-(\lambda_1 + \lambda_2)}}{6!}} = \binom{6}{4}\frac{\lambda_1^4\lambda_2^2}{(\lambda_1 + \lambda_2)^6}
+\]
+
+
+\subsection{Arrival Times of Poisson Process}
+
+(a) This is just the expected time of 3rd arrival given that the 3rd arrival is after time $t = 1$. Since the arrival process is memoryless, this is 
+\[
+1 + \E[Exp(\lambda)] = 1 + \frac{1}{\lambda} = 2.
+\]
+
+(b) We have
+\begin{align*}
+    f(S_1 = s_1, S_2 = s_2 | S_3 = s) &= \frac{f(s_1, s_2, s)}{f_{S_3}(s)} \\
+    &= \frac{(\lambda e^{-\lambda s_1})(\lambda e^{-\lambda (s_2 - s_1)})(\lambda e^{-\lambda (s - s_2)}}{\frac{1}{2}\int_0^s\int_0^s(\lambda e^{-\lambda s_1})(\lambda e^{-\lambda (s_2 - s_1)})(\lambda e^{-\lambda (s - s_2)})} \\
+    &= \frac{2}{s^2}.
+\end{align*}
+Thus the joint distribution of $S_1$ and $S_2$ given $S_3 = s$ is uniform in the region where $0 \leq s_1 \leq s_2 \leq s$.
+
+(c) Since the joint distribution is uniform over the upper right triangle of an $s\times s$ square, the expectation of the second variable is just the height of the center of mass, or just $\frac{2}{3}s$.
+

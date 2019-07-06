@@ -1,0 +1,130 @@
+\section{Vector Spaces}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% 1.1 PRELIMINARIES %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Preliminaries}
+
+%%%%%%%%%%%%%%%%%%%% 1.1.1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Sets}
+\textbf{Definition} (Power Set). The \textbf{\textit{power set}} of a set $S$ is the collection, or \textbf{\textit{family}}, of subsets of $S$, denoted $P(S)$. E.g. the family of open intervals in $\mathbb{R}$ is a subset of $P(\mathbb{R})$.
+
+\textbf{Definition} (Cartesian Product). For two sets $X$ and $Y$, $X\times Y:=\{(x,y)\mid x\in X, y\in Y\}$, also known as the \textbf{\textit{Cartesian product}} of the factors $X$ and $Y$. Denote $X^n$ to be the Cartesian product of a set with itself $n$ times.
+
+\textbf{Definition} (Relation). A \textbf{\textit{relation}} between a set $X$ and $Y$ is any subset of $X\times Y$. A relation between a set and itself is said to be a relation \textit{on} $X$. 
+
+\textbf{Definition} (Partial Order). A \textbf{\textit{partial order}} on set $S$ is a relation defined by $P\subseteq S\times S$ such that the following properties hold:
+\begin{enumerate}
+    \item \textbf{(antisymmetry)} $(a,b)\in P\wedge(b,a)\in P\implies a=b$.
+    \item \textbf{(transitivity)} $(a,b)\in P\wedge(b,c)\in P\implies(a,c)\in P$.
+    \item \textbf{(reflexivity)} $\forall a\in S$, $(a,a)\in P$.
+\end{enumerate}
+Typically, we write $a\leq b$ if $(a,b)\in P$. Furthermore we write $a<b$ if $a\leq b$ and $a\neq b$. So then the above properties become:
+\begin{enumerate}
+    \item \textbf{(antisymmetry)} $a\leq b\wedge b\leq a\implies a=b$.
+    \item \textbf{(transitivity)} $a\leq b\wedge b\leq c\implies a\leq c$.
+    \item \textbf{(reflexivity)} $a\leq a$.
+\end{enumerate}
+\textbf{Definition} (Poset). If there exists a partial order on $S$, then we say $S$ is a \textbf{\textit{partially-ordered-set}}, or \textbf{\textit{poset}}. If $a$ and $b$ are elements of a poset and $a\leq b$ or $b\leq a$, then we say that $a$ and $b$ are \textbf{\textit{comparable}}. Otherwise they are \textbf{\textit{incomparable}}.
+
+\textbf{Definition} (Max \& Min). Suppose $P$ is a partially ordered set and $X\subseteq P$. Then $X$ inherits a partial order from $P$ (think subgraphs). For an element $u\in P$ s.t. $u\geq x$ for all $x\in X$, $u$ is an \textbf{\textit{upper bound}} of $X$. For an element $M\in X$ s.t. $M\geq x$ for all $x\in X$, $M$ is a \textbf{\textit{maximal}} element. Similarly, for an element $l\in P$ s.t. $l\leq x$ for all $x\in X$, $l$ is a \textbf{\textit{lower bound}} of $X$. For an element $m\in X$ s.t. $m\leq x$ for all $x\in X$, $m$ is a \textbf{\textit{minimal}} element.
+
+\textbf{Definition} ("Toset"). A partial order in which every pair of elements is comparable is called a \textbf{\textit{total order}}. A set with a total order is known as a \textbf{\textit{totally ordered set}}. A \textbf{\textit{chain}} is a totally ordered subset of a partially ordered set
+
+%%%%%%%%%%%%%%%%%% 1.1.2 %%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Functions}
+\textbf{Definition} (Function). A \textbf{\textit{function}} $f$ is defined to be a relation between sets $X$ and $Y$ s.t. for each $x\in X$ there exists exactly one $y\in Y$ such that the pair $(x,y)$ is included in the relation defined by $f$. The set $X$ is the \textbf{\textit{domain}} of $f$ and $Y$ is the \textbf{\textit{codomain}} of $f$. The symbol $\mapsto$ reads "maps to". Also, the collection of \textit{all} functions $f:X\to Y$ is denoted $\mathcal{F}(X,Y)$.
+
+\textbf{Definition} (Composition). If $f:X\to Y$ and $g:Y\to Z$, then their \textbf{\textit{composition}} $g\circ f:X\to Z$ is defined by $(g\circ f)(x)=g(f(x))$. Know how to draw "commutative diagrams".
+
+\textbf{Definition} (Power Functions). Given a function $f:X\to Y$, $P(f):P(X)\to P(Y)$ is equivalent to the function that maps a subset of $X$ to a subset of $Y$. Thus $P$ is in itself a function, $P: \mathcal{F}(X,Y)\to \mathcal{F}(P(X),P(Y))$. Also, $P^{-1}(f):P(Y)\to P(X)$ is the power function of $f$ that sends a subset in $Y$ to its preimage.
+
+\textbf{Definition} (Image, Range, Preimage). Given a set $S\subseteq X$ and a function $f:X\to Y$, the \textbf{\textit{image}} is the set $f(S):=\{f(x)\mid x\in S\}$. If $S=X$, then $f(S)$ is the \textbf{\textit{range}} of $f$. The range is a subset of the codomain. For a set $T\subseteq Y$, the \textbf{\textit{preimage}} is the set $f^{-1}(T):=\{x\in X\mid f(x)\in T\}$. 
+
+\textbf{Definition} (Function Inverse). Given a function $f:X\to Y$, $f$ is invertible if for each $y\in Y$, there exists a unique $x\in X$ s.t. $f^{-1}(y)=x$. In particular, it is invertible if its range is equivalent to its codomain and the preimage of each singleton in its range is a singleton in its domain.
+
+\textbf{Definition} (Injective, Surjective, Bijective). A function $f:X\to Y$ always satisfies that if $x=y$, then $f(x)=f(y)$. $f$ is \textbf{\textit{injective}} is $f(x)=f(x')$ implies $x=x'$. Such a function is called a \textit{one-to-one} function. $f$ is \textbf{\textit{surjective}} if for all $y\in Y$, there exist an $x\in X$ s.t. $f(x)=y$. This property is also called \textit{onto}. If a function is both injective and surjective, then it is called \textbf{\textit{bijective}}, otherwise known as a \textbf{\textit{one-to-one correspondence}}.
+
+\textbf{Proposition}. A function $f:X\to Y$ is invertible if and only if it is bijective.
+
+\textbf{Definition} (Inclusion, Restriction, Extension). For a set $A\subseteq B$, the \textbf{\textit{inclusion}} function is defined by $\iota_{A,B}=\iota:A\to B$ s.t. for an $a\in A$, $\iota(a)=a$. 
+
+On the other hand, for a set $S\subseteq A$, the \textbf{\textit{restriction}} of $f$ to $S$ for a function $f:A\to B$ is $f\mid_S:S\subseteq A\to B$ s.t. $f\mid_S(x)=f(x)$ for $x\in S$. 
+
+For a set $T$ s.t. $B\subseteq T$, we can \textbf{\textit{extend}} the codomain of $f$ to $T$ by composition with $\iota:B\to T$. That is, $\iota\circ f:A\to T$ satisfies $\iota(f(x))=f(x)$ for all $x\in A$.
+
+%%%%%%%%%%%%%%%%%%%%% 1.1.3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Lists \& Sequences}
+\textbf{Definition} (Lists \& Sequences). Let $X$ be a set and $s\in\mathbb{N}$. Then a \textbf{\textit{list}} $(x_1, x_2,..., x_n)$ is a function from $\{1,2,...,n\}\to X$ s.t. $i\mapsto x_i$. Order (permutation) matters and there can also be duplicity in lists. A \textbf{\textit{sequence}} is essentially an infinite list that takes $\mathbb{N}\to X$.
+
+\textbf{Definition} (Countability). We say that a set is \textbf{\textit{countably infinite}} if there exists a one-to-one correspondence with $\mathbb{N}$. A set is \textbf{\textit{countable}} if it is either finite or countably infinite. An \textbf{\textit{uncountable}} set is one that is not countable. Two sets between which there exists a bijection are said to have the same cardinality.
+
+\textbf{Definition} (Index Set). We say that a set $A$ indexes $S$ if $f:A\to S$ is a list or a sequence.
+
+\textbf{Definition} (Dirac Delta Function). Let $S$ be a set. For $p\in S$, the \textbf{\textit{Dirac Delta function}} at $p$, also called the \textbf{\textit{indicator function}} at $p$, is the function $\delta_p:S\to \{0,1\}$ s.t. $\delta_p(s)=0$ if $s\neq p$ and $\delta_p(s)=1$ if $s=p$. The point $p$ is called the base point of $\delta_p$. Note also that there is a bijection between $S$ and $\delta_p$.
+
+%%%%%%%%%%%%%%%%%%%%%%%% 1.1.4 %%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Fields \& Complex Numbers}
+An element of $\mathbb{F}(X\times X, X)$ is called a \textbf{\textit{binary operation}} on $X$. A binary operator $g:X\times X\to X$ is \textbf{\textit{commutative}} if $g(x_1, x_2)=g(x_2, x_1)$ for all $(x_1,x_2)\in X\times X$. A binary operation on $X$ is \textbf{\textit{associative}} if $g(x_1,g(x_2, x_3))=g(g(x_1,x_2),x_3)$ for all $x_1, x_2, x_3\in X$.
+
+\textbf{Definition} (Group). A \textbf{\textit{group}} $G=(|G|,g)$ is the pairing of an underlying set $|G|$ with a binary operation $g:|G|\times|G|\to|G|$ satisfying the following three axioms:
+\begin{enumerate}
+    \item (associativity) $g$ is an associative operation on $|G|$.
+    \item (identity) There exists an element $e\in|G|$ s.t. $g(e,a)=g(a,e)=a$ for all $a\in|G|$, known as the \textbf{\textit{identity}} element.
+    \item (inverse) For every $a\in|G|$, there exists an element $a'\in|G|$ s.t. $g(a,a')=g(a',a)=e$.
+\end{enumerate}
+If $g$ is also a commutative operation on $|G|$, then $G$ is called an \textbf{\textit{abelian group}}.
+
+\textbf{Definition} (Field). A \textbf{\textit{field}} $\mathbf{F}$ is a set $F$ equiped with two binary operations, "addition" and "multiplication", such that $(F,+)$ is an abelian group and $(F\setminus 0,\cdot)$ is an abelian group where "0" is the identity of $(F,+)$. Furthermore, for all $a, b, c\in F$, \textbf{\textit{distributivity of multiplication over addition}} holds:
+\[
+a\cdot(b+c)=a\cdot b + a\cdot c
+\]
+We write $\mathbf{F}$ as the triple $(F,+,\cdot)$, where $F$ is the underlying set of $\mathbf{F}$. In checking whether a set $F$ equipped with two binary operations is a field, we need to check whether addition and multiplication are "closed".
+
+\textbf{Definition} (Characteristic). The \textbf{\textit{characteristic}} of a field is the smallest $n$ such that when "1" is "added" onto itself $n$ times, "0" is produced. If no such $n$ exists, then the characteristic is defined to be 0.
+
+\textbf{Definition} (Polynomial). A \textbf{\textit{polynomial}} in one variable over a field $\mathbf{F}$ is defined to be a function $p:\mathbf{F}\to\mathbf{F}$ where
+\[
+p(z)=a_nz^n+a_{n-1}z^{n-1}+\ldots+a_1z+a_0
+\]
+for all $z\in\mathbf{F}$ and for some fixed $a_0,...,a_n\in\mathbf{F}$. Such a polynomial has similar constituent definitions to the classic definition of a polynomial.
+
+\textbf{Definition} (Ordered Field). A field $\mathbf{F}$ together with a total order $\leq$ on $F$ is an \textbf{\textit{ordered field}} if the order satisfies the following properties:
+\begin{enumerate}
+    \item if $a\leq b$, then $a+c\leq b+c$;
+    \item if $0\leq a$ and $0\leq b$, then $0\leq a\cdot b$.
+\end{enumerate}
+The sets $\mathbb{Q}$ and $\mathbb{R}$ are examples of ordered fields.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% 1.2 DEFINITION OF VECTOR SPACE %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Definition of a Vector Space}
+A \textbf{\textit{vector space}} $V$ over a field $\mathbf{F}$ is a set $|V|$ together with the binary operation of \textbf{\textit{vector addition}}
+\begin{align*}
+    |V|\times|V|\to|V| \\
+    (v,w)\mapsto v + w
+\end{align*}
+and \textbf{\textit{scalar multiplication}}
+\begin{align*}
+    \mathbf{F}\times|V|\to|V| \\
+    (a,v)\mapsto av
+\end{align*}
+such that $(|V|,+)$ is an abelian group with the following axioms:
+\begin{enumerate}
+    \item Associativity of scalar multiplication
+    \item Identity of scalar multiplication
+    \item Distributivity over vector addition
+    \item Distributivity over field addition
+\end{enumerate}
+Note that the elements of $\mathbf{F}$ are called \textit{scalars} whereas the elements of $|V|$ are called \textit{vectors}. So effectively, a vector space comes with 4 pieces of data: $(|V|, \mathbf{F}, \text{addition}, \text{scalar multiplication})$.
+
+
+
+\newpage %%%%%% EXERCISES %%%%%%
+\input{Chapter1/HW_1}
+\newpage
+\input{Chapter1/HW_2}
+\newpage
+\input{Chapter1/HW_3}

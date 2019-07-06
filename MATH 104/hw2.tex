@@ -1,0 +1,102 @@
+\section{Homework 2}
+
+\textbf{1. [Ross 5.6]} $(\inf T \leq \inf S)$ Suppose for contradiction that $\inf T > \inf S$. Then there exists an $s \in S \subseteq T$ such that $s < \inf T$, contradicting the property that $\inf T$ must be less than or equal to all elements of $T$. Thus $\inf T \leq \inf S$.
+
+$(\inf S \leq \sup S)$ Suppose for contradiction that $\inf S > \sup S$. Then given any element $s \in S$ (provided that $S$ is nonempty), we have that $s \geq \inf S > \sup S \geq s$, so $s > s$, a contradiction. Thus $\inf S \leq \sup S$.
+
+$(\sup S \leq \sup T)$ Suppose for contradiction that $\sup S > \sup T$. Then there exists an $s \in S \subseteq T$ such that $s > \sup T$, contradicting the property that $\sup T$ must be greater than or equal to all elements of $T$. Thus $\sup S \leq \sup T$.
+
+\textbf{2. [Ross 7.3]} (a) Converges: $\lim\limits_{n \to \infty}\frac{n}{n + 1} = 1$
+
+(c) Converges: $\lim\limits_{n \to \infty}2^{-n} = 0$
+
+(f) Converges: $\lim\limits_{n \to \infty}2^{1/n} = 1$
+
+(l) Diverges
+
+\textbf{3. [Ross 7.4]} (a) Since $\sqrt{2}$ is irrational, so is $\frac{1}{n\sqrt{2}}$ for $n \in \N$. Then we can construct the sequence
+\[
+\left(\frac{1}{n\sqrt{2}}\right)_{n = 0}^\infty
+\]
+of irrational numbers that converges to 0, a rational number.
+
+(b) Consider the taylor series representation of $e$, an irrational number. Since the sum of a finite number of rational numbers is also rational, we can construct the sequence 
+\[
+\left(\sum\limits_{i = 0}^n\frac{1}{i!}\right)_{n = 0}^\infty
+\]
+of rational numbers which converges to the irrational number $e$.
+
+\textbf{4. [Ross 8.1]} (a) Given $\epsilon > 0$, take $N = \frac{1}{\epsilon}$. Then 
+\[
+n > N \quad\f{implies}\quad n > \frac{1}{\epsilon},
+\]
+from which we get $\epsilon > \frac{1}{n} = \left|\frac{(-1)^n}{n}\right|$. Thus we have $\lim\limits_{n \to \infty}\frac{(-1)^n}{n} = 0$, as desired.
+
+\textbf{5. [Ross 8.2]} (e) We claim that $\lim\limits_{n \to \infty}\frac{\sin n}{n} = 0$.
+
+Proof: Given $\epsilon > 0$, take $N = \frac{1}{\epsilon}$. Then 
+\[
+n > N \quad\f{implies}\quad n > \frac{1}{\epsilon},
+\]
+from which we get $\epsilon > \frac{1}{n} \geq \left|\frac{\sin n}{n}\right|$, since $-1 \leq \sin n \leq 1$ for any $n$. Thus we have $\lim\limits_{n \to \infty}\frac{\sin n}{n} = 0$, as desired.
+
+\textbf{6. [Ross 8.4]} Given $\epsilon > 0$, we know that $\frac{\epsilon}{M} > 0$ as well. Then since $(s_n)$ converges to 0, there exists an $N \in \N$ such that
+\[
+n > N \quad\f{ implies }\quad |s_n| < \frac{\epsilon}{M}.
+\]
+Then for the same $N$, we also have that
+\[
+|s_nt_n| = |s_n||t_n| < \left(\frac{\epsilon}{M}\right)M = \epsilon,
+\]
+from which it follows that $\lim\limits_{n \to \infty}(s_nt_n) = 0$.
+
+\textbf{7. [Ross 8.5]} (a) Given $\epsilon > 0$, we know that $\epsilon/3 > 0$ as well. Then there exists an $N \in \N$ such that $n > N$ implies
+\begin{align*}
+    |s_n - s| &\leq |s_n - a_n| + |a_n - s| \\
+        &\leq |b_n - a_n| + |a_n - s| \\
+        &\leq |b_n - s| + |s - a_n| + |a_n - s| \\
+        &< \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} \\
+        &= \epsilon,
+\end{align*}
+where the first and third lines follow from triangle inequality, the second line follows from $a_n \leq s_n \leq b_n$, and the fourth line follows from the convergence of $(a_n)$ and $(b_n)$. Thus we have $\lim\limits_{n \to \infty}s_n = 0$, as desired.
+
+(b) Consider the sequence $(-t_n)$ produced by negating all elements of the given sequence $(t_n)$. We have that $\lim\limits_{n \to \infty}-t_n = -\lim\limits-{n \to \infty}t_n = -0 = 0$. Now, $|s_n| \leq t_n$ gives us $-t_n \leq s_n \leq t_n$ for all $n$. Using the fact that $\lim\limits_{n \to \infty}-t_n = 0 = \lim\limits_{n \to \infty}t_n$, we can apply the squeeze lemma to obtain $\lim\limits_{n \to \infty}s_n = 0$, as desired.
+
+\textbf{8. [Ross 8.9]} (a) Since $s_n \geq a$ for all but finitely many $n$, we know that $s_n < a$ for finitely many $n$. Since this is a finite set, we can define $N = \max\{n | s_n < a\}$. Then $n > N$ implies $s_n \geq a$. 
+
+Now, suppose for contradiction that $(s_n)$ converges to $a - d$ for some positive real number $d$. Then given $\epsilon > 0$, we can apply the triangle inequality to get that for all $n > N$,
+\begin{align*}
+    |s_n| - |a - d| &\leq |s_n - (a - d)| \\
+        &< \epsilon,
+\end{align*}
+but since $s_n \geq a$, we must have that $|s_n| - |a - d| > 0$. Since $\epsilon$ was arbitrary, this is a contradiction. Thus $\lim\limits_{n \to \infty}s_n \geq a$.
+
+(b) Since $s_n \leq b$ for all but finitely many $n$, we know that $s_n > b$ for finitely many $n$. Since this is a finite set, we can define $N = \max\{n | s_n > b\}$. Then $n > N$ implies $s_n \leq b$. 
+
+Now, suppose for contradiction that $(s_n)$ converges to $b + d$ for some positive real number $d$. Then given $\epsilon > 0$, we can apply the triangle inequality to get that for all $n > N$,
+\begin{align*}
+    |s_n| - |b + d| &\leq |s_n - (b + d)| \\
+        &< \epsilon,
+\end{align*}
+but since $s_n \leq b$, we must have that $|s_n| - |b + d| < 0$. Since $\epsilon$ was arbitrary, this is a contradiction. Thus $\lim\limits_{n \to \infty}s_n \leq b$.
+
+(c) If all but finitely many $s_n$ belong to $[a, b]$, then for all but finitely many $n$, we have that $a \leq s_n \leq b$. Combining the previous two parts, we get that $a \leq \lim s_n \leq b$, and so $\lim s_n \in [a, b]$, as desired.
+
+\textbf{9. [Ross 9.1]} (a) Since $\frac{n + 1}{n} = 1 + \frac{1}{n}$, we apply thm. 9.3 to get
+\[
+\lim \frac{n + 1}{n} = \lim 1 + \lim \frac{1}{n} = 1 + 0 = 1.
+\]
+
+\textbf{10. [Ross 9.6]} (a) Suppose $a = \lim x_n$. Now consider $\lim x_{n + 1}$, which should equal to $\lim x_n$ (if they exist, which we are assuming they do for this part of the problem). By the recursive formula and applying thms. 9.2 and 9.4, we have 
+\[
+\lim x_{n + 1} = \lim 3x_n^2 = 3(\lim x_n)^2 = 3a^2.
+\]
+So we get
+\[
+3a^2 = \lim x_{n + 1} = \lim x_n = a,
+\]
+which implies that either $a = \frac{1}{3}$ or $a = 0$.
+
+(b) Yes, $\lim x_n$ exists since the recursive sequence $(1, 3, 3^3, 3^7, \dots)$ clearly diverges to $+\infty$.
+
+(c) Part (a) suggests that if the limit is equal to $a$, then it must be either $\frac{1}{3}$ or 0. On the other hand part (b) suggests $\lim x_n = +\infty$. The paradox stems from the fact that in part (a), we assumed (which it was not ok to do so) that the limit exists at a finite number $a$. We cannot first assume whether the limit exists at a finite or nonfinite value/symbol. Since the sequence clearly diverges to $+\infty$, it does not exist at a finite value, and so we were wrong to first assume $a = \lim x_n$.

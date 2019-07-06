@@ -1,0 +1,192 @@
+\section{Homework 12}
+Sundry: I worked alone.
+
+\begin{enumerate}
+    \item This situation is equivalent to the coupon collector's problem. Given $n$ cards, we recall the expected value of the number of visits, denoted by random variable $X$, to redeem the grand prize:
+    \[
+    \E[X] = n\sum\limits_{i = 1}^n\frac{1}{i}.
+    \]
+    Now, we want to find $\f{Var}(X)$. First, we split $X$ into the random variables $X_1, \dots, X_n$, where $X_i$ is the number of visits to obtain the $i$th new card, where we start counting immediately after the previous new card was obtained. We know that $X_1, \dots, X_n$ are mutually independent, so we have
+    \begin{align*}
+        \f{Var}(X) &= \f{Var}(X_1 + \dots + X_n) \\
+            &= \f{Var}(X_1) + \dots + \f{Var}(X_n).
+    \end{align*}
+    Now, each of the $X_i$ can be modeled with the geometric distribution, where $p = \frac{n - i + 1}{n}$ for $X_i$. Recall that variance of a geometric random variable is given by $\frac{1 - p}{p^2}$. Thus we get
+    \begin{align*}
+        \f{Var}(X_i) &= \frac{1 - \frac{n - i + 1}{n}}{\left(\frac{n - i + 1}{n}\right)^2} \\
+            &= \frac{n(i - 1)}{(n - i + 1)^2}.
+    \end{align*}
+    We sum over all $X_i$ to obtain
+    \begin{align*}
+        \f{Var}(X) &= \sum\limits_{i = 1}^n \frac{n(i - 1)}{(n - i + 1)^2} \\
+            &= \sum\limits_{i = 1}^n\frac{n^2 - n(n - i + 1)}{(n - i + 1)^2} \\
+            &= \sum\limits_{i = 1}^n\frac{n^2}{(n - i + 1)^2} - \sum\limits_{i = 1}^n\frac{n}{n - i + 1} \\
+            &= n^2\sum\limits_{i = 1}^n\frac{1}{i^2} - n\sum\limits_{i = 1}^n\frac{1}{i} \\
+            &= n^2\sum\limits_{i = 1}^ni^{-2} - \E[X],
+    \end{align*}
+    which is what we wanted.
+    
+    \item \begin{enumerate}
+        \item From run to run, the probability that either machines fail is the same. That is, $X$ also has a geometric distribution. To find the probability that either machine fails, we use inclusion-exclusion:
+        \begin{align*}
+            \P[M_1 \f{ fails or } M_2 \f{ fails}] &= \P[M_1 \f{ fails}] + \P[M_2 \f{ fails}] - \P[M_1 \f{ and } M_2 \f{ fail}] \\
+                &= p_1 + p_2 - p_1p_2,
+        \end{align*}
+        which we get since $\P[M_1 \f{ and } M_2 \f{ fail}] = p_1p_2$ due to independence.
+        
+        \item Let $p = p_1 + p_2 - p_1p_2$. Then the probability that the first technician is the first one to find a faulty machine is the sequence
+        \begin{align*}
+            p + (1 - p)^2p + (1 - p)^4p + \dots &= \sum\limits{i = 0}^\infty(1 - p)^{2i}p \\
+                &= p\left(\frac{1}{1 - (1 - p)^2}\right) \\
+                &= p\left(\frac{1}{2p - p^2}\right) \\
+                &= \frac{1}{2 - p} \\
+                &= \frac{1}{2 - p_1 - p_2 + p_1p_2}.
+        \end{align*}
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item We have
+        \begin{align*}
+            \P[X > Y] &= \P[X > 0, Y = 0] + \P[X > 1, Y = 1] + \P[X > 2, Y = 2] + \dots \\
+                &= \sum\limits_{i = 0}^\infty\P[X > i, Y = i] \\
+                &= \sum\limits_{i = 0}^\infty\left(\frac{\lambda^ie^{-\lambda}}{i!}\right)(p(1-p)^i(1 + (1-p) + (1-p)^2 + \dots)) \\
+                &= \sum\limits_{i = 0}^\infty\left(\frac{\lambda^ie^{-\lambda}}{i!}\right)\left(p(1-p)^i\left(\frac{1}{p}\right)\right) \\
+                &= \sum\limits_{i = 0}^\infty\left(\frac{\lambda^ie^{-\lambda}}{i!}\right)(1-p)^i \\
+                &= e^{-\lambda}\sum\limits_{i = 1}^\infty\frac{(\lambda(1 - p))^i}{i!} \\
+                &= e^{-\lambda}e^{\lambda(1 - p)} \\
+                &= e^{-\lambda p}.
+        \end{align*}
+        The third line was obtained via independence of $X$ and $Y$, and the seventh line was obtained through the taylor expansion of $e^x$.
+        
+        \item Since $Z = \f{max}(X, Y)$, we know that $Z \geq X$ with probability 1. That is, $\P[Z \geq X] = 1$.
+        
+        \item If $X > Y$, then $Z = X > Y$. On the other hand, if $Y \geq X$, then $Z = Y$, which satisfies $Z \leq Y$. Therefore, we want $\P[Y \geq X]$. Note that this is the complement of $\P[X > Y]$, which is $e^{-\lambda p}$ from part (a). Thus we get
+        \begin{align*}
+            \P[Z \leq Y] &= \P[Y \geq X] \\
+                &= 1 - \P[X > Y] \\
+                &= 1 - e^{-\lambda p}.
+        \end{align*}
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item Since our p.d.f. is $e^{-x}$, we can fit this to the exponential distribution $\f{Exp}(-1)$. Integrating over the board's radius, we get
+        \begin{align*}
+            \int_0^4e^{-x}dx &= -e^{-4} - (-e^{-0}) \\
+                &= 1 - \frac{1}{e^4} \\
+                &\approx 0.9817.
+        \end{align*}
+        
+        \item We want the conditional probability $\P[0 \leq X \leq 1 | 0 \leq X \leq 4]$. Using Bayes' rule, This is just
+        \begin{align*}
+            \P[0 \leq X \leq 1 | 0 \leq X \leq 4] &= \frac{\P[0 \leq X \leq 1]\P[0 \leq X \leq 4 | 0 \leq X \leq 1]}{\P[0 \leq X \leq 4]} \\
+                &= \frac{\P[0 \leq X \leq 1]}{\P[0 \leq X \leq 4]},
+        \end{align*}
+        since the dart landing within 1 unit of the center guarantees that it lands within 4 units of the center. Now, to find the numerator, we evaluate the integral
+        \begin{align*}
+            \int_0^1e^{-x}dx &= -e^{-1} - (-e^{-0}) \\
+                &= 1 - \frac{1}{e}.
+        \end{align*}
+        Combining with our answer from part (a), we obtain our desired probability
+        \begin{align*}
+            \P[0 \leq X \leq 1 | 0 \leq X \leq 4] &= \frac{1 - \frac{1}{e}}{1 - \frac{1}{e^4}} \\
+                &= \frac{e^3(e - 1)}{e^4 - 1} \\
+                &= \frac{e^3}{(e^2+1)(e+1)} \\
+                &= \frac{e^3}{e^3+e^2+e+1} \\
+                &\approx 0.6439.
+        \end{align*}
+        
+        \item We find the general probability the dart lands within $k$ units of the center, where $k \in \N$,
+        \begin{align*}
+            \int_0^ke^{-x}dx &= -e^{-k} - (-e^{-0}) \\
+                &= 1 - \frac{1}{e^k}.
+        \end{align*}
+        Then the probability that the dart lands in between $k - 1$ and $k$ units is
+        \[
+        \left(1 - \frac{1}{e^k}\right) - \left(1 - \frac{1}{e^{k - 1}}\right) = \frac{e - 1}{e^k}.
+        \]
+        It follows that the expected value of his score is
+        \begin{align*}
+            \sum\limits_{i = 1}^4(5 - i)\left(\frac{e - 1}{e^i}\right) &= (e - 1)\left(\frac{4}{e} + \frac{3}{e^2} + \frac{2}{e^3} + \frac{1}{e^4}\right) \\
+            &\approx 3.4287.
+        \end{align*}
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item To find the cumulative distribution function, we want the joint probability $\P[X_1 = x_1, X_2 \in [0, y - x_1]]$ for $x_1 \in [0, y]$. That is, we want $\P[X_1 + X_2 \leq y]$. This becomes the double integral
+        \begin{align*}
+            \int_0^y\int_0^{y - x_1}(\lambda e^{-\lambda x_1})(\lambda e^{-\lambda x_2})dx_2dx_1 &= \int_0^y(\lambda e^{-\lambda x_1})(1 - e^{-\lambda(y - x_1)})dx_1 \\
+                &= \int_0^y(\lambda e^{-\lambda x_1} - \lambda e^{-\lambda y})dx_1\\
+                &= 1 - e^{-\lambda y} - \lambda e^{-\lambda y}y.
+        \end{align*}
+        Taking the derivative with respect to $y$, we get part of our probability density function
+        \begin{align*}
+            f(y) &= \frac{d(1 - e^{-\lambda y} - \lambda e^{-\lambda y}y)}{dy} \\
+                &= \lambda e^{-\lambda y} - (-\lambda^2e^{-\lambda y}y + \lambda e^{-\lambda y}) \\
+                &= \lambda^2e^{-\lambda y}y.
+        \end{align*}
+        However, we have to account for boundaries. Since both $X_1$ and $X_2$ are nonnegative, it follows that so is $X_1 + X_2$. That is, our piecewise probability density function is
+        \[
+        f(y) =
+        \begin{cases}
+            \lambda^2e^{-\lambda y}y \f{ if } y \geq 0, \\
+            0 \f{ else.}
+        \end{cases}
+        \]
+        
+        \item First, we find the joint probability $\P[X_2 = x_2, X_1 = t - x_2]$ (note that this is equivalent to $\P[X_1 + X_2 = t]$), where $x_2 \in [0, t]$. Since $X_1$ and $X_2$ are independent, we get the integral
+        \begin{align*}
+            \int_0^t(\lambda e^{-\lambda(t - x_2)})(\lambda e^{-\lambda x_2})dx_2 &= \int_0^t(\lambda^2e^{-\lambda t})dx_2 \\
+                &= \lambda^2e^{-\lambda t}t.
+        \end{align*}
+        Now, assuming $x \in [0, t]$, we use Bayes' rule to get
+        \begin{align*}
+            \P[X_1 = x | X_1 + X_2 = t] &= \frac{\P[X_1 + X_2 = t | X_1 = x]\P[X_1 = x]}{\P[X_1 + X_2 = t]} \\
+                &= \frac{\P[X_2 = t - x]\P[X_1 = x]}{\P[X_1 + X_2 = t]} \\
+                &= \frac{(\lambda e^{-\lambda(t - x)})(\lambda e^{-\lambda x})}{\lambda^2e^{-\lambda t}t} \\
+                &= \frac{e^{-\lambda t}}{e^{-\lambda t}t} \\
+                &= \frac{1}{t}.
+        \end{align*}
+        Thus, we get the probability density of $X_1$ conditioned with $X_1 + X_2 = t$ as
+        \[
+        f(x) =
+        \begin{cases}
+            \frac{1}{t} \f{ if } 0 \leq x \leq t, \\
+            0 \f{ else.}
+        \end{cases}
+        \]
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item Since $Y = X_1 + \dots + X_n$, where the $X_i$ are i.i.d. and uniform random variables, we get
+        \begin{align*}
+            \E[Y] &= \int_0^1 \P[Y > x] dx \\
+                &= \int_0^1(\prod_{i = 1}^n \P[X_i > x]) dx \\
+                &= \int_0^1 (1 - x)^n dx \\
+                &= \frac{1}{n+1}.
+        \end{align*}
+        
+        \item (Solution 1) First, we find the C.D.F.; since the $X_i$ are i.i.d. and uniform, we get
+        \begin{align*}
+            F(x) &= \P[Z < x] \\
+                &= \prod_{i = 1}^n \P[X_i < x] \\
+                &= x^n.
+        \end{align*}
+        Now, we obtain the P.D.F. by differentiating
+        \[
+            \frac{dF}{dx} = nx^{n - 1},
+        \]
+        from which we integrate while multiplying by $x$ to get the expected value
+        \begin{align*}
+            \E[Z] &= \int_0^1 xf(x) dx \\
+                &= \int_0^1 nx^n dx \\
+                &= \frac{n}{n + 1}.
+        \end{align*}
+        
+        (Solution 2) Consider another set of random variables $X_i':= 1 - X_i$ for $1 \leq i \leq n$. It follows that $1 - Z = \f{min}(X_1', \dots, X_n')$. But since the $X_i$ are i.i.d. and uniform, it follows that the $X_i'$ are i.i.d and uniform as well. Then $X_i'$ and $X_i$ have the same distributions (reflecting a uniformly distributed variable over 1/2 produces the same distribution). In particular, we have that $\E[\f{min}(X_1', \dots, X_n')] = \E[\f{min}(X_1, \dots, X_n)] = \frac{1}{n + 1}$. By linearity of expectation, we get
+        \begin{align*}
+            \E[1 - Z] &= \frac{1}{n + 1} \\
+            1 - \E[Z] &= \frac{1}{n + 1} \\
+            \E[Z] &= \frac{n}{n + 1}.
+        \end{align*}
+    \end{enumerate}
+\end{enumerate}

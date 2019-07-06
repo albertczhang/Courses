@@ -1,0 +1,118 @@
+\section{Homework 7}
+
+Sundry: I worked alone.
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item \begin{enumerate}
+            \item Yes. $f(x) = 0.00001x$ is a bijection between $\mathbb{R}$ and $\mathbb{R}$ because for every $b \in \mathbb{R}$ (the codomain), there exists a \textit{unique} $a \in \mathbb{R}$ (the domain) with $a = 100000b$.
+            
+            \item No. There exists no such $a \in \mathbb{Z} \cup \{\pi\}$ such that $f(a) = \frac{1}{3}$ (if there were, we could find either an integer $x$ or $\pi$ that equals $\frac{10^5}{3}$, but we can't). Thus the function is not surjective on the given domain and codomain, so it can't be a bijection.
+        \end{enumerate}
+        
+        \item \begin{enumerate}
+            \item No. Let $p = 3$, then for both $x = 4, 5 \in \mathbb{N} \setminus \{0\}$, we have $f(4) = 3$ and $f(5) = 3$, so $f$ is not injective, and cannot be bijective either.
+            
+            \item Yes. Each value $x \in \{\frac{p+1}{2}, \ldots p\}$ maps to $p - x \in \{0, \ldots, \frac{p-1}{2}\}$ through the function $f$. In particular, it is easy to see injectivity and surjectivity of $f$ with the mapping $x \mapsto p - x$. It follows that we have a bijection.
+        \end{enumerate}
+        
+        \item This function is injective, but not surjective. That is, there is no element in $D$ that maps to the element $\{\}$ in the power set of $D$.
+        
+        \item Yes. After shuffling the digits, we still have exactly 10 distinct digits 0 through 9. So taking the $i+1^{\text{st}}$ digit of $X'$ will always result in distinct digit for distinct $i$ (injectivity). Also, since the cardinality of the domain is 10, we know that every element in the codomain gets hit (surjectivity). Thus bijectivity follows.
+    \end{enumerate}
+    
+    \item \begin{enumerate} 
+        \item Countable. Since $A$ and $B$ are countable, we can draw a bijection between the two and the set of $\mathbb{N}$. Then we can draw another bijection between $\mathbb{N} \times \mathbb{N}$ and $\mathbb{N}$ by ``snaking'' through the first quadrant of the xy-plane. In particular, we define a bijective mapping:
+        \begin{align*}
+            0 &\mapsto (0,0) \\
+            1 &\mapsto (1,0) \\
+            2 &\mapsto (0,1) \\
+            3 &\mapsto (0,2) \\
+            4 &\mapsto (1,1) \\
+            5 &\mapsto (2,0) \\
+            &\vdots
+        \end{align*}
+        which I was too lazy to draw up in tikz.
+        
+        \item Sometimes Countable, Sometimes Uncountable. Example of Countable: Let all the $B_i = \mathbb{N}$, then their union is $\mathbb{N}$, which is countable. Example of Uncountable: Let $B_i$ for $i \in \mathbb{N}$ be the set of all $i$ digit decimals in $[0,1)$. So $B_1$ would be $\{0.0, 0.1, 0.2, \ldots, 0.9\}$, and $B_2$ would be $\{0.00, 0.01, 0.02, \ldots, 0.99\}$. Then their union would be all the real numbers from 0 to 1, which is uncountably infinite.
+        
+        \item Uncountable. We prove with a diagonalization argument. Suppose our set is countable. Then we can enumerate every non-decreasing function $f$ in a table, e.g.:
+        \[
+        \begin{tabular}{c|cccc}
+            $x,f(x)$ & $f_1$ & $f_2$ & $f_3$ & \ldots \\
+            \hline
+            0 & \bf{1} & 0 & 3 & \ldots \\
+            1 & 2 & \bf{5} & 3 & \ldots \\
+            2 & 4 & 7 & \bf{4} & \ldots \\
+            \vdots & \vdots & \vdots & \vdots
+        \end{tabular}
+        \]
+        Notice that we cannot just add 1 to every element along the diagonal to produce another non-decreasing function from $\mathbb{N}$ to $\mathbb{N}$. Instead, we will add all the preceding elements of the diagonal to the next element. That is, in the example above we'd replace $(1, 5, 4, \ldots)$ with $(1, 6, 10, \ldots)$. This way we will obtain a non-decreasing function that differs from all of the $f_i$ at input $i$, contradicting countability. It follows that our set is uncountable.
+        
+        \item Countably infinite. We can represent each non-increasing function as a list of natural numbers (where the indeces are the inputs from $\mathbb{N}$ and the values are the outputs of $f$ also in $\mathbb{N}$). Then we can order them by coordinate from least to greatest. That is, we can obtain the mapping:
+        \begin{align*}
+            0 &\mapsto (0, 0, 0, \ldots) \\
+            1 &\mapsto (1, 0, 0, \ldots) \\
+            2 &\mapsto (1, 1, 0, \ldots) \\
+            3 &\mapsto (1, 1, 1, \ldots) \\
+              &\vdots \\
+            n &\mapsto (2, 0, 0, \ldots) \\
+              &\vdots
+        \end{align*}
+        where $n \in \mathbb{N}$. Thus we have a bijection between our set and $\mathbb{N}$, so it must be countably infinite.
+        
+        \item Uncountably infinite. We will construct an injection from $\mathcal{P}(\mathbb{N})$ to the set of all bijective functions from $\mathbb{N}$ to $\mathbb{N}$, from which we can deduce that our set is a superset of an uncountable set, and therefore uncountable itself. For every set $\{a_0, a_1, \ldots, a_k\}$ in $\mathcal{P}(\mathbb{N})$ where the $a_i$ are in $\mathbb{N}$, map it to the bijective function $f: \mathbb{N} \to \mathbb{N}$ defined as $f(x) = x$ if $x \not\in \{a_0, a_1, \ldots, a_k\}$ and $f(a_i) = a_{k - i}$ for $a_i \in \{a_0, a_1, \ldots, a_k\}$. It follows that the set of all bijective functions from $\mathbb{N}$ to $\mathbb{N}$ is at least as big as the power set of $\mathbb{N}$, which is uncountable. Therefore our set is uncountable.
+      
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item Impossible. Suppose for sake of contradiction that such a program $P$ exists. Then we can construct the program:
+        \begin{verbatim}
+            def is_halt(F, x):
+                def P'():
+                    bool = False
+                    outputs = (list of all return/print values of F)
+                    for y in outputs:
+                        bool = bool or P(F, x, o)
+                    return bool
+                return P'()
+        \end{verbatim}
+        which successfully tells whether any given program $F$ halts on a given input $x$. But then we have a contradiction, since this solve the halting problem, which is unsolvable. Thus $P$ cannot exist.
+        
+        \item Impossible. Suppose for sake of contradiction that such a program $P$ exists. Then for any program $F$ and given input $x$, let $G$ be the program constructed as follows:
+        \begin{verbatim}
+            def G(a):
+                if a == x:
+                    return something
+                'body of F'
+        \end{verbatim}
+        Then $G$ halts on the same inputs as $F$ does for all inputs except for $x$, for which $G$ certainly halts and $F$ may or may not halt. Now, we can construct the program is\_halt:
+        \begin{verbatim}
+            def is_halt(F, x):
+                def G(a):
+                    ...
+                return P(F, G)
+        \end{verbatim}
+        This function will return true is $F$ halts on $x$ and false otherwise, thus solving the halting problem, a contradiction.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item Since there are $n$ states and $k$ instructions, there can be up to $nk$ total iterations before the machine repeats a computation.
+        
+        \item For any positive integers $n, k$, it is clear that $2n^2k^2 > nk$, so if the algorithm is still running after $2n^2k^2$ iterations, a computation must have been repeated. But this means the same instruction was given the exact same input, which will result in a loop.
+        
+        \item Plug in $x$ to $i_0$ and keep track of all pairs of inputs and instructions. If at some point before there are more than $nk$ iterations, the program halts, i.e. $j_l \geq k$ for some $l < nk$, then we know that the program halts. Otherwise, it will loop indefinitely. This does not contradict the undecidability of the halting problem, since this particular instance assume we have knowledge of the values of $n$ and $k$, whereas in the traditional halting problem, we do not know these values, so we cannot construct a test\_halt function without these values.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item We have 10 options for each of the four categories, for a total of $10^4 = 10000$ possible distinct outfits.
+        
+        \item Since there are 10 in each category, we have $\binom{4}{2}10^2 = 600$ possible distinct outfits if we wear exactly two categories.
+        
+        \item We have $10 \cdot 9 \cdot 8 \cdot 7 = 5040$ ways to hang 4 of out 10 hats in a row.
+        
+        \item We have the binomial $\binom{10}{4} = 210$ ways to pack 4 hats for travels. This is equivalent to $\frac{10 \cdot 9 \cdot 8 \cdot 7}{4 \cdot 3 \cdot 2 \cdot 1} = \frac{5040}{24}$, as we are simply correcting for overcounting with regards to order.
+        
+        \item This is equivalent to $\binom{5}{2} = 10$ distinct sets of three hats, since we have 3 hats and 2 `markers' (stars and bars? bins and balls? idk what you guys call it).
+    \end{enumerate}
+\end{enumerate}

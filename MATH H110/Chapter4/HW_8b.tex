@@ -1,0 +1,108 @@
+% \textbf{4.1 Solution.} Adding two vectors in the same vector space $V$ is equivalent geometrically to drawing the vectors tip to tail.
+
+% Then since $(v_1, \ldots, v_s)$ is a linearly dependent subset of $V$, there must exist scalars $c_i \in \mathbb{F}$ not all equal to zero such that $\sum\limits_{i = 1}^s c_iv_i = 0$. Then since vector addition is commutative, we can rearrange the sum $c_1v_1 + \ldots + c_sv_s$ in any order and it would still equal zero. Thus no matter what order we draw the vectors from tip to tail, we will always arrive back at the starting point.
+
+% \textbf{4.2 Solution.} We have
+% \begin{align*}
+% a_1v_1 + \ldots + a_sv_s &= b_1v_1 + \ldots + b_sv_s \\
+% (a_1 - b_1)v_1 + \ldots + (a_s - b_s)v_s &= 0
+% \end{align*}
+% Then, since $(a_i - b_i)$ is a scalar in $\mathbb{F}$ for $1 \leq i \leq s$ and $(v_1, \ldots, v_s)$ are linearly independent, we have that $a_i - b_i = 0$ for all $1 \leq i \leq s$. It follows that $a_i = b_i$ for all $1 \leq i \leq s$.
+
+% \textbf{4.3 Solution.} \textit{Any subset of a linearly independent subset of $V$ is also linearly independent.}
+
+% Suppose for contradiction that we have a linearly dependent subset $(v_1, \ldots, v_s)$ of the linearly independent subset $(v_1, \ldots, v_s, \ldots, v_n)$ of $V$. Then if $a_1v_1 + \ldots + a_sv_s = 0$ for scalars $a_i \in \mathbb{F}$ for $1 \leq i \leq s$, we know there is at least one nonzero $a_i$. But then $a_1v_1 + \ldots + a_sv_s + 0v_{s+1} + \ldots + 0v_n = 0$ is a valid dependency relation for $(v_1, \ldots, v_s, \ldots, v_n)$, a contradiction.
+
+% \textit{Any superset of a linearly dependent subset of $V$ is also linearly dependent.}
+
+% Suppose we have a linearly dependent subset $(v_1, \ldots, v_s)$ of $V$. Then there exist scalars $a_i \in \mathbb{F}$ where $1 \leq i \leq s$ and not all $a_i$ are equal to zero, we have $a_1v_1 + \ldots + a_sv_s = 0$. Now, any superset must contain the original subset, so we can just append $\sum_j 0v_j$ (where $v_j$ are the elements in the superset but not in the original subset) to the dependency relation and get another dependency relation. That is,
+% \[
+% a_1v_1 + \ldots + a_sv_s + \sum\limits_j 0v_j = 0
+% \]
+% where not all $a_i$ are equal to zero. It follows that any superset must also be linearly dependent.
+
+\textbf{4.4 Solution.} \textit{$(1,i)$ is a basis for $\mathbb{C}$ over $\mathbb{R}$.}
+
+Suppose we have $a_11 + a_2i = 0$ for $a_1,a_2 \in \mathbb{R}$. Now assume for contradiction that at least one of $a_1, a_2$ is nonzero. If only $a_1$ is nonzero then we get $a_1 = 0$, contradiction. If only $a_2$ is nonzero then we get $a_2i = 0$, contradiction. Else if both are nonzero, then we get $-a_1/a_2 = i$, implying $i$ is a real number, contradiction. Therefore $(1, i)$ is linearly independent. Furthermore, it is easy to see that every complex number $z$ can be written in the form $a1 + bi$, so $(1, i)$ is a basis of $\mathbb{C}$ over $\mathbb{R}$.
+
+\textit{$(i)$ is a basis of $\mathbb{C}$ over $\mathbb{C}$.}
+
+Suppose we have $ci = 0$. Multiplying by $c$ on both sides we get $-c = 0$, or simply $c = 0$. It follows that $(i)$ is a linearly independent subset of $\mathbb{C}$ over $\mathbb{C}$. Now for any vector $z = a + bi \in \mathbb{C}$, we can find a scalar $w = b - ai \in \mathbb{C}$ such that $wi = (b - ai)i = a + bi = z$. Thus $(i)$ is a basis of $\mathbb{C}$ over $\mathbb{C}$.
+
+\textbf{4.9 Solution.} If $(u_i)_{i \in I}$ spans $V$, then the codiagonal map is surjective by definition, i.e. every $v \in V$ can be represented as $+_{i \in I}a_iu_i$ for some scalars $a_i \in \mathbb{F}$ for $i \in I$.
+
+Conversely, if the codiagonal map is surjective, then for every $v \in V$, we know that there exist $a_i \in \mathbb{F}$ for $i \in I$ such that $+_{i \in I}a_iu_i = v$. Then it follows that the collection $(u_i)_{i \in I}$ spans $V$.
+
+\textbf{4.10 Solution.} Instead of $L$, we use $B$ to avoid confusion (in the proof of FTOLA, $L$ is used as the set of all linearly independent subsets of $V$, so we will use the name $B$ instead). In 4.1.13, we can insert the statement, since $B$ is a linearly independent subset of $V$, it must be present in one of the totally ordered chains of $L$, and thus must be a subset of the maximal element $M$. It follows from the proof that $M$ is a basis that contains $B$.
+
+\textbf{4.11 Solution.} Yes, we can create the chain $\varnothing \subseteq B_1 \subseteq B_2 \subseteq B_3 \subseteq ...$ where $B_{k+1}$ has one more $\delta_x \in \mathbb{F}\langle X \rangle$ than $B_k$. The upper bound would be the collection $(\delta_x)_{x \in X}$, which is a basis of $\mathbb{F}\langle X \rangle$.
+
+\textbf{4.12 Solution.} Consider the collection $(\delta_{x,i})_{x \in X, i \in I}$ defined as
+\[ \delta_{x,i}(s) =
+\begin{cases}
+    v_i, & \text{if } s = x \\
+    0, & \text{otherwise}
+\end{cases}
+\]
+In other words, for every $x \in X$, we designate $|I|$ dirac delta functions, each of which take an element $s \in X$ to the basis vector $v_i \in V$ if $s = x$.
+
+\textbf{4.16 Solution.} Suppose we have scalars $a_{i,j} \in \mathbb{F}$ for $i \in I$, $j \in J$ such that
+\[
+\sum\limits_{i \in I, j \in J} a_{i, j}T_{i, j} = 0.
+\]
+If we plug in $v_k$, all the $a_{i, j}T_{i, j}$ will become 0 except for $a_{k, j}T_{k, j}$, and we get
+\[
+\sum\limits_{j \in J}a_{k, j}w_j.
+\]
+Then since $(w_j)_{j \in J}$ is a basis for $W$, it follows that all the $a_{k,j}$ must be 0. Similarly, for all $i \in I$, we get that $a_{i, j}$ must be 0 for all $j \in J$. It follows that the $T_{i, j}$ are a linearly independent subset of $Hom(V, W)$.
+
+Furthermore, it is easy to see that the $T_{i, j}$ span $Hom(V, W)$, since we can add together all the individual $T_{i, j}$'s (they are similar to dirac delta functions) for each pair $(v_i, w_j)$ of inputs and outputs. That is, throwing in $T_{i, j}$ adds the functionality of sending $v_i$ to $w_j$, and since $(v_i)_{i \in I}$ spans $V$ and $(w_j)_{j \in J}$ spans $W$, we can form all such homomorphisms this way.
+
+\textbf{4.20 Solution.} Consider the map $H: V/U \to V'/U'$ given by $v+U \mapsto G(v) + F(U)$ for every $v \in V$. $H$ is an isomorphism since $F$ and $G$ are isomorphisms, and isomorphisms are preserved under addition (due to the additivity of linear maps).
+
+\textbf{4.21 Solution.} For $a_i \in \mathbb{F}$, $i \in \mathbb{N}$, every $(0, 0, a_1, a_2, \ldots)$ maps uniquely to $(0, a_1, a_2, \ldots)$ and vice versa via $T$ and $T^{-1}$ respectively, so we have a bijection and therefore $T$ is an isomorphism.
+
+Let $\pi_1: \mathbb{F}^{\mathbb{N}} \to \mathbb{F}$ be the projection map $(a_1, a_2, \ldots) \mapsto (a_1, 0, \ldots)$. Then $ker(\pi_1) = U$ and by the First Isomorphism Theorem, we get $\mathbb{F}^{\mathbb{N}} / U \cong \mathbb{F}$. Similarly, we can consider the map $pi_{1, 2}: \mathbb{F}^{\mathbb{N}} \to \mathbb{F}^2$ that takes $(a_1, a_2, a_3, \ldots)$ to $(a_1, a_2, 0, \ldots)$. Also by the F.I.T., we get that $\mathbb{F}^{\mathbb{N}} / U' \cong \mathbb{F}$.
+
+Now, to show $\mathbb{F}$ and $\mathbb{F}^2$ are non-isomorphic, suppose for contradiction that they are. Then $\mathbb{F}^2 \cong \mathbb{F} \oplus \mathbb{F} \cong \mathbb{F} + \mathbb{F}$. Which implies by 4.2.8 that $dim(\mathbb{F}^2) = 2dim(\mathbb{F})$, a contradiction. Thus they are not isomorphic. And then we run into our problem with infinite dimensional vector spaces: since $U \cong U'$ and $\mathbb{F}^{\mathbb{N}}$ is isomorphic to itself, we have by 4.2.11 the contradiction that $\mathbb{F} \cong \mathbb{F}^2$. As such 4.2.11 fails for infinite dimensional vector spaces.
+
+\textbf{4.23 Solution.} Consider the vector space $\F^{\N}$. Suppose we have the injective right shift endomorphism $T: \F^{\N} \to \F^{\N}$ with the map $(a_1, a_2, a_3, \ldots) \to (0, a_1, a_2, a_3, \ldots)$. However, $T$ is clearly not surjective since sequences where the first term is nonzero are not covered by the map.
+
+\textbf{4.24 Solution.} First, we know that $ran(T) \sqsubseteq V$. Now, we can deduce inductively that $T$ sends subspaces $V'$ of $V$ to subpaces of $V'$. That is, given that $T^k(V) \sqsubseteq T^{k-1}(V)$ for some $k \geq 1$, for any vectors $T^k(v_1), T^k(v_2) \in ran(T^k)$ (the domain of $T^{k+1}$), we get that $T(T^k(v_1) + T^k(v_2)) = T^{k+1}(v_1) + T^{k+1}(v_2)$, satisfying additivity. Homogeneity follows in the same way. Thus we get that $V \sqsupseteq ran(T) \sqsupseteq ran(T^2) \sqsupseteq \ldots$.
+
+For the $ker$ part, we know that any homomorphism will map $0$ to $0$. Therefore any element in $ker(T^k)$ must also belong in $ker(T^{k+1})$ for $k \geq 1$. Furthermore, by the same argument as above, additivity and homogeneity both hold for $ker(T^k)$. This implies $ker(T^k) \sqsubseteq ker(T^{k+1})$ for all $k \geq 1$.
+
+Finally, for the last part, we want to prove from $ker(T^k) = ker(T^{k+1})$ that $ker(T^{k+1}) = ker(T^{k+2})$. We know that $T(T^k(v)) = T^k(v) = 0$ if $v \in ker(T^k)$ and $v \in ker(T^{k+1})$. So suppose we have a vector $v$ that is in neither $ker(T^k)$ nor $ker(T^{k+1})$. Then $T(T^k(v)) \neq 0$ and $T(T^{k+1}(v)) = T^{k+1}(T(v)) \neq 0$ (since if $T(v) = 0$, then we'd have a contradiction and everything would be 0). And so we get $ker(T^{k+1}) = ker(T^{k+2})$. Thus by induction we get $ker(T^t) = ker(T^k)$ for all $1 \leq k \leq t$.
+
+\textbf{4.32 Solution.} Suppose we had $a_1v^1 + \dots + a_nv^n = 0$. Then if we plug in $v_i$, we would get $a_i = 0$ for all $1 \leq i \leq n$. It follows that $(v^1, \dots, v^n)$ is a linearly independent set. Furthermore, we can represent every $f \in V'$ by constructing each input/output pair. That is, if $f(v_i) = a_i$ for $1 \leq i \leq n$, then $f = \sum\limits_{i = 1}^{n}a_iv^i$. Therefore $(v_1, \dots, v_n)$ is a basis of $V'$.
+
+\textbf{4.33 Solution.} Since $\F$ is generated by the vector $1 \in \F$, which is in itself a linearly independent set, we know that $\F$ has dimension 1. Then $dim(ran(\phi)) = 1$, and by the rank-nullity theorem, we get that $dim(ker(\phi)) = dim(V) - 1$.
+
+\textbf{4.34 Solution.} From the previous problem, we know that $dim(ker(\phi)) = dim(ker(\psi)) = dim(V) - 1$. Since a linear map is completely determined by what it does to a basis of its domain, we can consider a basis $(v_1, \dots, v_n)$ of $V$. If both $\phi$ and $\psi$ send the same $n-1$ vectors to the zero scalar, then suppose $\phi$ sends the $n$th vector to a nonzero scalar $a$ and $\psi$ sends the $n$th vector to another nonzero scalar $b$. Then we can deduce that $\phi = \frac{a}{b}\psi = c\psi$ for some scalar $c \in \F$, which contradicts our assumption. Thus $\phi$ and $\psi$ cannot send the same $n-1$ vectors to 0 and there must be exactly two vectors out of the $n$ from the basis of $V$ that are not sent to 0. It follows that $ker(\phi) \cap ker(\psi)$ has dimension $dim(V) - 2$ or $n - 2$.
+
+\textbf{4.35 Solution.} Since $(v_1, \dots, v_n)$ is a basis of $V$, we can write $v = a_1v_1 + \dots + a_nv_n$ for scalars $a_i \in \F$. Then consider the linear form $f:= \frac{v^1}{a_1}$. It follows that $f(v) = 1$ (note that we could've chosen any $i$ instead of chosing $i = 1$).
+
+Now, if a vector $v \in V$ is zero, then by linearity of functionals in $V'$, we know that $f(v) = 0$ for all $f \in V'$. Conversely, if $f(v) = 0$ for all $f \in V'$, then $v$ cannot be non-zero, for otherwise by our result above there would exist an $f \in V'$ such that $f(v) = 1 \neq 0$.
+
+\textbf{4.37 Solution.} We know that $V'$ has dimension $n$. Furthermore, it is easy to see that $(v^i)_{1 \leq i \leq n}$ generates and forms a basis of the free space $\F\langle\{v_1, \dots, v_n\}\rangle$. Then, since the dimensions of both sides are $n$, it follows that $V' \cong \F\langle\{v_1, \dots, v_n\}\rangle$.
+
+\textbf{4.38 Solution.} Suppose we have $v, v' \in V$ such that $\delta_v = \delta_{v'}$. Then we have $f(v) = f(v')$ for every linear form $f \in V'$. It follows that $f(v-v') = 0$, and from exercise 4.35 we get that $v-v' = 0$ since $f(v-v') = 0$ for all $f$. Thus $v = v'$ and the evaluation map is injective.
+
+Now, to see that $\epsilon_V$ is an isomorphism, note that we know $dim(V) = dim(V')$, and therefore $dim(V') = dim(V'')$. It follows that $dim(V) = dim(V'')$ and $\epsilon_V$ is an isomorphism by rank-nullity theorem (i.e. $dim(ker(\epsilon_V)) = 0$ since it's injective, so $\epsilon_V$ is surjective).
+
+\textbf{4.39 Solution.} If $(v_1, \dots, v_n)$ is a basis of $\R^{\infty}$, then consider the generating set $(v^1, v^2, \dots)$ of $\R^{\infty*}$, where $v^i(\dots, 0, v_i, 0, \dots) = 1$ and 0 else (Kronecker Delta function). This set $(v^1, v^2, \dots)$ is linearly independent and spans $\R^{\infty}*$ with a cardinality of $|\N|$. Now, consider the linearly independent generating set of sequences $(a_1, a_2, \dots)$ where $a_i$ is the sequence $(\dots, 0, 1, 0, \dots)$ with a 1 in the $i$th position. This set also has cardinality $|\N|$, so $dim(\R^{\infty*}) = |\N| = dim(\R^\N)$, and thus they are isomorphic.
+
+\textbf{4.41 Solution.} True. We can check for bilinearity on the first term. Suppose we have linear forms $f, f', g \in V'$, vector $v \in V$, and a scalar $a \in \F$. Then we have
+\begin{align*}
+    ((f + f') \cdot g)(v) &= ((f + f')(v))g(v) \\
+        &= (f(v) + f'(v))g(v) \\
+        &= f(v)g(v) + f'(v)g(v) \\
+        &= (f \cdot g)(v) + (f' \cdot g)(v),
+\end{align*}
+as well as
+\begin{align*}
+    ((af) \cdot g)(v) &= (af)(v)g(v) \\
+        &= af(v)g(v) \\
+        &= a(f \cdot g)(v).
+\end{align*}
+It follows that the $\cdot$ map is linear on the first term, and it is also linear on the second term by a symmetric argument. Thus $V'$ is indeed an algebra over $\F$.

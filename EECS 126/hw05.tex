@@ -1,0 +1,153 @@
+\includepdf[pages=-]{midterm1}
+
+\section{Homework 5}
+\subsection{Confidence Interval Comparisons}
+(a) Using Chebyshev's, we have that
+\begin{align*}
+    \P[|\hat{p} - p| \geq \epsilon] &\leq \frac{\f{Var}(\hat{p})}{\epsilon^2} \\
+    &= \frac{p(1 - p)}{n\epsilon^2} \\
+    &\leq \frac{1}{4n\epsilon^2}.
+\end{align*}
+\quad i. For $(\epsilon, \delta) = (0.05, 0.1)$, we have $n = 1000$, and for $(\epsilon, \delta) = (0.1, 0.1)$, we have $n = 250$. In other words, for the same confidence level, more trials give us a higher level of accuracy.
+
+\quad ii. For $(\epsilon ,\delta) = (0.1, 0.05)$, we get $n = 500$, and for $(\epsilon, \delta) = (0.1, 0.1)$, we get $n = 250)$. In other words, for the same level of accuracy, more trials give us a higher confidence level.
+
+(b) Since $\E[\hat{p}] = p$ and $\f{Var}\hat{p} = \frac{p(1 - p)}{n}$, we can normalize to obtain
+\begin{align*}
+    \P\left[\frac{|\hat{p} - p|}{p} \leq 0.05\right] &= \P[-0.05p \leq \hat{p} - p \leq 0.05p] \\
+    &= \P\left[-0.05\sqrt{n}\sqrt{\frac{p}{1-p}} \leq \hat{p}_{\f{normalized}} \leq 0.05\sqrt{n}\sqrt{\frac{p}{1-p}} \right],
+\end{align*}
+at which point we treat our random variable as a standard normal $\mathcal{N}(0, 1)$ for large $n$. Since we know $p \in (0.4, 0.6)$, at worst the tightest our interval will be with respect to $p$ is when $p = 0.4$. Now, since 0.95 is the marker for being within 2 standard deviations within the mean, we want $n$ such that
+\begin{align*}
+    0.05\sqrt{n}\sqrt{\frac{0.4}{1-0.4}} &= 2 \\
+    n &= 2400.
+\end{align*}
+Thus the smallest such $n$ is 2400.
+
+\subsection{Convergence in Probability}
+(a) We claim that $(Y_n)$ converges to 0. Given arbitrary $1 \leq \epsilon > 0$, we want to find the probability
+\begin{align*}
+    \P[|Y_n - 0| > \epsilon] &= \P[X_1X_2\dots X_n < -\epsilon] + \P[X_1X_2\dots X_n > \epsilon] \\
+    &= 2\P[X_1X_2\dots X_n > \epsilon]
+\end{align*}
+by symmetry. Now, since all the $X_i$ take on values in $[-1, 1]$, if the absolute product is greater than $\epsilon$, then each individual $X_i$ must be greater than $\epsilon$. Then we have by i.i.d. that
+\begin{align*}
+    2\P[X_1 > \epsilon, \dots, X_n > \epsilon] &= 2(\P[X_1 > \epsilon])^n \\
+    &= 2\left(\frac{1-\epsilon}{2}\right)^n,
+\end{align*}
+which goes to 0 as $n \to \infty$. Thus $Y_n$ converges to 0 in probability.
+
+(b) We claim that $(Y_n)$ converges to 1. To prove this, we will show that $(1 - Y_n)$ converges to 0. In particular, if we are given $1 \geq \epsilon > 0$ using the i.i.d. property we have
+\begin{align*}
+    1 - \P[\max\{X_1, \dots, X_n\} > \epsilon] &= \P[\max\{X_1, \dots, X_n\} \leq \epsilon] \\
+    &= \P[X_1 \leq \epsilon, \dots, X_n \leq \epsilon] \\
+    &= (\P[X_i \leq \epsilon])^n \\
+    &= \left(\frac{1+\epsilon}{2}\right)^n,
+\end{align*}
+which converges to 0 as $n \to \infty$. Thus $Y_n$ converges to $(1 - 0) = 1$ in probability.
+
+(c) We claim that $(Y_n)$ converges to $1/4$. First, we find the common mean of the $X_i^2$ to be
+\begin{align*}
+    \E[X_i^2] &= \int_0^1 x^2f_{X_i^2}(x)dx \\
+    &= \int_{-1}^1 (x^2)(1/2)dx \\
+    &= 1/3.
+\end{align*}
+Now we have i.i.d. random variables $Z_i = X_i^2$ with common mean 1/3. It follows then by the Weak Law of Large Numbers that for any $1 \geq \epsilon > 0$,
+\[
+    \P\left[\left|\frac{X_1^2 + \dots + X_n^2}{n} - \frac{1}{3}\right| > \epsilon\right] \to 0,
+\]
+as $n \to \infty$. Thus $Y_n$ converges to $1/3$ in probability.
+
+\subsection{Almost Sure Convergence}
+(a) Yes, this implies that $(X_n)$ does not converge almost surely, as the limit of $X_n$ does not even exists, and therefore the probability of the limit going to some $X$ would be 0. In particular, if the sequence oscillates between two distinct values, we can take $\epsilon = |a - b| / 2$, and no matter what value we pick on the real line, we can either take $a$ or $b$ to be farther than a distance of $\epsilon$ for infinitely many $X_i$ down the sequence. Hence the limit does not exist and so $(X_n)$ cannot converge to any value with probability 1.
+
+(b) No. Conditioning on $Y = y$, we have that $X_n = \frac{1}{y + 1/n}$, and so $\P[\lim_{n \to \infty} X_n = 1/y | Y = y]$. Since is chosen uniformly across $[-1, 1]$, we see that the sequence $(X_n)$ can converge to values in $(-\infty, -1]\cup[1, +\infty)$. It follows that the sequence does not converge to any singular value with probability 1, and so $(X_n)$ does not converge a.s.
+
+(c) No. For any $\epsilon > 0$, we can find a $X_j = 2^k$ such that $2^k > \epsilon$. This implies that $(X_n)$ cannot converge since we can always find two values far enough down the sequence 0 and $2^l$ for $l > k$ that are more than $\epsilon$ distance apart (and thus the sequence is not Cauchy, and therefore not convergent). It follows that the probability of $(X_n)$ converging to any single value cannot be 1, and so it does not converge a.s.
+
+(d) We claim that the sequence converges in probability to 0. In particular, for any $\epsilon > 0$, we have that
+\[
+\lim_{n \to \infty}\P[X_n \geq \epsilon] = 0
+\]
+since there is only one nonzero value in an interval whose size doubles indefinitely.
+
+No, $\E[X_n] = n * (1/2^k) * 2^k = n$, which diverges to $+\infty \neq 0 = \E[X]$.
+
+\subsection{Compression of a Random Source}
+(a) For each $1 \leq i \leq n$, consider the derived random variable
+\[
+Y_i := \log_2\frac{1}{p(X_i)},
+\]
+so that we have
+\[
+H(X_i) = \E[\log_2\frac{1}{p(X_i)}] = \E[Y_i].
+\]
+Since the $X_i$ are i.i.d. we see that the $Y_i$ all have common mean $H(X_1)$, and by the Strong Law of Large Numbers, we get
+\begin{align*}
+    \P\left[\lim_{n \to \infty}\left(\frac{Y_1 + \dots + Y_n}{n}\right) = \E[Y_1] = H(X_1)\right] = 1,
+\end{align*}
+and since
+\begin{align*}
+    \frac{Y_1 + \dots + Y_n}{n} &= \frac{1}{n}\sum_{i = 1}^n \log_2\frac{1}{p(X_i)} \\
+    &= -\frac{1}{n}\sum_{i = 1}^n \log_2 p(X_i) \\
+    &= -\frac{1}{n}\log_2(p(X_1) \dots p(X_n)) \\
+    &= -\frac{1}{n}\log_2p(X_1 \dots X_n),
+\end{align*}
+we get that
+\[
+\P\left[\lim_{n \to \infty}\left(-\frac{1}{n}\log_2p(X_1 \dots X_n)\right) = H(X_1)\right] = 1,
+\]
+so it converges to $H(X_1)$ almost surely.
+
+(b) Recall our random variables $Y_i$ from the previous part. By the Weak Law of Large Numbers, we have that
+\[
+\lim_{n \to \infty}\P\left[\left|\frac{Y_1 + \dots + Y_n}{n} - H(X_1)\right| \geq \epsilon\right] = 0,
+\]
+and so for sufficiently large $n$, 
+\[
+\P\left[\left|\frac{Y_1 + \dots + Y_n}{n} - H(X_1)\right| \geq \epsilon\right] < \epsilon.
+\]
+Now, we manipulate some inequalities to obtain
+\begin{align*}
+    2^{-n(H(X_1) + \epsilon)} &\leq p(x_1, \dots, x_n) \leq 2^{-n(H(X_1) - \epsilon)} \\
+    -n(H(X_1) + \epsilon) &\leq \log_2 p(x_1, \dots, x_n) \leq -n(H(X_1) - \epsilon) \\
+    H(X_1) - \epsilon &\leq \log_2 -\frac{1}{n}p(x_1, \dots, x_n) \leq H(X_1) + \epsilon,
+\end{align*}
+and so we see that
+\[
+\P[(X_1, \dots, X_n) \in A_{\epsilon}^{(n)}] = \P\left[\left|-\frac{1}{n}p(x_1, \dots, x_n) - H(X_1)\right| < \epsilon\right].
+\]
+But this can be rewritten as
+\[
+1 - \P\left[\left|-\frac{1}{n}p(x_1, \dots, x_n) - H(X_1)\right| \geq \epsilon\right] > 1 - \epsilon.
+\]
+Pulling everything together, we have
+\[
+\P[(X_1, \dots, X_n) \in A_{\epsilon}^{(n)}] > 1 - \epsilon.
+\]
+
+(c) From the bounds of $p(x_1, \dots, x_n)$, we have
+\begin{align*}
+    1 &= \sum p(x_1, \dots, x_n) \\
+    &\geq \sum_{(x_1, \dots, x_n) \in A_\epsilon^{(n)}} p(x_1, \dots, x_n) \\
+    &\geq 2^{-n(H(X_1) + \epsilon)}|A_\epsilon^{(n)}|
+\end{align*}
+and so 
+\[
+|A_\epsilon^{(n)}| \leq 2^{n(H(X_1) + \epsilon)}.
+\]
+Now, for the other side, we use part (b) to obtain
+\begin{align*}
+    1 - \epsilon &< \P[(X_1, \dots, X_n) \in A_\epsilon^{(n)}] \\
+    &= \sum_{(x_1, \dots, x_n) \in A_\epsilon^{(n)}}p(x_1, \dots, x_n) \\
+    &\leq 2^{-n(H(X_1) - \epsilon)}|A_\epsilon^{(n)}|,
+\end{align*}
+and so 
+\[
+|A_\epsilon^{(n)}| \geq (1 - \epsilon)2^{n(H(X_1) - \epsilon)}.
+\]
+Putting this all together, we get
+\[
+(1 - \epsilon)2^{n(H(X_1) - \epsilon)} \leq |A_\epsilon^{(n)}| \leq 2^{n(H(X_1) + \epsilon)}
+\]
+for sufficiently large $n$.

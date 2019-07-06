@@ -1,0 +1,152 @@
+\textbf{1.14 Solution.} First, note that $\mathcal{C}([a,b],\mathbb{R})$ is nonempty. Since we can assume that the sum of two continuous functions is continuous, then we know that for two functions $c_1, c_2\in\mathcal{C}([a,b], \mathbb{R})$, the function $c_1+c_2$ must also be in $\mathcal{C}([a,b], \mathbb{R})$. Furthermore, since we can assume that a scalar multiple of a continuous function is also continuous, then we know that for any scalar $a$ and any function $c\in\mathcal{C}([a,b],\mathbb{R})$, the function $ac$ is also in $\mathcal{C}([a,b],\mathbb{R})$.
+
+\textbf{1.15 Solution.} No, the set is not closed under addition and scalar multiplication. That is, for a polynomial $ax^2+bx+1$, $(ax^2+bx+1)+(ax^2+bx+1)= 2ax^2+2bx+2$ cannot be in the set because the constant term is 2, whereas the set only contains polynomials where the constant term is 1.
+
+\textbf{1.16 Solution.} First, note that the set of all polynomials with degree $\leq n$ is nonempty. Next, note that any polynomial with degree $\leq n$ must also be in the set of all polynomials over $\mathbb{F}$. For two polynomials $p_1(x)$ and $p_2(x)$ of degree $\leq n$, the polynomial $p_1(x)+p_2(x)$ is also a polynomial of degree $\leq n$, since addition of corresponding coefficients is closed in the field $\mathbb{F}$. Finally, for a polynomial $p(x)$ of degree $\leq n$ and a scalar $a\in\mathbb{F}$, the polynomial $a(p(x))$ is also a polynomial of degree $\leq n$, since multiplication of the coefficients by a scalar is also closed in the field $\mathbb{F}$. Therefore it is indeed a subspace.
+
+Yes, any set of polynomials under the condition that only a predetermined set of powers have terms with nonzero coefficients. For example, the set of polynomials $\{ax^8+bx^5+cx^2+d\mid a,b,c,d\in\mathbb{F}\}$ is a subspace of $\mathcal{P}(\mathbb{F})$.
+
+\textbf{1.17 Solution.}
+(a) Let $T$ and $U$ be two subspaces of $V$ over the field $\mathbb{F}$. Then since $T$ and $U$ are closed under scalar multiplication, (if we let the scalar be 0) the vector \textbf{0} in $V$ must also be in both $T$ and $U$, hence $\textbf{0}\in T\cap U$. This means that $T\cap U$ is nonempty. Now, suppose we have vectors $v_1,v_2\in T\cap U$, then $v_1$, $v_2$, and $v_1+v_2$ are all in $T$, and similarly $v_1$, $v_2$, $v_1+v_2$ are all in $U$ as well. Thus $v_1+v_2\in T\cap U$ and $T\cap U$ is closed under addition. Finally, suppose we have a vector $v\in T\cap U$ and a scalar $a\in\mathbb{F}$. Then it follows that since $v\in T$, $av\in T$, and similarly since $v\in U$, $av\in U$. Thus $av\in T\cap U$ and $T\cap U$ is closed under scalar multiplication. Therefore $T\cap U$ is indeed a subspace of $V$.
+
+(b) The $x$-axis and $y$-axis are both subspaces of the $xy$-plane over the field of real numbers $\mathbb{R}$. However, their union is not a valid subspace of the $xy$-plane since it is not closed under addition.
+
+(c) Assume for sake of contradiction that there is a subspace $S$ of $\mathbb{F}$ other than $\mathbb{F}$ and \textbf{0}. Then for vectors $a,b\in\mathbb{F}$, $a+b$ must be in $S$. Also, for a "scalar" $a\in\mathbb{F}$ and a "vector" $b\in\mathbb{F}$, the $ab$ must also be in $S$. But since all of these ``scalars'' and ``vectors'' are elements of the same set $\mathbb{F}$, the set $S$ is equivalent to the underlying set of $\mathbb{F}$, since $\mathbb{F}$ is closed under addition and multiplication operations. Thus the only subspaces of $\mathbb{F}$ are $\mathbb{F}$ itself and \textbf{0}, which is a subspace of all vector spaces.
+
+\textbf{1.18 Solution.} First, $span(X)$ is always nonempty, since if $X$ were empty, then $span(X)$ would be the subspace $\{0\}$. Now, suppose we have vectors $v_1, v_2\in X$, then by the definition of $span(X)$, $v_1,v_2\in span(X)$ and therefore $v_1+v_2$ must also exist in $span(X)$. Thus $span(X)$ is closed under addition. Furthermore, suppose we have a vector $v\in X$ and a scalar $a\in\mathbb{F}$, then once again by the definition of $span(X)$, $v\in span(X)$ and so $av$ must also exist in $span(X)$. Thus $span(X)$ is also closed under scalar multiplication and is therefore a subspace of $V$.
+
+\textbf{1.19 Solution.} We will show that $S(V)$ is an abelian group without inverses under the $\cap$ ("intersection") operation. 
+
+Set intersection is associative. In particular, if we have an element $x$ in either $S_1\cap(S_2\cap S_3)$ or $(S_1\cap S_2)\cap S_3$, then it is true that $x$ is also in the other since both statements are the same as saying $x$ is in $S_1$, $S_2$, \textit{and} $S_3$.
+
+Set intersection is also commutative. In particular, if an element $x$ is in either $S_1\cap S_2$ or $S_2\cap S_1$, then it is true that $x$ is also in the other since both statements are the same as saying $x$ is in $S_1$ \textit{and} $S_2$.
+
+Finally, for every subspace $U\in S(V)$, the identity element under $\cap$ is $|V|$, since the intersection of original vector space with any subspace $U$ is just $U$ itself.
+
+\textbf{1.20 Solution.} First, let $v_1+U=v_2+U$. Then if we add the additive inverse of $v_2$ to both sides, we get $v_1+U-v_2=v_2+U-v_2$. Since vector addition is commutative, we then have $v_1-v_2+U=U$. Then, since $U$ is a subspace, it must be closed under addition, and so  $v_1-v_2+\textbf{0}\in (v_1-v_2+U)=U$, therefore the vector $v_1-v_2$ must be in $U$.
+
+Now, we prove the converse. Let $v_1-v_2\in U$. Then, since $U$ is a subspace, it must be closed under addition. Then the set $\{v_1-v_2+u\mid u\in U\}$ is equivalent to $\{u\mid u\in U\}$, so the affine subset $v_1-v_2+U$ is equivalent to the affine subset $U$. Finally, if we "add" $v_2$, which is the additive inverse of $-v_2$, we get that $v_2+U$ is an equivalent affine subset to $v_1+U$ by the commutativity of vector addition. 
+
+Thus, $v_1+U=v_2+U$ if and only if $v_1-v_2\in U$.
+
+\textbf{1.21 Solution.} First, let $v+U$ be a subspace of $V$. Then $v+U=\{v+u\mid u\in U\}$. Since we showed earlier that \textbf{0} is an element of every vector subspace, we let $u=\textbf{0}$ to get that $v\in v+U$. Then because $v+U$ is a subspace it must be closed under addition, and therefore $v+v\in\{v+u\mid u\in U\}$. But this can only happen if we let $u=v$, so therefore $v\in U$.
+
+Now, we prove the converse. Let $v\in U$. Then since $U$ is closed under addition, we take the set $v+U=\{v+u\mid u\in U\}$ and deduce that it is the same set as $U$, which is a subspace. Therefore $v+U$ is a subspace of $V$, since $U$ is a subspace of $V$.
+
+\textbf{1.22 Solution.} First, we know that $(\{v+U\mid v\in V\}, ``+")$ is an abelian group because the properties of commutativity and associativity carry over. Also, the identity element under ``+'' is just $U$, and the inverse of each $v+U$ is $-v+U$.
+
+Associativity of scalar multiplication follows from $a(b(v+U))=abv+U=(ab)(v+U)$. The scalar identity is still the element $1\in\mathbb{F}$, such that $1(v+U)=v+U$.
+
+Distributivity over vector addition also holds, since $a((v_1+U)``+"(v_2+U))=a(v_1+v_2+U)=a(v_1+v_2)+U=av_1+av_2+U=(av_1+U)``+"(av_2+U)=a(v_1+U)``+"a(v_2+U)$.
+
+Finally, distributivity over field addition also holds, since $(a+b)(v+U)=(a+b)v+U=av+bv+U=(av+U)``+"(bv+U)=a(v+U)``+"b(v+U)$.
+
+Thus $V\setminus U$ is a vector space since it satisfies all the vector space axioms.
+
+\textbf{1.23 Solution.} Let $S$ be an affine subset of $V$. Then we can treat each of the $\lambda_i$'s as a "weight", such that the sum of the product of the vectors will still be in $S$. I got stuck here, but I have an idea where we prove that $\lambda_1x_1+\lambda_2x_2$ is in $S$ and then use induction to generalize to a list of $m$ scalars and $m$ vectors.
+
+\textbf{1.24 Solution.} (a) If we take vector addition to be coordinate-wise addition, then it is a homomorphism: $F(x+x',y+y',z+z')=(z+z',y+y')=(z,y)+(z',y')=F(x,y,z)+F(x',y',z')$.
+
+(b) Not a homomorphism: $F(x+x',y+y',z+z')=(x+x'+1,y+y',z+z'+1)\neq(x+x'+2,y+y',z+z'+2)=(x+1,y,z+1)+(x'+1,y',z'+1)=F(x,y,z)+F(x',y',z')$.
+
+(c) Not a homomorphism:
+$F(x+x',y+y')=(xy+xy'+x'y+x'y',0)\neq(xy+x'y',0)=(xy,0)+(x'y',0)=F(x,y)+F(x',y')$.
+
+(d) Is a homomorphism:
+$F(x+x',y+y')=(2x+2x'+3y+3y',x+x'-y-y')=(2x+3y,x-y)+(2x'+3y',x'-y')=F(x,y)+F(x',y')$.
+
+\textbf{1.25 Solution.} We showed earlier that if $T\in Hom(U,V)$, then $\lambda T\in Hom(U,V)$ since $Hom(U,V)$ is a subspace of $\mathcal{F}(U,V)$. Then we only need to show that there exists a linear mapping $(\lambda T)^{-1}$ that takes $V$ back to $U$. To do this, we make use of the fact that $T$ is an isomorphism, and therefore there $T^{-1}$ is a homomorphism that satisfies additivity and homogeneity.
+
+If we define $(\lambda T)^{-1}$ as $\lambda(T^{-1})$, then it satisfies the homomorphic properties of additivity and homogeneity:
+
+In particular, we have $(\lambda T)^{-1}(v+v')=\lambda(T^{-1}(v)+T^{-1}(v'))=(\lambda T)^{-1}(v)+(\lambda T)^{-1}(v')$. So additivity holds.
+
+Additionally, for some scalar $a\in\mathbb{F}$, we have $(\lambda T)^{-1}(av)=\lambda(T^{-1}(av))=\lambda(aT^{-1}(v))=a(\lambda T^{-1}(v))$. So homogeneity holds as well.
+
+Therefore $\lambda T$ must also be an isomorphism.
+
+\textbf{1.26 Solution.} In $\mathbb{C}_\mathbb{R}$ scalar multiplication essentially "scales" vectors in $\mathbb{C}$ by a real $a\in\mathbb{R}$. On the other hand, in $\mathbb{C}_\mathbb{C}$, scalar multiplication is actually "vector multiplication", in the sense that resulting vector is the result of multiplying two complex numbers.
+
+First we show that the map $M:\mathbb{C}_\mathbb{R}\to \mathbb{R}^2$ is bijective. Since $a+bi$ maps to $(a,b)$, we can easily define an inverse mapping $(a,b)\to a+bi$. Therefore there is a one-to-one correspondence between $\mathbb{C}_\mathbb{R}$ and $\mathbb{R}^2$. Now all we have to show is that $M$ is a homomorphism. 
+
+Since $M((a+bi)+(a'+b'i))=(a+a',b+b')=(a,b)+(a',b')=M(a+bi)+M(a'+b'i)$, $M$ satisfies additivity. Furthermore, since $M(\lambda(a+bi))=M(\lambda a+\lambda bi)=(\lambda a, \lambda b) = \lambda (a, b)=\lambda M(a+bi)$ for $\lambda\in\mathbb{R}$, $M$ also satisfies homogeneity. Therefore $M$ is an isomorphism.
+
+Now, we will show that $M':\mathbb{C}_\mathbb{C}\to\mathbb{R}^2$ satisfies additivity but not homogeneity.
+
+Since $M'((a+bi)+(a'+b'i))=(a+a',b+b')=(a,b)+(a',b')=M'(a+bi)+M'(a'+b'i)$, $M'$ satisfies additivity. If $z=c+di\in\mathbb{F}$, then we have $M'(z(a+bi))=(ac-bd, ad+bc)$. However, $zM'(a+bi)$ is invalid because we cannot multiply a coordinate pair $(a,b)\in\mathbb{R}^2$ by a complex scalar $z\in\mathbb{C}$, so $M'$ doesn't satisfy homogeneity.
+
+\textbf{1.27 Solution.} %Call the complex conjugation map $M$. Then $M((a+bi)+(a'+b'i))=M((a+a')+(b+b')i)=(a+a')-(b+b')i=(a-bi)+(a'-b'i)=M(a+bi)+M(a'+b'i)$, so $M$ satisfies additivity. \textbf{Note: I got sort of stuck here... } Now, homogeneity can only hold if we define $M(z(a+bi))=M(z)M(a+bi)$ for all scalars $z\in\mathbb{C}$. That is, let $z=c+di$ be a scalar, then $M((c+di)(a+bi))=M((ac-bd)+(ad+bc)i)=(ac-bd)-(ad+bc)i=(c-di)(a-bi)=M(z)M(a+bi)$ (Notice that it does not equal to $z(M(a+bi))$!).
+For $z=a+bi\in\mathbb{C}$, $z\cdot\overline{z}=a^2+b^2$.
+
+\textbf{1.28 Solution.} First, we show that for two complex numbers $z,w$,  $\overline{z+w}=\overline{z}+\overline{w}$. This is fairly easy to show, as if we let $z=a+bi$ and $w=c+di$, then we have $\overline{z+w}=\overline{a+bi+c+di}= a+c-(b+d)i= (a-bi)+(c-di)=\overline{a+bi}+\overline{c+di}$.
+
+Next, we show that $\overline{cz}=c\overline{z}$ for some scalar $c$. This is also fairly easy to show, as we have $\overline{c(z)}=\overline{ca+cbi}=ca-cbi=c(a-bi)=c\overline{z}$.
+
+Finally, we show that $\overline{zw}=\overline{z}\cdot\overline{w}$. This is just algebra, and we get $\overline{zw}=\overline{(ac-bd)+(ad+bc)i}=(ac-bd)-(ad+bc)i=(a-bi)(c-di)=\overline{a+bi}\cdot\overline{c+di}$.
+
+Now, let $z$ be a complex root to a polynomial $c_nx^n+c_{n-1}x^{n-1}+\ldots+c_0$ for scalars $c_i$. Then $c_nz^n+c_{n-1}z^{n-1}+\ldots+c_0=0$. Taking the conjugate of the entire expression and using what we proved above, we get:
+\begin{align*}
+0 &= \overline{c_nz^n+c_{n-1}z^{n-1}+\ldots+c_0} \\ &= \overline{c_nz^n}+\overline{c_{n-1}z^{n-1}}+\ldots+\overline{c_0} \\ &= c_n\overline{z^n}+c_{n-1}\overline{z^{n-1}}+\ldots+c_0 \\ &= c_n\overline{z}^n+c_{n-1}\overline{z}^{n-1}+\ldots+c_0
+\end{align*}
+
+Thus the conjugate $\overline{z}$ must also be a root of the polynomial.
+
+\textbf{1.29 Solution.} Let $v,v'$ be two vectors in $ker(T)$ and $a$ a scalar in $\mathbb{F}$. Then by additivity of $T$, we have that $T(v+v')=T(v)+T(v')=\textbf{0}+\textbf{0}=\textbf{0}$, which means the vector $v+v'\in ker(T)$ and so $ker(T)$ is closed under addition. Furthermore by the homogeneity of $T$, we have that $T(av)=aT(v)=a\textbf{0}=\textbf{0}$, which means the vector $av\in ker(T)$ and so $ker(T)$ is closed under scalar multiplication as well. Thus $ker(T)$ is a subspace of $V$. 
+
+If $U$ is a subspace of $V$, then if we have vectors $u,u'\in U$ such that $T(u),T(u')\in ran(T)$, then by additivity of $T$ we know that $T(u+u')\in ran(T)$ so therefore $T(u)+T(u')\in ran(T)$. Furthermore, if we have a scalar $a\in\mathbb{F}$, then since $U$ is closed under scalar multiplication and by the homogeneity of $T$, we have that $T(au)\in ran(T)$ so therefore $aT(u)\in ran(T)$. Thus $ran(T)$ is closed under addition and scalar multiplication and is a subspace of $W$.
+
+\textbf{1.30 Solution.} Omitted.
+
+\textbf{1.31 Solution.} First we show that for any linear map $T:V\to W$, $T(\textbf{0})=\textbf{0}$. Due to homogeneity of $T$, we have $T(\textbf{0})=T(0\cdot v)=0\cdot T(v)=\textbf{0}$, for $v\in V$.
+
+Now, for a vector $u\in ker(T)$, we have 
+\begin{align*}
+w &= T(v_0) \\
+    &= T(v_0 + \textbf{0}) \\
+    &= T(v_0) + T(0) \\
+    &= T(v_0) + \textbf{0} \\
+    &= T(v_0) + T(u) \\
+    &= T(v_0+u),
+\end{align*}
+so then we have $T^{-1}(w)=v_0+u$. This is equivalent to the affine subset $v_0+ker(T)=\{v_0+u\mid u\in ker(T)\}$. Therefore any solution to the equation $T(v)=w$ is of the form $v_0+u$ for $u\in ker(T)$.
+
+\textbf{1.32 Solution.} The matrix
+$\left(\begin{tabular}{cccc}
+    1 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1
+\end{tabular}\right)$
+takes $(x_1,x_2,x_3,x_4)\mapsto(x_1,x_4)$
+
+\textbf{1.33 Solution.} The matrix associated with this homomorphism is $aI$, or:
+\begin{center}$\left(\begin{tabular}{cccc}
+    a & 0 & $\ldots$ & 0 \\
+    0 & a & $\ldots$ & 0 \\
+    $\vdots$ & $\vdots$ &  & $\vdots$ \\
+    0 & 0 & $\ldots$ & a
+\end{tabular}\right)$\end{center}
+
+\textbf{1.34 Solution.} (a) Subtracting $I$ from both sides, we get $A^2+2A=-I$. Since matrix multiplication is distributive, we get $A(A+2I)=-I$. Now, multiplying both sides by $-I$, we get $A(-A-2I)=I$, therefore the inverse of $A$ exists and is $-A-2I$.
+
+(b) $A^n$ for $n\in\mathbb{N}$ is the 2 by 2 matrix $\left(\begin{tabular}{cc}
+    1 & $n\cdot a$ \\
+    0 & 1
+    \end{tabular}\right)$. The inverse of $A$ is the 2 by 2 matrix $\left(\begin{tabular}{cc}
+    1 & -a \\
+    0 & 1
+    \end{tabular}\right)$.
+    
+\textbf{1.35 Solution.} If a matrix $A$ is invertible, then there exists a matrix $B$ such that $AB=BA=I$. Then for the linear map that it determines $T:V\to W$, if we have a vector $v\in V$, $Av=w$ for some $w\in W$, but since $Bw=BAv=Iv=v$, the inverse $T^{-1}$ is just the matrix $B$, thus the linear mapping $T$ is invertible.
+
+Now, assume $T:V\to W$ is an invertible linear mapping. Then there exists an inverse linear mapping $T^{-1}:W\to V$. Say $T$ can be represented by the matrix $A$. Then since $T$ is invertible, let $B$ be the matrix that represents $T^{-1}$, then we have that $v=T^{-1}(T(v))=BAv$. Thus $A$ is invertible since there exists a matrix $B$ such that $BA=I$.
+
+\textbf{1.36 Solution.} The inverse of $A$ is the n by n matrix:
+\begin{center}
+$\left(
+\begin{tabular}{cccc}
+    $\frac{1}{a_1}$ & 0 & $\ldots$ & 0 \\
+    0 & $\frac{1}{a_2}$ & $\ldots$ & 0 \\
+    $\vdots$ & $\vdots$ &  & $\vdots$ \\
+    0 & 0 & $\ldots$ & $\frac{1}{a_n}$
+\end{tabular}
+\right)$
+\end{center}

@@ -1,0 +1,93 @@
+\section{Homework 2}
+\begin{enumerate}
+    \setlength{\parskip}{10pt}
+    %%%%%%%%%%%% HIT OR MISS %%%%%%%%%%%%
+    \item\begin{enumerate}[(a)]
+        \item \boxed{\text{Incorrect.}} The proof using induction is insufficient for proving $n^2\geq n$ for all $n\in\mathbb{R}$. This proof only proves $n^2\geq n$ for all positive integers, not all real numbers (the inductive step skips over all real numbers between the integers).
+        \item \boxed{\text{Correct.}}
+        \item \boxed{\text{Incorrect.}} When $n=0$, the inductive step fails because there exist no such $a$ and $b$ both strictly greater than 0 that sum to $n+1$. Although the inductive step holds true for $n>0$, as long as it fails at one point along the induction, the entire induction breaks down.
+    \end{enumerate}
+    
+    %%%%%%%%%%%%% COIN GAME %%%%%%%%%%%%%
+    \item We prove by strong induction on $n$.
+    
+        \textit{Base Case:} For $n=1$, the game terminates immediately and we earn 0 points, which is also equivalent to $\frac{(1)(1-1)}{2}=0$. Thus it is true for $n=1$.
+        
+        \textit{Inductive Hypothesis:} Assume that we earn $\frac{k(k-1)}{2}$ points no matter how we do the splitting for all $1\leq k\leq n$.
+        
+        \textit{Inductive Step:} If we start with a pile of $n+1$ coins, then splitting it will produce two piles each with $a$ and $b$ coins, respectively, such that $1\leq a, b\leq n$. We will earn $ab$ points from the splitting, and by the inductive hypothesis, we will also earn $\frac{a(a-1)}{2}$ and $\frac{b(b-1)}{2}$ collectively points from the two separate piles no matter how we proceed to split them. Therefore, no matter how we split the pile of $n+1$ coins, we will earn a total score of $ab+\frac{a(a-1)+b(b-1)}{2}=\frac{(a+b)^2-(a+b)}{2}=\frac{(n+1)((n+1)-1)}{2}$. $\square$
+
+    %%%%%%%%%%%% GRID INDUCTION %%%%%%%%%%%%%%
+    \item Let $n$ be the sum of the $x$ and $y$ coordinates. Then we prove by induction on $n$.
+    
+        \textit{Base Case(s):} If $n=1$, then pacman must have arrived at either $(0,1)$ or $(1,0)$. It is easy to see that For both cases pacman has only one legal move that will take him to the origin, which means he will reach $(0,0)$ in a finite amount of time.
+        
+        \textit{Inductive Hypothesis:} Assume that for some $n\geq 1$, if pacman arrives at (or starts at) any point in the $1^{\text{st}}$ quadrant such that $x+y=n$, then he will inevitably reach the origin in a finite amount of time.
+        
+        \textit{Inductive Step:} Now, for all points in the $1^{\text{st}}$ quadrant such that $x+y=n+1$, it is true that either of pacman's legal moves (moving down by one or moving left by one) will bring him to a point such that $x+y=n$. This is simply because moving down by one decrements $y$ by 1 and moving to the left by one decrements $x$ by 1. Therefore, since pacman will inevitably (in 1 second) move to a point such that he will inevitably reach the origin in a finite amount of time, it is true that for any point in the $1^{\text{st}}$ quadrant such that $x+y=n+1$, pacman will undoubtedly reach the origin in a finite amount of time. $\square$
+
+    %%%%%%%%%%%% STABLE MARRIAGE %%%%%%%%%%%%%%
+    \item\begin{enumerate}[(a)]
+        \item \textbf{Day 1:} A, B, and C propose to 1; D proposes to 3. 1 puts A on her string, rejecting B and C. 3 puts D on her string. B and C cross out 1 from their lists. \\
+        \textbf{Day 2:} B, C, and D propose to 3; A proposes to 1 again. 3 puts B on her string and rejects C and D. C and D cross out 3 from their lists. A and 1 still remain on each others' list/string.\\
+        \textbf{Day 3:} C proposes to 2 and D proposes to 1; B proposes to 3 again and A proposes to 1 again. 2 puts C on her string and 1 puts D on her string, replacing A. A crosses out 1 from his list. B and 3 remain on each others' list/string. \\
+        \textbf{Day 4:} A and C propose to 2; B proposes to 3 again and D proposes to 1 again. 2 replaces C for A on her string. C crosses out 2 from his list. \\
+        \textbf{Day 5:} C proposes to 4; A proposes to 2 again, B proposes to 3 again, and D proposes to 1 again. 4 puts C on her list. No man crosses out a woman on their list. \\
+        The final pairing is $\{(A,2),(B,3),(C,4),(D,1)\}$.
+        \item First we will show that such a modification will always output a stable pairing. We will make the assumption that the modified algorithm terminates, and that each man cannot procrastinate indefinitely with their proposals. 
+        \begin{enumerate}[(i)]
+        \setlength{\parskip}{10pt}
+        \item We will show that the modified algorithm will always produce a pairing. Assume for contradiction that once the algorithm terminates, there is a man $M$ left unpaired. Then $M$ must have proposed to and been rejected by all $n$ women. Each of these $n$ women must be paired with a man other than $M$, which means there are $n+1$ men, a contradiction.
+        
+        \item We now prove that any pairing the modified algorithm outputs will be stable. Consider any couple $(M, W)$ in the outputted pairing and suppose that $M$ prefers some woman $W'$ other than $W$. Then we will show that $W'$ prefers her current partner over $M$. Since $M$ prefers $W'$ over $W$, $W'$ must have rejected $M$ at one point for another man other than $M$. Then since $W'$'s options can only get better, she must prefer her final partner at least as much as $M$. Therefore the pair $(M, W')$ cannot be a rogue couple and any outputted pairing must be stable.
+
+        \item Now, since we know that the modified algorithm will always produce a stable pairing, we proceed by supposing for the sake of contradiction that the stable pairing outputted by the modified algorithm is different from the male-optimal stable pairing produced by the original algorithm. Then we know that there exists a non-empty set of men that are not matched with their optimal women. Take the man $M$ who was first rejected by his optimal woman $W$, and suppose that this rejection took place because $M'$ proposed to $W$. By definition of an optimal woman, there must exists a stable pairing $T$ where $M$ is matched with $W$ and $M'$ is matched with some woman other than $W$. We will prove that $(M', W)$ is a rogue couple in $T$, contradicting stability.
+        
+        First, we know that $W$ prefers $M'$ over $M$ since she rejected $M$ and later accepted $M'$. Next, since $M$ was the first man to be rejected by his optimal woman, $M'$ has not yet been rejected by his optimal woman. Then $M'$ likes $W$ at least as much as his optimal woman. Therefore the pair $(M', W)$ forms a rogue couple in $T$, a contradiction.
+        
+        \end{enumerate}
+        Thus the modified algorithm outputs the same male-optimal stable matching regardless of the time and order in which each man proposed to each woman. $\square$
+    \end{enumerate}
+    
+    \item Suppose for the sake of contradiction that two men $M_1$ and $M_2$ have the same optimal woman $W$. Without loss of generality assume $W$ prefers $M_1$ over $M_2$. Then by definition of optimal woman, there must exist a stable pairing $T=\{\ldots,(M_2, W),(M_1,W'),\ldots\}$. Then since we know $W$ prefers $M_1$ over $M_2$, and $M_1$ prefers $W$ over $W'$ by definition of optimal woman, it is true that the pair $(M_1, W)$ is a rogue couple in $T$, contradicting stability. Thus we arrive at a contradiction, and no two men can share the same optimal woman. $\square$
+    
+    \item \textit{Examples are given using $A, B, C$ as men and $1, 2, 3$ as the women, with each individual's preference listed from left to right, left being the most favorable and right being the least.}
+    \begin{enumerate}[(a)]
+        \setlength{\parskip}{8pt}
+        \item This could happen if for every man, his first choice woman also has him down as her first choice man. Then after the first day every man is matched up with his first choice woman.
+        \begin{center}\begin{tabular}{rlll|rlll}
+        \textbf{A} & 1 & 2 & 3 & \textbf{1} & A & B & C \\
+        \textbf{B} & 2 & 3 & 1 & \textbf{2} & B & C & A \\
+        \textbf{C} & 3 & 1 & 2 & \textbf{3} & C & A & B
+        \end{tabular}\end{center}
+        
+        \item Observe the example below. On the first day, $A$ and $B$ propose to $3$, $B$ gets rejected and crosses out $3$ from his list, and $C$ proposes to $2$. On day two, $B$ proposes to $2$, resulting in $C$'s rejection by $2$, so $C$ crosses out $2$ from his list. On day three, $C$ proposes to $3$ and replaces $A$. Finally, on day four, $A$ proposes to $1$, and we have the stable matching $\{(A,1),(B,2),(C,3)\}$ such that every woman gets her first choice even though her first choice does not prefer her the most.
+        \begin{center}\begin{tabular}{rlll|rlll}
+        \textbf{A} & 3 & 1 & 2 & \textbf{1} & A & B & C \\
+        \textbf{B} & 3 & 2 & 1 & \textbf{2} & B & C & A \\
+        \textbf{C} & 2 & 3 & 1 & \textbf{3} & C & A & B
+        \end{tabular}\end{center}
+        
+        \item After first day of proposals, each woman is matched up with her last choice man.
+        \begin{center}\begin{tabular}{rlll|rlll}
+        \textbf{A} & 2 & 3 & 1 & \textbf{1} & A & B & C \\
+        \textbf{B} & 3 & 1 & 2 & \textbf{2} & B & C & A \\
+        \textbf{C} & 1 & 2 & 3 & \textbf{3} & C & A & B
+        \end{tabular}\end{center}
+        
+        \item It is impossible for every man to get paired with his last choice. Suppose for sake of contradiction it is possible. Then every man must be rejected $n-1$ times, for a total of $n(n-1)$ rejections. Now, we will show that each of the $n$ women must reject exactly $n-1$ men. Since there are $n$ women, the average number of rejections per woman is $n-1$. So then if one woman rejects less than $n-1$ men, then there must exist some other woman who rejects more than $n-1$ men. But this is impossible, because that would require that woman to reject at least all the men. Therefore each woman must reject exactly $n-1$ men, and subsequently each woman is paired with their favorite man.
+        
+        Now, we proved in problem \textbf{4(b)} that the timing in which the men propose does not affect the output of the algorithm, so let's assume WLOG that no two proposals happen at the exact same time, and instead the men make their proposals strictly one after another. Then, there must exist a man $M$ who is the last man to propose his last choice woman $W$. Now, note that for $W$ to reject her second choice man $M'$, $W$ must first be proposed to by $M$. But this means that $M'$ cannot propose to his last choice woman $W'$ until $M$ has first proposed to $W$. This is then a contradiction since we assumed that all men other than $M$ proposed to their last choice strictly before $M$.
+        
+        Thus it is impossible for every man to be matched with his last choice by the SMA.
+        
+        \item In the following example, $A$ is second on every woman's list, and he will end up with his last choice. On the first day, $A$ and $B$ propose to $1$, $A$ crosses out $1$ from his list, and $C$ proposes to $2$. On the second day, $A$ proposes to $2$, but gets rejected for $C$. On the third day, $A$ proposes to his last choice $3$ and the algorithm terminates with the pairing $\{(A,3),(B,1),(C,2)\}$.
+        \begin{center}\begin{tabular}{rlll|rlll}
+        \textbf{A} & 1 & 2 & 3 & \textbf{1} & B & A & C \\
+        \textbf{B} & 1 & 2 & 3 & \textbf{2} & C & A & B \\
+        \textbf{C} & 2 & 1 & 3 & \textbf{3} & B & A & C
+        \end{tabular}\end{center}
+    \end{enumerate}
+\end{enumerate}
+
+

@@ -1,0 +1,103 @@
+\section{Homework 11}
+Sundry: I worked alone.
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item The probability of no collisions is the product $\prod_{i = n}^1 \frac{i}{n} = \frac{(n-1)!}{n^{n-1}}$. The limit of this as $n$ goes to infinity is 0.
+        
+        \item There's a $\frac{1}{n}$ chance that there are zero collisions. Else, we have on collisions and arrive back at the starting situation. So, we get the following relation
+        \begin{align*}
+            \E[\text{collisions}] &= \frac{1}{n} \cdot 0 + \frac{n-1}{n} \cdot (1 + \E[\text{collisions}]) \\
+            n\E[\text{collisions}] &= (n - 1) + (n - 1)\E[\text{collisions}] \\
+            \E[\text{collisions}] &= n - 1.
+        \end{align*}
+        So we get an expected number of $n - 1$ collisions.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item True. We have
+        \begin{align*}
+            \E[X^2] &= \f{Var}(X) + \E[X]^2 \\
+                &= 9 + (2)^2 \\
+                &= 13.
+        \end{align*}
+        
+        \item True. Define a new random variable $Y = 10 - X$. Then we have $\E[Y] = \E[10 - X] = 10 - 2 = 8$. Using Markov's inequality, we obtain
+        \[
+        \P[X \leq 1] = \P[Y \geq 9] \leq \frac{\E[Y]}{9} = \frac{8}{9}
+        \]
+        
+        \item True. By Chebyshev's inequality, we have
+        \begin{align*}
+            \P[X \geq 6] &\leq \P[X \geq 6] + \P[X \leq -2] \\
+                &= \P[|X - 2| \geq 4] \\
+                &\leq \frac{\f{Var}(X)}{4^2} \\
+                &= \frac{9}{16}.
+        \end{align*}
+        
+        \item False. Consider the following distribution:
+        
+        \begin{tabular}{c|c|c|c}
+          $\P[X = -2 - 4\sqrt{2}]$ & $\P[X = -2]$ & $\P[X = 2]$ & $\P[X = 6]$ \\
+          \hline
+          $\frac{3}{32}$ & $\frac{3}{32}$ & $\frac{1}{2}$ & $\frac{5}{16}$
+        \end{tabular}
+        
+        Nvm that's wrong lol. The bound may be correct.
+        
+        
+    \end{enumerate}
+    
+    \item The mean of each individual question is 5 points, so by linearity of expectation, the mean of the total score is $7 \cdot 5 = 35$ points. For variation, we know that $\f{Var}(\lambda X) = \lambda^2\f{Var}(X)$ for a constant $\lambda$ and random variable $X$. Furthermore, the variation of the total score is the sum of the variation of the first 3 questions (random variable $A$) and the variation of the last 4 questions (random variable $B$). We get $\f{Var}(A + B) = \f{Var}(A) + \f{Var}(B) = 9\sigma^2 + 16\sigma^2 = 25$. 
+    
+    Thus, by Chebyshev's inequality, we obtain an upper bound on the probability of getting an A in the class, given $X$ the random variable of the number of points,
+    \begin{align*}
+    \P[X \geq 60] &= \P[X - 35 \geq 25] \\
+        &\leq \P[|X - 35| \geq 25] \\
+        &\leq \frac{\f{Var}(X)}{25^2} \\
+        &= \frac{1}{25} \\
+        &< 5 \text{ percent}.
+    \end{align*}
+    
+    \item \begin{enumerate}
+        \item By Chebyshev's, we have the upper bound
+        \[
+        \P[|X - \mu| \geq \epsilon] \leq \frac{\sigma^2}{\epsilon^2}
+        \]
+        
+        \item $\P[|X - \mu| < \epsilon]$ is the probability that the absolute difference between $X$ and its mean is strictly less than $\epsilon$. This is the same thing as saying $\mu$ strictly greater than $X - \epsilon$ and strictly less than $X + \epsilon$. Thus we have $\P[|X - \mu| < \epsilon] = \P[\mu \in (X - \epsilon, X + \epsilon)]$.
+        
+        \item We see that $\P[\mu \in (X - \epsilon, X + \epsilon)]$ and $\P[|X - \mu| \geq \epsilon]$ are complements. Thus we have
+        \begin{align*}
+            \P[\mu \in (X - \epsilon, X + \epsilon)] &> 95\% \\
+            1 - \P[|X - \mu| \geq \epsilon] &> 95\% \\
+            5\% &> \P[|X - \mu| \geq \epsilon] \\
+            5\% &> \f{max}(\P[|X - \mu| \geq \epsilon]) = \frac{\sigma^2}{\epsilon^2}.
+        \end{align*}
+        From this we get a minimum width of the confidence interval
+        \[
+        \epsilon > \frac{\sigma}{\sqrt{5\%}} = 2\sigma\sqrt{5}.
+        \]
+        
+        \item The mean stays the same by linearity, that is $\E[\overline{X}] = n^{-1}n\mu = \mu$. As for the variance of $\overline{X}$, we know that the $X_i$ are independent, so variance is additive, and we get
+        \begin{align*}
+            \f{Var}(\overline{X}) &= \f{Var}(n^{-1}(\sum_{i = 1}^n X_i)) \\
+                &= \frac{1}{n^2}\f{Var}(\sum_{i = 1}^n X_i) \\
+                &= \frac{1}{n^2}(n\sigma^2) \\
+                &= \frac{\sigma^2}{n}.
+        \end{align*}
+        
+        \item By Chebyshev's, we get an upper bound
+        \[
+        \P[|\overline{X} - \mu| \geq \epsilon] \leq \frac{\f{Var}(\overline{X})}{\epsilon^2} = \frac{\sigma^2}{n\epsilon^2}.
+        \]
+        Using the same steps from part (c), we obtain 
+        \[
+        5\% > \f{max}(\P[|\overline{X} - \mu| \geq \epsilon]) = \frac{\sigma^2}{n\epsilon^2},
+        \]
+        from which we get that
+        \[
+        \epsilon > \frac{2\sigma\sqrt{5}}{n}.
+        \]
+    \end{enumerate}
+\end{enumerate}

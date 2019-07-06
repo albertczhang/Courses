@@ -1,0 +1,154 @@
+\section{Homework 12}
+
+\subsection{Geometric MMSE}
+First, we find the LLSE. We have the following calculations:
+\begin{align*}
+    \E[N] &= \frac{1}{1 - p} \\
+    \E[NT] &= \E[\E[NT|N]] \\
+        &= \E[N^2/\lambda] \\
+        &= \frac{p + 1}{\lambda(1 - p)^2} \\
+    \E[T] &= \frac{1}{\lambda(1 - p)} \\
+    Var(T) &= \frac{1}{\lambda^2(1 - p)^2},
+\end{align*}
+which gives us
+\begin{align*}
+    L[N | T] &= \frac{1}{1 - p} + \frac{\frac{p}{\lambda(1 - p)^2}}{\frac{1}{\lambda^2(1 - p)^2}}\left(T - \frac{1}{\lambda(1 - p)}\right) \\
+        &= \lambda pT + 1.
+\end{align*}
+Next, we find the MMSE. We have
+\begin{align*}
+    \E[N | T] &= \sum_{n = 1}^\infty nf_{N|T}(n|T) \\
+        &= \sum_{n = 1}^\infty n\frac{\P[N = n]f_{T|N}(T|N = n)}{f_T(T)} \\
+        &= \sum_{n = 1}^\infty n\frac{(1 - p)p^{n - 1}\lambda^{n}T^{n - 1}e^{-\lambda T}}{(n - 1)!\lambda (1 - p)e^{-\lambda(1 - p)T}} \\
+        &= \sum_{n = 1}^\infty n\frac{(\lambda pT)^{n - 1}e^{-\lambda pT}}{(n - 1)!}.
+\end{align*}
+Now, if we note that
+\[
+\sum_{n = 1}^\infty \frac{x^n}{(n - 1)!} = xe^x \implies \sum_{n = 1}^\infty n\frac{x^{n - 1}}{(n - 1)!} = xe^x + e^x,
+\]
+then we get
+\[
+\E[N|T] = (e^{\lambda pT} + e^{\lambda pT}(\lambda pT))e^{-\lambda pT} = \lambda pT + 1.
+\]
+(It's the same as LLSE!)
+
+
+\subsection{Property of MMSE}
+We have that
+\begin{align*}
+    \E\left[\left(X - \sum_i\E[X|Y_i]\right)\right] &= \E\left[\left(X - \E[X|Y_1, \dots, Y_n] + \E[X|Y_1, \dots, Y_n] - \sum_i\E[X|Y_i]\right)^2\right] \\
+        &= \E[(X - \E[X|Y_1, \dots, Y_n])^2] + \\
+        &2\E\left[(X - \E[X|Y_1, \dots, Y_n])\left(\E[X|Y_1, \dots, Y_n] - \sum_i\E[X|Y_i]\right)\right] + \\
+        &\E\left[\left(\E[X|Y_1, \dots, Y_n] - \sum_i\E[X|Y_i]\right)^2\right].
+\end{align*}
+Since $\sum_i\E[X|Y_i]$ is in the function space of the $Y_i$, by the orthogonality property, the middle term becomes 0, and our expression simplifies to
+\begin{align*}
+    &\E[(X - \E[X|Y_1, \dots, Y_n])^2] + \E\left[\left(\E[X|Y_1, \dots, Y_n] - \sum_i\E[X|Y_i]\right)^2\right] \\
+    &\geq \E[(X - \E[X|Y_1, \dots, Y_n])^2],
+\end{align*}
+which was what we wanted.
+
+
+\subsection{Gaussian Random Vector MMSE}
+Since $X$ and $Y$ are jointly gaussian, we have
+\[
+\E[WX|Y] = W\E[X|Y] = \pm L[X|Y].
+\]
+Since
+\begin{align*}
+    \E[X] &= 1 \\
+    Cov(X, Y) &= 1 \\
+    Var(Y) &= 2 \\
+    \E[Y] &= 0,
+\end{align*}
+we get
+\[
+    \E[WX|Y] = \begin{cases}
+        1 + Y/2 &\f{ if } Y > 0 \\
+        -(1 + Y/2) &\f{ if } Y < 0 \\
+        0 &\f{ else.}
+    \end{cases}
+\]
+
+
+\subsection{Jointly Gaussian MMSE and Correlation Coefficients}
+(a) (1) is due to orthogonality property of $L[Y|X]$. (2) follows from (1) since $\E[Y - g(X)]\E[X] = 0$. (3) follows from (2) since for JG random variables, independent is the same thing as uncorrelated. (4) follows from (3) since functions of independent r.v.'s are independent themselves, and thus they are uncorrelated and $\E[(Y - g(X))f(X)] = 0$ for any function $f(\cdot)$. Consequently (5) follows since $Y - g(X) = Y - L[Y|X]$ is now orthogonal to the function space of $X$ and hence $L[Y|X] = \E[Y|X]$.
+
+(b) We have
+\begin{align*}
+    \rho_1 &= \frac{\E[XY]}{\sigma_X\sigma_Y} \\
+        &= \frac{\E[Y\E[X|Y]]}{|X||Y|} \\
+        &= \frac{|Y||L[X|Y]|}{|X||Y|} \\
+        &= \frac{|L[X|Y]|}{|X|}.
+\end{align*}
+Similarly
+\begin{align*}
+    \rho_2 &= \frac{|L[Z|Y]}{|Z|}
+\end{align*}
+So that 
+\begin{align*}
+    \rho(X, Z) &= \frac{\E[XZ]}{\sigma_X\sigma_Z} \\
+        &= \frac{\E[L[X|Y]L[Z|Y]}{|X||Z|} \\
+        &= \frac{|L[X|Y]||L[Z|Y]|}{|X||Z|} \\
+        &= \rho_1\rho_2.
+\end{align*}
+
+(c) We claim $cor(X_n, X_0) = \pm\prod_{i = 1}^n\rho_i$. By part (b) we get that $cor(X_2, X_0) = \pm\rho_2\rho_1$. By induction on $n$, we see that
+\begin{align*}
+    cor(X_n, X_0) &= cor(X_n, X_{n-1})cor(X_0, X_{n-1}) \\
+        &= \rho_n\prod_{i=1}^{n-1}\rho_i \\
+        &= \prod_{i = 1}^n\rho_i.
+\end{align*}
+
+
+\subsection{Stochastic Linear System MMSE}
+(a) Since all the gaussians are independent, we have
+\[
+X_n \sim \mathcal{N}\left(0, a^{2n}u^2 + \sum_{i = 0}^{n - 1}a^{2i}\sigma^2\right) = \mathcal{N}\left(0, a^{2n}u^2 + \frac{1 - a^{2n}}{1 - a^2}\sigma^2\right)
+\]
+
+
+(b) Note that
+\begin{align*}
+    \E[X_{n+1} | X_n] &= \E[aX_n + V_n | X_n] \\
+        &= aX_n.
+\end{align*}
+So we have
+\begin{align*}
+    \E[X_{n + m}|X_n] &= a^mX_n.
+\end{align*}
+
+
+(c) We want to have
+\begin{align*}
+    a^{2n}u^2 + \frac{1 - a^{2n}}{1 - a^2}\sigma^2 &= a^{2n + 2}u^2 + \frac{1 - a^{2n + 2}}{1 - a^2}\sigma^2,
+\end{align*}
+so we solve for $u$ to obtain
+\[
+u = \frac{\sigma}{\sqrt{1 - a^2}}
+\]
+
+
+\subsection{Random Walk with Unknown Drift}
+(a) In matrix-vector form, the dynamics of the system are:
+\begin{align*}
+    \left[\begin{tabular}{c} $X_1(n)$ \\ $X_2(n)$ \end{tabular}\right] &= \left[\begin{tabular}{cc} 1 & 1 \\ 0 & 1 \end{tabular}\right]\left[\begin{tabular}{c} $X_1(n-1)$ \\ $X_2(n-1)$ \end{tabular}\right] + \left[\begin{tabular}{c} V(n-1) \\ 0 \end{tabular}\right] \\
+    [Y(n)] &= [\begin{tabular}{cc} 1 & 0 \end{tabular}]\left[\begin{tabular}{c} $X_1(n)$ \\ $X_2(n)$ \end{tabular}\right] + [W(n)].
+\end{align*}
+
+The recursive equations are:
+\begin{align*}
+    \hat{X}_{n|n} &= \hat{X}_{n|n-1} + K_n\hat{Y}_n \\
+    \Tilde{Y}_n &= Y_n - [1\quad 0]\hat{X}_{n|n-1} \\
+    K_n &= \sum_{n|n-1}\left[\begin{tabular}{c} 1 \\ 0 \end{tabular}\right]\left([1\quad 0]\sum_{n|n-1}\left[\begin{tabular}{c} 1 \\ 0 \end{tabular}\right] + [\Nor(0, \sigma_W^2)^2]\right)^{-1} \\
+    \sum_{n|n-1} &= \left[\begin{tabular}{cc} 1 & 1 \\ 0 & 1 \end{tabular}\right]\sum{n|n-1}\left[\begin{tabular}{cc} 1 & 0 \\ 1 & 1 \end{tabular}\right] + \left[\begin{tabular}{cc} $\Nor(0, \sigma_V^2)^2$ & 0 \\ 0 & 0 \end{tabular}\right] \\
+    \sum_{n|n} &= (I - K_n[1\quad 0])\sum{n|n-1}.
+\end{align*}
+
+(b) The prediction gets rid of the noise, so we have
+\[
+\E[X(n + k) | Y^{(n)}] = \left[\begin{tabular}{cc} 1 & 1 \\ 0 & 1 \end{tabular}\right]^k\hat{X}(n) = \left[\begin{tabular}{cc} 1 & k \\ 0 & 1 \end{tabular}\right]\hat{X}(n)
+\]
+
+(c) Eh.
+

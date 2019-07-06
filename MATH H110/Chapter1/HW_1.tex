@@ -1,0 +1,92 @@
+\subsection{Exercises}
+\textbf{1.1 Solution.} $x\leq y$ and $y\leq x$ if and only if $x=y$ in property (i), which satisfies the antisymmetry property. 
+
+For $x,y,z\in S$, if at least one pair of them are equal to each other, then the statement of transitivity becomes trivial (if $x=y$ and $y\leq z$, then $x\leq z$; or if $x=y=z$ and $y\leq z$, then $x=z\rightarrow x\leq z$). Else if no pairs among $x,y,z$ hold an equality, then the property of transitivity is directly satisfied by property (ii). 
+
+Finally, in the case of totality, $x\leq y$ or $y\leq x$ is the same as property (i), as both essentially say that every pair of elements in $S$ is comparable.
+
+\textbf{1.2 Solution.} We construct a set $S$ and prove that it is a partial order on $\mathcal{F}(X,P)$. For two functions $f$ and $g$ in the function space $\mathcal{F}(X,P)$, $(f,g)\in S$ only if $f(x)\in P$ and $g(x)\in P$ for some $x\in X$. Now, we show that $S$ satisfies the three rules for being a partial order on function space $\mathcal{F}(X,P)$:
+\begin{enumerate}
+    \item (antisymmetry) Since $P$ is a partially ordered set and $f(x),g(x)\in P$, then if $f(x)\leq g(x)$ and $g(x)\leq f(x)$, $f(x)=g(x)$ by the antisymmetry of some partial order on $P$.
+    \item (transitivity) If $f(x)\leq g(x)$ and $g(x)\leq h(x)$, then $f(x)\leq h(x)$ by the transitivity of some partial order on $P$. Therefore $(f,h)\in S$ as well.
+    \item (reflexivity) For all functions $f$ in the function space, $(f,f)\in S$ since $f(x)=f(x)$ implies $f(x)\leq f(x)$.
+\end{enumerate}
+Thus, $S$ is a partial order on the function space $\mathcal{F}(X,P)$ determined by $f\leq g$ if $f(x)\leq g(x)$.
+
+\textbf{1.3 Solution.} The Identity function takes $X$ back to itself, so $P(ID_X)=P(X)$. It also takes $P(X)$ back to itself, $P(X)$. Therefore $P(ID_X)=P(X)=ID_{P(X)}$. 
+
+$P(g\circ f)$ takes a subset $S_X\subseteq X$ and sends it to a subset $S_Z\subseteq Z$, whereas $P(g)\circ P(f)$ takes the set $S_X$ to a set $S_Y\subseteq Y$ and then takes $S_Y$ to another set $T_Z\in Z$. For every $x\in S_X$, $P(g\circ f)$ sends $x$ to a $z=g(f(x))\in S_Z$. On the other hand, $P(g)\circ P(f)$ first sends $x$ to a $y=f(x)\in S_Y$, and then sends $y$ to $z=g(y)=g(f(x))\in T_Z$. But since both the LHS and RHS send $x\in S_X$ to $g(f(x))$, it must be true that $S_Z=T_Z$, and therefore the equality $P(g\circ f)=P(g)\circ P(f)$ holds.
+
+\textbf{1.4 Solution.} (a) \boxed{\text{False.}} We provide a counter example. Let $S=\{1\}$, $X=\{1, 2\}$, $Y=\{3\}$, and $f(1)=f(2)=3$. Then $f(S)=\{3\}$, and $f^{-1}(\{3\})=\{1, 2\}$ since the preimage of $\{3\}$ includes the element 2 in addition to 1. Therefore $f^{-1}(f(S))\neq S$.
+
+(b) \boxed{\text{True.}} Define function $f:X\to Y$. Since it is invertible, we have $f^{-1}:Y\to X$ s.t. every $x\in X$ maps to a unique $y\in Y$ and vice versa. In other words, $f$ is bijective. Then $P(f^{-1})$ takes a subset $S\subseteq Y$ and outputs a set $\{x\in X\mid f(x)\in S\}$, or the preimage of $S$ such that each $y$ maps to one unique $x$. On the other hand $P^{-1}(f)$ takes the subset $S$ and returns the preimage of $S$ by definition. Thus $P(f^{-1})$ and $P^{-1}(f)$ are the same function if $f^{-1}$ is invertible.
+
+\textbf{1.5 Solution.} Let $S_Z\in P(Z)$. Then $P^{-1}(g\circ f)$ takes $S_Z$ to another set $S_X\in P(X)$. In other words, if $z\in S_Z$, then $P^{-1}(g\circ f)(z)=\{x\in X\mid g(f(x))=z\}$. Therefore $S_X$ is just the union of all the sets returned by inputting a $z$ into $P^{-1}(g\circ f)$.
+
+On the other hand, $P^{-1}(g)$ takes some $z\in S_Z$ and returns a set $\{y\in Y\mid g(y)=z\}$. The union of all these returned sets forms another set $S_Y$, which we then input into $P^{-1}(f)$ by function composition. This then returns the final set $\{x\in X\mid \forall y\in S_Y, f(x)=y\}$. But this final set is equivalent to the set $\{x\in X\mid \forall z\in S_Z, g(f(x))=z\}$, thus $P^{-1}(g\circ f)=P^{-1}(f)\circ P^{-1}(g)$.
+
+\textbf{1.6 Solution.} The preimage under $f$ of a circle of radius $r$ is the set $\{(r,\theta)\mid \theta\in\mathbb{R}\}$. \\
+The preimage of the positive $x$-axis is the set $\{(r,2\pi n-2\pi)\mid r\in\mathbb{R}^+, n\in\mathbb{N}\}$. \\
+The image of the rectangle $[0,r]\times[0,\pi/4]$ is the circular sector of radius $r$ between $0^{\circ}$ and $45^{\circ}$. \\
+The restriction of $f$ to $L$ is $f\mid_L:L\subseteq\mathbb{R}^2\to \mathbb{R}^2$. Written as a surjective function, we have$f\mid_L:L\to X$ where $X$ is the set of points constituting the $x$-axis.
+
+\textbf{1.7 Solution.} WLOG, let $a,b\in \mathbb{R}^+$ such that $a\geq b$. Then since $a*b=|a-b|=a-b=|b-a|=b*a$ and $a-b$ is always a nonnegative real number, we know that $*$ determines a commutative binary operator on $\mathbb{R}^+$
+
+The inverse image of $x\in\mathbb{R}^+$ is the set $\{(a,b)\mid a,b\in\mathbb{R}^+, |a-b|=x\}$, or in other words the set of ordered pairs in $\mathbb{R}^+$ such that the absolute difference between the first coordinate and the second coordinate is equal to $x$.
+
+Counterexample: $1*(2*3)=|1-|2-3||=0\neq 2=||1-2|-3|=(1*2)*3$. Thus $*$ is not associative.
+
+\textbf{1.8 Solution.} In $\mathbb{Z}_2$, let the identity under addition be the element $0$. Then the inverse of $1$ under addition is $1$ and the inverse of $0$ under addition is $0$. $(\{0,1\},+)$ also satisfies associativity since we can effectively treat $+$ as normal addition in modulo 2, therefore $(\{0,1\},+)$ is an abelian group.
+
+Now, we check that $(\{1\},\cdot)$ is an abelian group. Letting $1$ be the identity under $\cdot$, the inverse of $1$ is itself. Furthermore $1\cdot(1\cdot1)=(1\cdot1)\cdot1$, so $(\{1\},\cdot)$ is also an abelian group. Also, distributivity of $\cdot$ over $+$ is easily verifiable if we just treat the operations as normal addition and multiplication in modulo 2. Thus $\mathbb{Z}_2$ forms a field.
+
+Finally, since $1+1=0$, we know that the characteristic of $\mathbb{Z}_2$ is 2.
+
+\textbf{1.9 Solution.} Assume for sake of contradiction that $\mathbb{R}^2$ is a field when endowed with coordinate-wise addition and multiplication. Then the element $(0,0)$ must be the identity under addition, and $(1,1)$ must be the identity under multiplication. For $\mathbb{R}^2$ to be a field, every element that is not $(0,0)$ must have a multiplicative inverse. However, the element $(0,1)$ cannot have a multiplicative inverse as there exists no such $x\in\mathbb{R}$ such that $x\cdot 0 = 1$ in the first coordinate. $\Rightarrow\Leftarrow$
+
+Thus $\mathbb{R}^2$ cannot be a field when endowed with coordinate-wise addition and multiplication.
+
+\textbf{1.10 Solution.} First we show that $(\mathbb{C},+)$ is an abelian group. Associativity and commutativity are easily satisfied if we look at the real part and imaginary part separately, treating it the same as regular addition of real scalars, which is both associative and commutative. The identity is $0+0i=0$, and for all $z\in\mathbb{C}$, the inverse of $z=a+bi$ is just $-z=-a-bi$. Therefore $(\mathbb{C},+)$ is an abelian group.
+
+Now we show that $(\mathbb{C}\setminus0,\cdot)$ is also an abelian group. For all $a,b,c,d,e,f\in\mathbb{R}$, $((a+bi)\cdot(c+di))\cdot(e+fi)=(ace-bde-adf-bcf)+(acf-bdf+bce+ade)i=(a+bi)\cdot((c+di)\cdot(e+fi))$, so $\cdot$ is associative on $\mathbb{C}$. Also, $(a+bi)\cdot(c+di) = (ac-bd)+(ad+bc)i = (c+di)\cdot(a+bi)$, so $\cdot$ is also commutative. The identity is the element $1+0i=1$. For every $z=a+bi\in\mathbb{C}\setminus0$, the inverse of $z$ can be verified to be $z^{-1}=(\frac{a}{a^2+b^2})+(\frac{-b}{a^2+b^2})i$. Therefore $(\mathbb{C}\setminus0,\cdot)$ is an abelian group.
+
+Finally, we show that distributivity of multiplication over addition holds as well for all $a,b,c,d,e,f\in\mathbb{C}$:
+\begin{align*}
+(a+bi)\cdot((c+di)+(e+fi)) &= (ac+ae-bd-bf)+(ad+af+bc+be)i \\
+                           &= (a+bi)\cdot(c+di)+(a+bi)\cdot(e+fi).
+\end{align*}
+
+Thus the set $\mathbb{C}$ of complex numbers does indeed form a field.
+
+\textbf{1.11 Solution.} First we note that $1\neq0$ since $1$ is defined as the multiplicative identity for the group $(F\setminus 0, \cdot)$ which doesn't include $0$. 
+
+Now, we apply distributivity: for any $a\in\mathbf{F}$, $a\cdot(0+0)=a\cdot0=a\cdot0+a\cdot0$. Adding the additive inverse to both sides, we get $a\cdot0=0$. Then we also have $0=-1\cdot0=-1\cdot(1+(-1))=-1+(-1)^2$. Therefore $(-1)^2=1$. 
+
+Now, we assume for sake of contradiction that $1<0$. Then since $\mathbf{F}$ is an ordered field, we can add $-1$ to both sides to get $0<-1$. Then by the second condition of an ordered field, we know that $0<(-1)(-1)=1$, a contradiction. Thus, since $1\neq0$ and $1\nless0$, it must be true that $1>0$.
+
+Next, in order to prove $a^2\geq 0$ for all $a\in\mathbf{F}$, we first show that $a^2=(-a)(-a)$. Earlier we showed that $a\cdot 0 = 0$. Then using distributivity, we have $0=a\cdot (-1+1)=a\cdot(-1)+a$. Adding $-a$ to both sides, we get $a\cdot(-1)=-a$. Then it follows that $(-a)(-a)=(-1)(a)(-1)(a)=(-1)(-1)(a)(a)=a^2$, since we also proved earlier that $(-1)(-1)=1$. 
+
+Now, if $a\geq0$, then by the second property of an ordered field, $a^2=(a)(a)\geq0$ and we are done. Instead, if $a\leq0$, then by adding $-a$ to both sides we get $-a\geq0$. Then $(-a)(-a)\geq0$, but since $(-a)(-a)=a^2$, it implies that $a^2\geq0$ too. Thus we are done and $a^2\geq0$ for all $a\in\mathbf{F}$.
+
+Finally, from our findings we deduce that $\mathbb{C}$ is not an ordered field by analyzing $i$. If $i\geq0$, then $-1=(i)(i)\geq0$, a contradiction. On the other hand, if $i\leq0$, then $-i\geq0$, and $-1=(-i)(-i)\geq0$, also a contradiction. Therefore the complex numbers cannot form an ordered field.
+
+*\textit{All \textbf{bolded} numbers represent vectors, non-bolded represent scalars}
+
+\textbf{1.12 Solution.} We start with the LHS:
+
+\begin{tabular}{rll}
+0v &= 0v + \textbf{0} &\text{Identity element in vector addition} \\
+   &= 0v + (v+(-v))   &\text{Inverse elements in vector addition} \\
+   &= (0v+v)+(-v)     &\text{Associativity of vector addition} \\
+   &= ((0+1)v)+(-v)   &\text{Distributivity of field addition} \\ 
+   &= ((1)v) + (-v) &\text{Identity element in field addition} \\
+   &= v+(-v)          &\text{Identity element in scalar multiplication} \\ &= \textbf{0}            &\text{Inverse elements of vector addition}
+\end{tabular}
+
+\textbf{1.13 Solution.} From our result in \textbf{1.12}, we have that $\textbf{0} = 0v$. We also have that $0v = (1+(-1))v$ by inverse elements in field addition. Then by distributivity of field addition, we have $0v = 1v+(-1)v$. So we have $\textbf{0} = v + (-1)v$. Adding the vector additive inverse of $v$ to both sides, we get $\textbf{0}+(-v)=(-1)v$, or just $-v=(-1)v$, by the identity element in vector addition.
+
+Then $-(-v)$ is equivalent to $-(-1(v))$, which is equivalent to $(-1)(-1(v))$. By associativity of scalar multiplication, that is equivlanet to $(-1)^2v$. In exercise \textbf{1.11} we proved that $(-1)^2=1$, so finally we have $(-1)^2v=v$. Thus $-(-v)=v$.
+
+\textbf{1.14 Solution.} First we prove the "if" direction. If $a=0$, then $0v=\textbf{0}$ is true by the result from exercise \textbf{1.12}. If $v=\textbf{0}$, then $a\textbf{0}=\textbf{0}$ by property (b). Thus we are done proving the "if" direction.
+
+Now we prove the "only if" direction. Let $a$ be a scalar in $\mathbf{F}$ and $v$ be a vector in $|V|$. Also let $av=\textbf{0}$. We proceed by cases. Case 1: if $a=0$, then we are done. Case 2: if $a\neq0$, then the multiplicative inverse $a^{-1}$ of $a$ must exist in $\mathbf{F}$. Multiplying both sides of $av=0$ by $a^{-1}$, we get $(a^{-1}a)v=a^{-1}\textbf{0}$ using associativity of scalar multiplication. The LHS simplifies to $v$, and the RHS simplifies to $\textbf{0}$ by property (b). Therefore $v=\textbf{0}$ and the "only if" direction is also true. Thus $av=\textbf{0}$ if and only if $a=0$ or $v=\textbf{0}$.

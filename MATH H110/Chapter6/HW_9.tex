@@ -1,0 +1,65 @@
+\textbf{6.10 Solution.} Since $u_1$ and $u_2$ are linearly independent in $U$, they must be part of some basis of $U$. Similarly, $v_1$ and $v_2$ must be part of some basis of $V$. By definition of basis, any linear combination of a basis vectors of a vector space is unique, i.e. it cannot be written as another linear combination of basis vectors.
+
+Since $(u_i \otimes v_j)_{i \in I, j \in J}$ is a basis for $U \otimes V$, we know that the simple tensors $u_1 \otimes v_1$, $u_2 \otimes v_2$, $u_3 \otimes v_3$ are all basis vectors. Thus, there cannot be another representation of $u_1 \otimes v_1 + u_2 \otimes v_2$ using basis vectors, and therefore $u_1 \otimes v_1 + u_2 \otimes v_2$ cannot be written as some simple tensor $u_3 \otimes v_3$.
+
+\textbf{6.11 Solution.} ($\Rightarrow$ by contrapositive) If neither $u$ nor $v$ are zero, then $u$ must be part of some basis of $U$ and $v$ must be part of some basis of $V$. It follows that $u \otimes v$ must be part of some basis of $U \otimes V$, but then $u \otimes v$ cannot be the zero vector, for otherwise the basis would not be linearly independent. Therefore we have shown the contrapositive, and so if $u \otimes v$ is zero in $U \otimes V$ it follows that $u = 0$ or $v = 0$.
+
+($\Leftarrow$) Suppose $u = 0$, then we get that $0 \otimes v = (u' \otimes v) + (-u' \otimes v) = (u' \otimes v) - (u' \otimes v) = 0$ for some vector $u' \in U$. It follows that $0 \otimes v = 0$ for any $v$, and similarly $u \otimes 0 = 0$ for any $u$, and thus $u \otimes v = 0$ whenever $u = 0$ or $v = 0$.
+
+\textbf{6.12 Solution.} By the linear map principle, we only need to observe what the linear map does to a choice of basis. Suppose we have tensors $u \otimes v$ and $u' \otimes v'$ part of some basis of $U \otimes V$ such that $u \otimes v = u' \otimes v'$. The only way for a simple two tensor to be equivalent to another simple two tensor is by homogeneity, i.e. moving around scalars. It follows that $[u', v'] = [\lambda u, v / \lambda]$. Then $u \otimes v$ gets sent to $f(u)g(v)$ and $u' \otimes v'$ gets sent to $f(\lambda u)g(v / \lambda) = f(u)g(v)$. Thus our linear map is well-defined. 
+
+Now, for $f, g \in V'$ and $u, v \in V$, we can obtain a unique linear map from the bilinear map $B: V' \times V' \to (V \otimes V)'$ given by $(f,g) \mapsto (u \otimes v \mapsto f(u)g(v))$ from the U.P. of tensor products. This unique linear map $L: V' \otimes V' \to (V \otimes V)'$ is given by $L(f \otimes g) = B(f, g)$.
+
+\textbf{6.13 Solution.} We have
+\[
+\left[\begin{tabular}{cc}
+    3 & 1 \\
+    2 & 0
+\end{tabular}\right]
+\otimes
+\left[\begin{tabular}{cc}
+    0 & 4 \\
+    5 & 6 \\
+    1 & 1
+\end{tabular}\right]
+=
+\left[\begin{tabular}{cccc}
+    0 & 12 & 0 & 4 \\
+    15 & 18 & 5 & 6 \\
+    3 & 3 & 1 & 1 \\
+    0 & 8 & 0 & 0 \\
+    10 & 12 & 0 & 0 \\
+    2 & 2 & 0 & 0
+\end{tabular}\right]
+\]
+As for the second matrix representation of $S \oplus T$, the matrix sends ordered pairs $(v, w)$ to $(S(v), T(w))$. This can be seen if we consider $v$ and $w$ in terms of linear combinations of their respective bases in $V$ and $W$, and then constructing a vector from it. That is, multiply $S \oplus T$ by the vector $(v_1, v_2, \dots , w_1, w_2, \dots)$.
+
+\textbf{6.14 Solution.} Since $\bigoplus_{j \in J}W_j$ is itself a vector space, we have
+\begin{align*}
+\left(\bigoplus_{i \in I}V_i\right) \otimes \left(\bigoplus_{j \in J}W_j\right) &\cong
+\bigoplus_{i \in I}\left(V_i \otimes \left(\bigoplus_{j \in J}W_j\right)\right) \\
+&\cong \bigoplus_{i \in I}\left(\bigoplus_{j \in J}(V_i \otimes W_j)\right) \\
+&\cong \bigoplus_{i \in I, j \in J} (V_i \otimes W_j).
+\end{align*}
+
+\textbf{6.15 Solution.} We can apply the switch map, which produces a natural transformation (isomorphism) between functors $\otimes W$ and $W \otimes$ in the functor category.
+
+\textbf{6.16 Solution.} Since the switch map of tensor products is an isomorphism, we know that $\F \otimes V \cong V \otimes F$. Now, suppose $(v_i)_{i \in I}$ is a basis of $V$. We know that $\F$ has dimension 1, and any single scalar $(\lambda)$ is a basis for $\F$. It follows that a basis of $V \otimes \F$ is $(\delta_{(v_i, \lambda)})_{i \in I}$, which has cardinality $|I| \cdot |\{\lambda\}| = |I|$, which is also the cardinality of $V$. Thus $V \otimes \F$ has the same dimension as $V$, and so $\F \otimes V \cong V \otimes \F \cong V$.
+
+\textbf{6.17 Solution.} Let $f \otimes g \in U' \otimes V'$. Then the linear functional $u \otimes v \mapsto f(u)g(v)$ is well-defined by an extension of exercise 6.12 to two vector spaces. We therefore obtain a unique linear map $L: U' \otimes V' \to (U \otimes V)'$ by the U.P. of tensor product given by $L(f \otimes g) = (u \otimes v \mapsto f(u)g(v))$. This is similar to the evaluation map for a single vector space to its double dual, but now we have the tensor of two vector spaces. We can define its inverse $L^{-1}: (U \otimes V)' \to U' \otimes V'$ by the map $(u \otimes v \mapsto f(u)g(v)) \mapsto f \otimes g$. it is easy to see that $L \circ L^{-1} = Id_{(U \otimes V)'}$ and that $L^{-1} \circ L = Id_{U' \otimes V'}$, and therefore $L$ is a natural isomorphism since tensor product U.P. is natural.
+
+\textbf{6.18 Solution.}
+
+\begin{tikzcd}
+ &  &  & V' \otimes W \arrow[rr, "Id(T)"] \arrow[dd, "{\phi_{V, W}}"'] &  & X' \otimes Y \arrow[dd, "{\phi_{X, Y}}"] \\
+V' \otimes W \arrow[r, "T"] & X' \otimes Y \arrow[rrd, "G", bend right=49] \arrow[rru, "Id", bend left=49] &  &  &  &  \\
+ &  &  & {Hom(V, W)} \arrow[rr, "G(T)"] &  & {Hom(X, Y)}
+\end{tikzcd}
+
+\textbf{6.19 Solution.} Since $u = (1, 2)$ and $v^{T} = (\delta_{e_1}, \delta_{e_2})$, we take the kronecker product $v \otimes u$ to be:
+\[\left[\begin{tabular}{cc}
+1 & 1 \\
+2 & 2
+\end{tabular}\right]\]
+
+\textbf{6.20 - 6.29} See Attached Paper.

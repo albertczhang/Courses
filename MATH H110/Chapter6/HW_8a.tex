@@ -1,0 +1,114 @@
+\textbf{6.1 Solution.} \begin{enumerate}[(a)]
+    \item If $x = 0$, then we have by the bilinearity of $f$ that $f(0, y) = f(x-x, y) = f(x, y) + f(-x, y) = f(x, y) - f(x, y) = 0$ for all $y \in W$. Similarly, if $y = 0$ then $f(x, 0) = 0$ for all $x \in U$.
+    
+    \item For all $u \in U$, $w \in W$, we have
+    \begin{align}
+        f(u, w) &= f(u, 0) + f(0, w) \\
+                &= 0f(u, w') + 0f(u', w) \\
+                &= \nonumber 0 + 0 \\
+                &= \nonumber 0
+    \end{align}
+    for some $u' \in U$, $w' \in W$. Step (1) follows from linearity of $f$, and the step from (1) to (2) follows from bilinearity of $f$. Therefore $f$ is the zero map if it is both linear and bilinear as given.
+    
+    \item Suppose we have $u_1, u_2, u \in U$, $v \in V$, and $a \in \mathbb{F}$. Then we get (through the linearity of $L$ and bilinearity of $B$)
+    \begin{align*}
+        L(B(u_1 + u_2, v)) &= L(B(u_1, v) + B(u_2, v)) \\
+            &= L(B(u_1, v)) + L(B(u_2, v)),
+    \end{align*}
+    as well as
+    \begin{align*}
+        L(B(au, v)) &= L(aB(u, v)) \\
+            &= aL(B(u, v)).
+    \end{align*}
+    Linearity follows by a symmetric argument on the second term, so we have that $L \circ B$ is bilinear.
+\end{enumerate}
+
+\textbf{6.2 Solution.} Suppose we have $f, g \in V'$, $v, v_1, v_2 \in V$, and $a \in \mathbb{F}$. Then we can show bilinearity on each term as follows:
+\begin{align*}
+    \epsilon_V(f+g, v) &= (f+g)(v) \\
+                       &= f(v) + g(v) \\
+                       &= \epsilon_V(f, v) + \epsilon_V(g, v), \\
+    \epsilon_V(f, v_1+v_2) &= f(v_1+v_2) \\
+                           &= f(v_1) + f(v_2) \\
+                           &= \epsilon_V(f, v_1) + \epsilon_V(f, v_2), \\
+    \epsilon_V(af, v) &= (af)(v) \\
+                      &= af(v) \\
+                      &= a\epsilon_V(f, v), \\
+    \epsilon_V(f, av) &= f(av) \\
+                      &= af(v) \\
+                      &= a\epsilon_V(f, v).
+\end{align*}
+
+\textbf{6.3 Solution.} Suppose we have $v_1, v_2 \in V$, $w \in W$, and $a \in \mathbb{F}$. Then using linearity of $f$ and $g$ we get additivity of the first term:
+\begin{align*}
+    \phi(v_1+v_2, w) &= f(v_1+v_2)g(w) \\
+                     &= (f(v_1) + f(v_2))g(w) \\
+                     &= f(v_1)g(w) + f(v_2)g(w) \\
+                     &= \phi(v_1, w) + \phi(v_2, w),
+\end{align*}
+as well as homogeneity of the first term:
+\begin{align*}
+    \phi(av, w) &= f(av)g(w) \\
+                &= af(v)g(w) \\
+                &= a\phi(v, w).
+\end{align*}
+So $\phi$ is linear in the first term, and linearity of the second term follows by a symmetric argument. Thus $\phi$ is indeed bilinear.
+
+\textbf{6.4 Solution.} Suppose we have $u_1, u_2, u \in U$, $v \in V$, and $a \in \mathbb{F}$. Then by our definition of $\tau$ and the generators of $S$, we get additivity of the first term:
+\begin{align*}
+    \tau(u_1+u_2, v) &= [\delta_{(u_1+u_2, v)}] \\
+                  &= [\delta_{(u_1, v)}] + [\delta_{(u_1, v)}] \\
+                  &= \tau(u_1, v) + \tau(u_2, v),
+\end{align*}
+we well as homogeneity of the first term:
+\begin{align*}
+    \tau(au, v) &= [\delta_{(au, v)}] \\
+                &= [a\delta_{(u, v)}] \\
+                &= a[\delta_{(u, v)}] \\
+                &= a\tau(u, v).
+\end{align*}
+Linearity of the second term follows by a symmetric argument. Thus the map $\tau$ is bilinear.
+
+\textbf{6.5 Solution.} For the first one:
+\begin{align*}
+    (u_1 + u_2) \otimes v &= [\delta_{(u_1+u_2, v)}] \\
+        &= [\delta_{(u_1, v)}] + [\delta_{(u_2, v)}] \\
+        &= u_1 \otimes v + u_2 \otimes v.
+\end{align*}
+The second one follows by a symmetric argument applied to the second term instead of the first term.
+
+For the third relation:
+\begin{align*}
+    a(u \otimes v) &= a[\delta_{(u, v)}] \\
+                   &= [a\delta_{(u, v)}] \\
+                   &= [\delta_{(au, v)}] \\
+                   &= (au) \otimes v,
+\end{align*}
+and the second half follows by a symmetric argument applied to the second term.
+
+\textbf{6.6 Solution.} Using our results from exercise 6.5, we have:
+\begin{align*}
+    u \otimes v &= (a_1u_1 + a_2u_2) \otimes (b_1v_1 + b_2v_2) \\
+        &= (a_1u_1) \otimes (b_1v_1 + b_2v_2) + (a_2u_2) \otimes (b_1v_1 + b_2v_2) \\
+        &= (a_1u_1) \otimes (b_1v_1) + (a_1u_1) \otimes (b_2v_2) + (a_2u_2) \otimes (b_1v_1) + (a_2u_2) \otimes (b_2v_2) \\
+        &= a_1b_1(u_1 \otimes v_1) + a_1b_2(u_1 \otimes v_2) + a_2b_1(u_2 \otimes v_1) + a_2b_2(u_2 \otimes v_2).
+\end{align*}
+
+The first line follows from the definition of spanning vectors. Line 2 follows from $(u_1 + u_2) \otimes v = u_1 \otimes v + u_2 \otimes v$ and $(au) \otimes v = a(u \otimes v)$. Line 3 follows from $u \otimes (v_1 + v_2) = u \otimes v_1 + u \otimes v_2$. Line 4 follows since scalars float around, i.e. the third part of exercise 6.5. Finally, line 5 follows from $(au) \otimes v = a(u \otimes v)$.
+
+
+\textbf{6.8 Solution.} Consider the bilinear map $B: \F\langle X \rangle \times \F\langle Y \rangle \to \F\langle X \times Y \rangle$ given by $(f, g) \mapsto h$ where $h$ is the map $(x, y) \mapsto f(x) + g(y)$, $x \in X, y \in Y$, $f \in \F\langle X \rangle$, and $g \in \F\langle Y \rangle$. From the U.P. of tensor products we get a unique linear map $\lambda: \F\langle X \rangle \otimes \F\langle Y \rangle \to \F\langle X \times Y \rangle$ given by $\lambda(f \otimes g) = B(f, g)$. If we let $g$ be the zero map, we can see that $\lambda$ is surjective. Furthermore, we can define the inverse map $\mu: \F\langle X \times Y \rangle \to \F\langle X \rangle \otimes \F\langle Y \rangle$ with the mapping $\mu(h) = f \otimes 0$. Thus we obtain an isomorphism between $\F\langle X \rangle \otimes \F\langle Y \rangle$.
+
+\textbf{6.9 Solution.} From the U.P. of tensor products, we get a unique linear map $\lambda_A: A \otimes A \to A$ given by $v_1 \otimes v_2 \mapsto v_3$ where $v_1, v_2, v_3 \in A$ and $B(v_1, v_2) = v_3$. If $A$ is unital, then $\lambda_A$ is surjective since we can let $v_1 = 1$ to get $B(1, v_2) = v_2$ and $\lambda_A(1 \otimes v_2) = v_2$ for all $v_2 \in V$. Furthermore, $\lambda_A$ would also be injective since we can define an inverse mapping $\mu_A: A \to A \otimes A$ by $v_2 \mapsto 1 \otimes v_2$ for all $v_2 \in A$. So if $A$ is unital, then we obtain an isomorphism between $A \otimes A$ and $A$.
+
+\textbf{(Universal Property of Tensor Product)}
+
+\begin{tikzcd}
+Set & U \times V \arrow[d, "\delta"'] \arrow[rd, "B"] \arrow[dd, "\tau"', bend right=71] &  &  & Vec_{\mathbb{F}} \\
+ & F(\mathbb{F}\langle U \times V \rangle) \arrow[r, "F(\hat{B})"] \arrow[d, "F(\pi_S)"'] & F(W) & \mathbb{F} \langle U \times V \rangle \arrow[d, "\pi_S"'] \arrow[r, "\hat{B}"] & W \\
+ & F(U \otimes V) \arrow[ru, "F(\hat{B}')"'] &  & U \otimes V \arrow[ll, "F", bend left] \arrow[ru, "\hat{B}'"'] &  \\
+ & U \times V \arrow[d, "\tau"'] \arrow[rd, "B"] \arrow[d] &  &  &  \\
+ & F(U \otimes V) \arrow[r, "F(\hat{B}')"] & F(W) & U \otimes V \arrow[r, "\hat{B}'"] \arrow[l, "F", bend left] & W
+\end{tikzcd}
+
+

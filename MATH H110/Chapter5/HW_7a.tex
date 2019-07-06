@@ -1,0 +1,58 @@
+\textbf{2.28 Solution.} On the LHS, we have first the inclusion function $\iota_k$ that sends a vector $v_k \in V_k$ to the sequence $(\ldots, 0, v_k, 0, \ldots)$, which is then sent (via $\bigoplus_{i \in I}T_i$) to the sequence $(\ldots, 0, w_k, 0, \ldots)$ where $w_k = T_k(v_k)$. Now, the projection map $\pi_j$ will send this sequence to the vector $w_k$ if and only if $k = j$ (since otherwise, the indices wouldn't match) and else it would send it to 0. This is exactly the description on the RHS, which is $T_k$ (sends $v_k$ to $w_k$ for $v_k \in V_k$ and $w_k \in W_k$) if $j = k$ and otherwise the zero map.
+
+\textbf{5.12 Solution.} The morphisms $F \to G$ send $c \in Ob(\mathcal{C})$ to $d \in Ob(\mathcal{C})$. Essentially, they are morphisms in the collection $Hom_{\mathcal{C}}(c, d)$.
+
+\textbf{5.13 Solution.} The diagram for the $\mathcal{I}$ case:
+
+\begin{center}
+\begin{tikzcd}
+ &  & X \arrow[r, "f"] \arrow[d, "g"] \arrow[dd, "\alpha_X"', bend right] & Y \arrow[d, "h"'] \arrow[dd, "\alpha_Y", bend left] \\
+X \arrow[r, "f"] \arrow[d, "g"'] & Y \arrow[d, "h"] \arrow[ru, "Id", bend left=49] & Z \arrow[r, "k"] \arrow[dd, "\alpha_Z"', bend right] & W \arrow[dd, "\alpha_W", bend left] \\
+Z \arrow[r, "k"] & W \arrow[rd, "G"', bend right=49] & G(X) \arrow[r, "G(f)"] \arrow[d, "G(g)"] & G(Y) \arrow[d, "G(h)"'] \\
+ &  & G(Z) \arrow[r, "G(k)"] & G(W)
+\end{tikzcd}
+\end{center}
+
+where $\alpha = (\alpha_i)_{i \in Ob(\mathcal{I}}$ is the natural transformation from $Id \implies G$ and $X, Y, Z, W$ are objects in $\mathcal{I}$.
+
+The diagram for the $\mathcal{C}$ case:
+\begin{center}
+\begin{tikzcd}
+ &  & F(X) \arrow[r, "F(f)"] \arrow[d, "F(g)"] \arrow[dd, "\alpha_X"', bend right] & F(Y) \arrow[d, "F(h)"'] \arrow[dd, "\alpha_Y", bend left] \\
+X \arrow[r, "f"] \arrow[d, "g"'] & Y \arrow[d, "h"] \arrow[ru, "F", bend left=49] & F(Z) \arrow[r, "F(k)"] \arrow[dd, "\alpha_Z"', bend right] & F(W) \arrow[dd, "\alpha_W", bend left] \\
+Z \arrow[r, "k"] & W \arrow[rd, "Id"', bend right=49] & X \arrow[r, "f"] \arrow[d, "g"] & Y \arrow[d, "h"'] \\
+ &  & Z \arrow[r, "k"] & W
+\end{tikzcd}
+\end{center}
+
+where $\alpha = (\alpha_i)_{i \in Ob(\mathcal{C}}$ is the natural transformation from $F \implies Id$ and $X, Y, Z, W$ are objects in $\mathcal{C}$.
+
+\textbf{5.14 Solution.} We have that the mapping $\epsilon_W \circ T$ sends a vector $v \in V$ to the function mapping $(g: W \to \mathbb{F}) \mapsto g(T(v))$. On the other hand, $\epsilon_V$ sends $v \in V$ to the function $\phi$ mapping $(f: V \to \mathbb{F}) \mapsto f(v)$ and then when composed with $T^{**}$ we get $T^{**}(\phi) = \phi \circ T^*$ which is a function that maps $g: W \to \mathbb{F}$ to $g(T(v))$. Therefore the diagram commutes.
+
+\textbf{5.15 Solution.} There cannot exist a ``natural tranformation'' by definition. Some of the arrows point the wrong way and so the diagram does not always commute. In particular if we have objects $X, Y \in \mathcal{I}$ and $f: X \to Y$ and functors $F, G: \mathcal{I} \to \mathcal{C}$ such that $F(f): F(X) \to F(Y)$ and $G(f): G(Y) \to G(X)$. But then we do not have $\alpha_Y \circ F(f) = G(f) \circ \alpha_X$ but rather $G(f) \circ \alpha_Y \circ F(f) = \alpha_X$.
+
+\textbf{5.16 Solution.} In $\mathcal{C}^{\mathcal{I}}$ the objects are functors from $\mathcal{I}$ to $\mathcal{C}$ and morphisms natural transformations between functors. By definition, composition of natural transformations (``vertical composition'') is associative. That is, say we have functors $F_1, F_2, F_3, F_4: I \to C$ and natural transformations $\alpha_1: F_1 \to F_2$, $\alpha_2: F_2 \to F_3$, $\alpha_3: F_3 \to F_4$. It follows that $\alpha_1 \circ (\alpha_2 \circ \alpha_3) = (\alpha_1 \circ \alpha_2) \circ \alpha_3$ since both sides are equal to the natural transformation that takes $F_1$ to $F_4$. Furthermore, the identity of this category is the Identity morphism (natural transformation) $Id_{\mathcal{C}}$ for every functor $F \in Ob(\mathcal{C}^{\mathcal{I}})$.
+
+\textbf{5.17 Solution.} $F(\mathcal{C})$ is a category where the objects are $F(X)$ for every object $X \in Ob(\mathcal{C})$, and morphisms are $F(f)$ for every morphism $f \in Hom(\mathcal{C})$. Left and right units as well as associativity carry over from $\mathcal{C}$ so it follows that $F(\mathcal{C})$ is also a category.
+
+If $\mathcal{E}$ is a subcategory of $\mathcal{D}$, we can find a subcategory of $\mathcal{C}$ that maps to $\mathcal{E}$. In fact, if we think about set mappings, this subcategory would be equivalent to the `preimage' of $\mathcal{E}$ of a set function from $\mathcal{C}$ to $\mathcal{D}$.
+
+\textbf{5.18 Solution.} We have that $H(X) = A_X$ for every object $X \in Ob(\mathcal{C})$, and so by 5.3.3(c) we get the natural transformation that sends the morphisms and its objects $\alpha: X \to Y$ to a $U(\Tilde{\alpha}): U(A_X) \to U(A_Y)$ such that $U(\Tilde{\alpha}) \circ \phi_X = \phi_Y \circ \alpha$. That is, since the diagram commutes in $\mathcal{C}$, it drops out that $U \circ H$ is the ``pushforward'' functor.
+
+\textbf{5.19 Solution.} By the definition of $H$, we have that $Id: X \to X$ maps to $\hat{Id}: A_X \to A_X$, the identity of $A_X \in Ob(\mathcal{D})$. Thus $H$ preserves identities. Furthermore, if we have morphisms $f_1: X \to Y$, $f_2: Y \to Z$ in $\mathcal{C}$ then we have their composition $f_2 \circ f_1: X \to Z$. Then applying $H$ we get $H(f_2 \circ f_1)$ sends $A_X$ to $A_Z$ (first to the image $Y$ and then to $Z$) and we also get $H(f_2) \circ H(f_1)$ sends $A_X$ to $A_Y$ and then to its image $A_Z$. It follows that $H$ preserves compositions as well, and so it is indeed a functor.
+
+\textbf{5.20 Solution.} Applying the dual functor $'$ to our definition of Universal Property, we get that: for objects $X'$, $U(Y')$, and $U(A')$ with a morphisms $\phi': U(A') \to X'$ and $f': U(Y') \to X'$ in $\mathcal{C}$ and objects $A'$ and $Y'$ in $\mathcal{D}$, there exists a unique morphism $g': Y' \to A'$ and $U(g'): U(Y') \to U(A')$ such that $f' = \phi' \circ U(g')$.
+
+Now, the theorem 5.3.3 in terms of terminal universal properties would be:
+
+Suppose $U: \mathcal{D} \to \mathcal{C}$ is a functor and for each object $X' \in Ob(\mathcal{C})$ there exists a universal property $(A_X', \phi_X')$ with respect to $U$, where $A_X' \in Ob(\mathcal{D})$ and $(\phi_X': U(A_X') \to X') \in Hom(\mathcal{C})$. The following results hold:
+
+(a) For each morphism $\alpha': Y' \to X'$ there exists a unique $\hat{\alpha'}: A_Y' \to A_X' \in Hom(\mathcal{D})$ such that $\phi_X' \circ U(\hat{\alpha'}) = \alpha' \circ \phi_Y'$.
+
+(b) There is a functor $H: \mathcal{C} \to \mathcal{D}$ given by $X' \mapsto A_X'$ and $(\alpha':Y' \to X') \mapsto (\hat{\alpha'}: A_Y' \to A_X'$.
+
+(c) $\phi' = (\phi_X')_{X' \in Ob(\mathcal{C})}$ is a natural transformation from $Id_{\mathcal{C}}$ to $U \circ H$.
+
+Proof: The proofs are essentially the same as the proofs based on initial universal properties. We only need to switch the direction of the arrows, reverse our compositions, and use the definition of terminal instead of initial at every step.
+
+\textbf{5.22 Solution.}

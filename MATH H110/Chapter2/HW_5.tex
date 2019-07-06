@@ -1,0 +1,142 @@
+\textbf{2.21 Solution.} Let $T:V \oplus W \to (V/A) \oplus (W/B)$ be the homomorphism defined with the map $(v,w) \mapsto (v+A, w+B)$ for $v \in V$ and $w \in W$. Then $ran(T)$ is just $(V/A) \oplus (W/B)$ and $ker(T)$ is the collection of $(v,w)$ such that $v \in A$ and $w \in B$, or just $A \oplus B$. Then it follows from the First Isomorphism theorem that $(V \oplus W)/(A \oplus B) \cong (V/A) \oplus (W/B)$, and we are done.
+
+\textbf{2.22 Solution.} Since $E_1 \cong E_3$ by the bijective map $(x,0,0) \mapsto (0,0,x)$, we have $E_{1,2} \oplus E_1 \cong E_{1,2} \oplus E_3 \cong \mathbb{R}^3$ by the bijective map $((x,y),z) \mapsto (x,y,z)$.
+
+Since $E_1 \sqsubseteq E_{1,2}$, we know that $E_{1,2} + E_1 = E_{1,2} \cong \mathbb{R}^2$ by the natural mapping $(x,y) \mapsto (x,y)$.
+
+\textbf{2.23 Solution.} To show additivity, suppose we have $(u,v),(u',v')\in V\oplus V$. Then we have
+\begin{align*}
+    T((u,v)+(u',v')) &= T((u+u',v+v')) \\
+                    &= ((u+u')cos\theta + (v+v')sin\theta, -(u+u')sin\theta + (v+v')cos\theta) \\
+                    &= (ucos\theta + vsin\theta, -usin\theta + vcos\theta) + (u'cos\theta + v'sin\theta, -u'sin\theta + v'cos\theta) \\
+                    &= T(u,v) + T(u',v').
+\end{align*}
+
+Now we check homogeneity. Suppose we have $(u,v)\in V\oplus V$ and $a\in\mathbb{R}$. Then we have
+\begin{align*}
+    T(a(u,v)) &= T(au,av) \\
+              &= (aucos\theta + avsin\theta, -ausin\theta + avcos\theta) \\
+              &= a(ucos\theta + vsin\theta, -usin\theta + vcos\theta) \\
+              &= aT(u,v).
+\end{align*}
+
+Thus $T$ is linear.
+
+\textbf{2.24 Solution.} Since $E_{1,2} \cap E_1 = E_1 \neq \{0\}$, there must exist an element in $E_{1,2}+E_1$ that cannot be uniquely expressed by separate vectors in $E_{1,2}$ and $E_1$ from 2.3.9(c). Then since $E_{1,2}+E_1 \sqsubseteq \mathbb{R}^3$, it follows that there exists an element in $\mathbb{R}^3$ that cannot be uniquely expressed. Thus $E_{1,2} \oplus E_1$ is not a direct sum decomposition of $\mathbb{R}^3$ since the codiagonal map is not injective. For example, both $((1,1,0),(0,0,0))$ and $((0,1,0),(1,0,0))$ map to $(1,1,0)$ via the codiagonal map.
+
+We can define a bijective map between $E_{1,2} \oplus E_1$ and $\mathbb{R}^3$ with $((x,y,0),(z,0,0)) \mapsto (x,y,z)$ for $(x,y,0) \in E_{1,2}$ and $(z,0,0) \in E_1$.
+
+\textbf{1.25 Solution.} Suppose we have subspaces $E_1, E_2$, and the collection of all vectors $(x,x)$ for $x \in \mathbb{R}$ (in other words, the subspace of the line $y=x$). These subspaces all intersect pairwise only at the origin. However, they clearly do not form a direct sum decomposition of $\mathbb{R}^2$ since the codiagonal map $((a,0),(0,b),(c,c)) \mapsto (a+c,b+c)$ is not injective. That is, both $((1,0),(0,1),(0,0))$ and $((0,0),(0,0),(1,1))$ map to $(1,1)$.
+
+\textbf{1.26 Solution.} $a \implies b$ direction: Suppose we have a $v \in U_i \cap \sum\limits_{j\neq i}U_j$. WLOG assume $i=1$. Then $v \in U_1$ and $v \in \sum\limits_{j\neq 1}U_j$. From the former it follows that $(v,0,0,\ldots,0) \mapsto v$; from the latter it follows that we can find a $(0,u_2,u_3,\ldots,u_s)$ such that $\sum\limits_{i=2}^s u_i = v$ so that $(0,u_2,u_3,\ldots,u_s) \mapsto v$. Then since (a) implies injectivity of the codiagonal map, we have $(v,0,0,\ldots,0) = (0,u_2,u_3,\ldots,u_s)$. It follows that $v = 0$, concluding the $a \implies b$ direction.
+
+$b \implies a$ direction: The codiagonal map is surjective by definition (for every $u_1+u_2+\ldots+u_s \in U_1+U_2+\ldots+U_s$, we have that $(u_1,u_2,\ldots,u_s)$ maps to it). To prove injectivity, suppose we have $(u_1,u_2,\ldots,u_s)$ and $(u_1',u_2',\ldots,u_s')$ such that $u_1+u_2+\ldots+u_s = u_1'+u_2'+\ldots+u_s'$ through the codiagonal map. Then we have $u_1-u_1' = (u_2'-u_2)+(u_3'-u_3)+\ldots+(u_s'-u_s)$. Since $u_1-u_1' \in U_1$ and $(u_2'u_2)+(u_3'-u_3)+\ldots+(u_s'-u_s) \in \sum\limits_{j\neq 1}U_j$, it follows that both sides of the equation are an element of $U_1 \cap \sum\limits_{j\neq 1}U_j$, which by (b) must be the zero. Then $u_1-u_1' = 0$ and we have $u_1 = u_1'$. Similarly, $u_i = u_i'$ for all $1 \leq i \leq s$. Thus $(u_1,u_2,\ldots,u_s) = (u_1',u_2',\ldots,u_s')$, proving injectivity of the codiagonal map. Thus the codiagonal map is bijective and $U_1 \oplus U_2 \oplus \ldots \oplus U_s$ is a direct sum decomposition of $U_1 + U_2 + \ldots + U_s$.
+
+\textbf{2.27 Solution.} (a) True. $U + E_1$ is the collection of vectors $\{(x,y,0) + (x',0,0) \mid x,y,x' \in \mathbb{R}\}$, which is equivalent to $\{(x,y,0) \mid x,y \in \mathbb{R}\}$, or $E_{1,2}$, which is a subspace of $\mathbb{R}^3$.
+
+(b) True. We can see that $U \cap E_{1,2} = \{(0,0,0)\}$, the zero vector. So by 2.3.9, this is equivalent to $U \oplus E_{1,2}$ being a direct sum decomposition of $\mathbb{R}^3$.
+
+\textbf{2.28 Solution.} Let $\mathbb{F}$ be the field of $U$. Suppose $u_2 = cu_1$ for some non-zero scalar $c \in \mathbb{F}$. Then by definition $span(u_1) = \{au_1 \mid a \in \mathbb{F}\}$ and $span(u_2) = \{acu_1 \mid a \in \mathbb{F}\} = \{bu_1 \mid b \in \mathbb{F}\}$. But then $span(u_1) = span(u_2)$, so by contradiction we know that $u_2 \neq cu_1$ for any non-zero scalar $c \in \mathbb{F}$.
+
+Now, suppose we have a vector $v$ such that $v \in span(u_1)$ and $v \in span(u_2)$. Then we can write $v = c_1u_1$ and $v = c_2u_2$ for scalars $c_1,c_2 \in \mathbb{F}$. It follows that $c_1u_1 = c_2u_2$, and $u_2 = (c_2)^{-1}c_1u_1$. But from before we know that $(c_2)^{-1}c_1$ cannot be non-zero, so it must be 0. Therefore $v = u_2 = 0u_1 = 0$. Then $span(u_1) \cap span(u_2)$ must be $\{0\}$. From 2.3.9, we can deduce that $span(u_1) \oplus span(u_2)$ is a direct sum decomposition of $span(u_1) + span(u_2) = span(u_1,u_2) = U'$, and we are done.
+
+\textbf{2.29 Solution.} Drawing the vectors tip to tail weighted by the coefficients of the dependency relation $(c_1,c_2,\ldots,c_s)$ is equivalent to the linear combination $c_1v_1 + c_2v_2 + \ldots + c_sv_s$. Then by definition of a linearly dependent set, we know that $c_1v_1 + c_2v_2 + \ldots + c_sv_s = 0$. Thus the result is the zero vector, which is equivalent to returning where you started.
+
+\textbf{2.30 Solution.} If we have $a_1v_1 + \ldots + a_sv_s = b_1v_2 + \ldots + b_sv_s$ then we can get $(a_1-b_1)v_1 + \ldots + (a_s-b_s)v_s = 0$. By the definition of linearly independent, it follows that $a_i-b_i = 0$ for each $1 \leq i \leq s$. Therefore $a_i = b_i$ for $1 \leq i \leq s$.
+
+\textbf{2.31 Solution.} Suppose $X = \{x_1,x_2,\ldots,x_s\}$. Then we want to show that the set $\{\delta_{x_i} \mid 1 \leq i \leq s\}$ is a linearly independent generating set. Then let $(c_1,c_2,\ldots,c_s)$ be a list of coefficients with $c_i \in \mathbb{F}$ such that $\sum\limits_{i=1}^s c_i\delta_{x_i} = 0$. Then evaluate the function at each $x_i$ and we get $c_i\delta_{x_i}(x_i) = c_i = 0$ for $1 \leq i \leq s$. It follows that $c_1 = c_2 = \ldots = c_s = 0$, and $\{\delta_x \mid x \in X\}$ is a linearly independent generating set, or basis, for $\mathbb{F}\langle x \rangle$.
+
+\textbf{2.32 Solution.} Suppose $V = U_1 \oplus U_2 \oplus \ldots \oplus U_n$ for some $n \geq 2$ (note that we can also write $V = U_1 + U_2 + \ldots + U_n$ since $U_1 \oplus U_2 \oplus \ldots \oplus U_n$ is a direct sum decomposition of $V$). Then let $T: V \to V$ be the left shift map defined as $(x_1,x_2,\ldots,x_n) \mapsto (x_2,x_3,\ldots,x_n,0)$ for $(x_1,x_2,\ldots,x_n), (x_2,x_3,\ldots,x_n,0) \in U_1+\ldots+U_n$ (here we are defining each one-dimensional subspace $U_i$ as the $i$th coordinate of a vector in $V$). We can see that $ran(T) = U_1 + U_2 + \ldots + U_{n-1}$ and $ker(T) = U_1$. It follows that since $U_1 \in U_1 + U_2 + \ldots + U_{n-1} \cap U_1$ and $U_1 \neq \{0\}$, $ran(T) \oplus ker(T)$ cannot be a direct sum decomposition by 2.3.9b.
+
+\textbf{2.33 Solution.} Let $T: X_1 \times X_2 \to \{f:\{1,2\}\to X_1 \cup X_2 \mid f(1) \in X_1, f(2) \in X_2\}$ be defined with the map $(x_1,x_2) \mapsto f$ where $f$ is defined as $f(1) = x_1$ and $f(2) = x_2$ for $x_1 \in X_1$ and $x_2 \in X_2$. 
+
+To prove injectivity, suppose we have $f,f' \in \{f:\{1,2\}\to X_1 \cup X_2 \mid f(1) \in X_1, f(2) \in X_2\}$ such that $f = f'$. In other words $T(x_1,x_2) = T(x_1',x_2')$ for some $x_1,x_1' \in X_1$ and $x_2,x_2' \in X_2$. It follows that $f$ and $f'$ agree on all points in their domain, so we have $x_1 = f(1) = f'(1) = x_1'$ and $x_2 = f(2) = f'(2) = x_2'$. Thus $(x_1,x_2) = (x_1',x_2')$, proving injectivity.
+
+Now, to show surjectivity, suppose we have any $f \in \{f:\{1,2\}\to X_1 \cup X_2 \mid f(1) \in X_1, f(2) \in X_2\}$. Then suppose $f(1) = x_1$ and $f(2) = x_2$ for some $x_1 \in X_1$ and $x_2 \in X_2$. Then the element $(x_1,x_2) \in X_1 \times X_2$ maps to $f$ by $T$, proving surjectivity.
+
+Thus, since $T$ is both injective and surjective, it is bijective, so there is a bijection between $X_1 \times X_2$ and $\{f:\{1,2\}\to X_1 \cup X_2 \mid f(1) \in X_1, f(2) \in X_2\}$
+
+\textbf{2.34 Solution.} We can define addition and scalar multiplication as coordinate wise for each element in $\prod_{i \in I}V_i$. That is, for each $i \in I$, if we have two "vectors" (or in this case, functions) $f$ and $g$ in $\prod_{i \in I}V_i$ and a scalar $a \in \mathbb{F}$. Then $(f+g)(i) = f(i) + g(i) \in V_i$ and $(af)(i) = af(i) \in V_i$. It follows that $f+g \in \prod_{i \in I}V_i$ and $af \in \prod_{i \in I}V_i$ since the vector space axioms are inherited from each of the $V_i$.
+
+We have shown prior that the free space $\mathbb{F}\langle X \rangle$ is a subspace of the function space $\mathcal{F}(X,\mathbb{F})$. Since $\bigoplus_{i \in I}V_i$ is equivalent to the free space $V\langle I \rangle$ (where we replace field addition with vector addition and field multiplication with scalar multiplication) and furthermore $\prod_{i \in I}V_i$ is equivalent to the function space $\mathcal{F}(I,V)$, we can deduce that $\bigoplus_{i \in I}V_i \sqsubseteq \prod_{i \in I}V_i$.
+
+We use the example of $(V_i)_{i \in \mathbb{N}}$ where each $V_i = \mathbb{F}$. So $\bigoplus_{i \in \mathbb{N}}\mathbb{F}$ is a subspace of $\prod_{i \in \mathbb{N}}\mathbb{F}$. However, since the latter contains the infinite sequence $(1,1,1,\ldots)$ where $f(i) = 1 \in \mathbb{F}$ for every $i \in \mathbb{N}$, whereas the former does not since the direct sum only contains functions with finite support, we indeed have $\bigoplus_{i \in \mathbb{N}}\mathbb{F} \sqsubseteq \prod_{i \in \mathbb{N}}\mathbb{F}$.
+
+\textbf{2.35 Solution.} The codiagonal map $\bigtriangledown$ is surjective by definition. So we want to show injectivity. Suppose we have $v_{\alpha_1} + v_{\alpha_2} + \ldots + v_{\alpha_n} + 0 + \ldots = v_{\alpha_1}' + v_{\alpha_2}' + \ldots + v_{\alpha_n}' + 0 + \ldots$ (where everything vanishes to 0 except for finitely many points $\alpha_i \in \mathbb{N}$) both in the space of $+_{\alpha_i \in \mathbb{N}}E_{\alpha_i}$ such that $v_{\alpha_i},v_{\alpha_i}' \in E_{\alpha_i}$. Then we have $v_{\alpha_1} - v_{\alpha_1}' = (v_{\alpha_2}' - v_{\alpha_2}) + \ldots (v_{\alpha_n}' - v_{\alpha_n})$. Since the RHS is the collection of all sequences that vanish at all but finitely many points and is zero at $\alpha_1$, we know that $v_{\alpha_1} - v_{\alpha_1}' = 0$, so $v_{\alpha_1} = v_{\alpha_1}'$, and similarly each of the $v_{\alpha_i} = v_{\alpha_i}'$. It follows that the codiagonal map is injective, and $\bigoplus_{i \in \mathbb{N}}E_i$ is indeed a direct sum decomposition.
+
+\textbf{2.36 Solution.} To show that $(ie_i)_{i \in \mathbb{N}}$ is a basis for $\mathbb{R}^{\infty}$, we need to show the codiagonal map $\bigtriangledown: \bigoplus_{i \in \mathbb{N}}(span(ie_i)) \to \mathbb{R}^{\infty}$ is injective (note that the map is surjective by definition of $\mathbb{R}^{\infty}$). Suppose we have sequences $(f(1),f(2),\ldots,f(n),0,\ldots) = (a_1,a_2,\ldots,a_n,0,\ldots) = (a_1',a_2',\ldots,a_n',0,\ldots) = (g(1),g(2),\ldots,g(n),0,\ldots)$ both in $\mathbb{R}^{\infty}$ where $a_i \in span(ie_i)$ for $1 \leq i \leq n$ for some natural number $n$ and $f,g$ are functions in the domain of the map. Then $a_i = a_i'$ for $1 \leq i \leq n$, so $f$ and $g$ agree on points of their domain. It follows that $f=g$ and the map is injective. Thus $(ie_i)_{i \in \mathbb{N}}$ is a basis for $\mathbb{R}^{\infty}$.
+
+\textbf{2.37 Solution.} For $T(x,y) = (2x,2y)$, the $T$-invariant subspaces are any subspace of $\mathbb{R}^2$ (scaling a $(x,y)$ by 2 is the same as scaling vector in $\mathbb{R}^2$ by 2, which is just scalar multiplication, which is closed by definition of a vector space).
+
+For $T(x,y) = (2x,y/2)$, the $T$-invariant subspaces are $E_1,E_2,\{0\},$ and $\mathbb{R}^2$.
+
+For $T(x,y) = (y,x)$, the $T$-invariant subspaces are: the subspace underlied by the set of vectors in $y=x$, the subspace underlied by the set of vectors in $y=-x$, $\{0\}$, and $\mathbb{R}^2$.
+
+\textbf{2.38 Solution.} First note that $T(U+W) = \{T(u+w) = T(u) + T(w) \mid u \in U, w \in W\}$ is a subset of the set $U+W = \{u + w \mid u \in U, w \in W\}$ since $T(u) \in U$ and $T(w) \in W$. So $T(u+w) \in U + W$ for every $u \in U$, $w \in W$. Suppose we have $a \in \mathbb{F}$ and $u,u' \in U$, $w,w' \in W$. Then $T((u+w) + (u'+w')) = T(u+u') + T(w+w')$, which is an element of $U+W$ since $u+u' \in U$ and $w+w' \in W$, satisfying additivity. Furthermore $T(a(u+w)) = T(au) + T(aw)$, which is an element of $U+W$ since $au \in U$ and $aw \in W$, satisfying homogeneity. Thus $T(U+W) \sqsubseteq U+W$, so $U+W$ is a $T$-invariant subspace of $V$.
+
+Now we show the second part. Since $T(U) \sqsubseteq U$ and $T(W) \sqsubseteq W$, we know that, respectively, for any vector $u \in U$, $T(u) \in \{v \mid v \in U\}$ and for any vector $w \in W$, $T(w) \in \{v \mid v \in W\}$. Therefore for any vector $v' \in U \cap W$, we have that $T(v') \in \{v \mid v \in U, v \in W\} = U \cap W$. It follows that $T(U \cap W)$ is a subset of $U \cap W$. Then suppose we have $v,v' \in U \cap W$ and $a \in \mathbb{F}$ such that $T(v),T(v') \in T(U \cap W)$. We want to show that $T(U \cap W)$ is closed under vector addition and scalar multiplication.
+
+If $T(v), T(v') \in T(U \cap W)$, then by linearity of $T$, we have $T(v) + T(v') = T(v + v')$ is also in $T(U \cap W)$ since $v+v' \in U \cap W$ (this follows from vector space properties of $U \cap W$, which we have shown previously to be a vector subspace of $V$). It follows that $T(U \cap W)$ is closed under addition.
+
+IF $T(v) \in T(U \cap W)$, then by linearity of $T$, we have $aT(v) = T(av)$ is also in $T(U \cap W)$ since $av \in U \cap W$ (again, this follows from vector space properties of $U \cap W$). It follows that $T(U \cap W)$ is closed under scalar multiplication.
+
+Thus we have shown that $T(U \cap W) \sqsubseteq U \cap W$ is a $T$-invariant subspace.
+
+\textbf{2.39 Solution.} Suppose we have any sequence $(u_1,\ldots,u_n) \in U_1 \oplus \ldots \oplus U_n$ where $u_i \in U_i$ for $1 \leq i \leq n$. Then we will evaluate the LHS and RHS at $(u_1,\ldots,u_n)$ separately and show that they are equal.
+
+The LHS becomes:
+\begin{align*}
+    T(\bigtriangledown(u_1,\ldots,u_n) &= T(u_1 + \ldots + u_n) \\
+                                       &= T(u_1) + \ldots + T(u_n)
+\end{align*}
+by linearity of $T$.
+
+The RHS becomes:
+\begin{align*}
+    \bigtriangledown(T\mid_{U_1} \oplus \ldots \oplus T\mid_{U_n}(u_1,\ldots,u_n)) &= \bigtriangledown(T\mid_{U_1}(u_1) + \ldots + T\mid_{U_n}(u_n)) \\
+                                 &= T\mid_{U_1}(u_1) + \ldots + T\mid_{U_n}(u_n) \\
+                                 &= T(u_1) + \ldots + T(u_n)
+\end{align*}
+since both $T\mid_{U_1}\oplus\ldots\oplus T\mid_{U_n}$ and $T$ are linear and since $T\mid_{U_i}(u_i) = T(u_i)$ when $u_i \in U_i$.
+
+Thus the LHS and RHS are equal and we are done.
+
+\textbf{2.40 Solution.} We show that $P$ satisfies reflexivity, antisymmetry, and transitivity. For every subset $S$ of $\mathbb{R}^2$, it is clear that $S\subseteq S$ since $S=S$, satisfying reflexivity. For subsets $S_1,S_2\in\mathbb{R}^2$, if $S_1\subseteq S_2$ and $S_2\subseteq S_1$, then every element that is in $S_1$ is in $S_2$ and vice versa, which is equivalent to $S_1=S_2$, satisfying antisymmetry. For subsets $S_1,S_2,S_3\in\mathbb{R}^2$, if we have $S_1\subseteq S_2$ and $S_2\subseteq S_3$, then any element that is in $S_1$ must be in $S_2$ and therefore in $S_3$, so it follows that $S_1\subseteq S_3$, satisfying transitivity. Therefore $P$ is partially ordered by inclusion. 
+
+For every chain of $P$, we can find an upper bound in $P$ by taking the union of the subsets in the chain. This union set is necessarily in $P$ since the union of an arbitrary number of subsets of a set each with $\leq n$ elements must also be a subset with $\leq n$ elements.
+
+To show any set with $n$ elements is a maximal element in $P$, we assume for sake of contradiction that there exists a set $S$ with $n$ elements that is not a maximal element of $P$. Then there exists an element of $P$ that is strictly greater than $S$. In other words, there exists another set $S'$ with $S\subset S'$. But this means that $S'$ contains every element in $S$ plus at least one element not in $S$, and $S'$ would have at least $n+1$ elements, so it cannot be in $P$, a contradiction.
+
+\textbf{2.41 Solution.} There exists no element (set) in $S$ that is a strict subset of $\{d,o\}$, since none of $\{d\}, \{o\}, \{\}$ are in $S$. Thus $\{d,o\}$ is minimal in $S$.
+
+There exists no element (set) in $S$ that is a strict superset of $\{g,o,a,d\}$, since no set in $S$ contains $g,o,a,d$, and at least one other element. Thus $\{g,o,a,d\}$ is maximal in $S$.
+
+The set $\{d,o,g\}$ is not minimal since $\{d,o\}\subset\{d,o,g\}$. It is also not maximal since $\{d,o,g\}\subset\{g,o,a,d\}$.
+
+We can see that $\{o,a,f\}$ is minimal since no element in $S$ is a strict subset of $\{o,a,f\}$. It is also maximal since no element in $S$ is a strict superset of $\{o,a,f\}$. Thus $\{o,a,f\}$ is both minimal and maximal in $S$.
+
+\textbf{2.42 Solution.} By the complementary subspaces theorem, we can find a subspace $U'$ of $V$ such that $U\oplus U' = V$ (note that, if $U$ were not a strict subspace of $V$, then $U = V$ and we can just define $\overline{T} = T$). Then for every $v\in V$, we can write $v = u + u'$ for unique $u\in U$ and $u'\in U'$. Now, we define $\overline{T}(v) = T(u)$ for every $v\in V$ (essentially, $\overline{T}$ projects $v$ onto $T(u)$ and "eats" $u'$). 
+
+To show additivity, let $v_1,v_2\in V$, $u_1,u_2\in U$, and $u_1',u_2'\in U'$ such that $v_1 = u_1 + u_1'$ and $v_2 = u_2 + u_2'$. Since $v_1 + v_2 = (u_1 + u_2) + (u_1' + u_2')$ with $u_1 + u_2\in U$ and $u_1' + u_2'\in U'$ (both $U$ and $U'$ are subspaces), it follows that $\overline{T}(v_1+v_2) = T(u_1 + u_2) = T(u_1) + T(u_2) = \overline{T}(v_1) + \overline{T}(v_2$ by linearity of $T$.
+
+To show homogeneity, let let $v\in V$, $u\in U$, $u'\in U'$, and $a\in\mathbb{F}$ such that $v = u + u'$. Since $av = a(u + u') = au + au'$ with $au\in U$ and $au'\in U'$ (both $U$ and $U'$ are subspaces), it follows that $\overline{T}(av) = T(au) = aT(u) = a\overline{T}(v)$ by linearity of $T$.
+
+Thus $T$ extends to $\overline{T}\in Hom(V,W)$.
+
+\textbf{2.43 Solution.} For each $f$ with finite support in $\bigoplus_{k \in I}V_k$ with $f(i) = v_i \in V_i$ for $i \in I$, we can define $\bigoplus_{k \in I}T_i$ with the mapping $f \mapsto g$ for a $g$ with finite support in $\bigoplus_{k \in I}W_k$ such that $g(i) = T_i(v_i) \in W_i$ for $i \in I$. 
+
+It is easy to verify that the diagrams commute. For example, for the first diagram, suppose we have a function/sequence $(\ldots,0,v_1,\ldots,v_s,0,\ldots)$. Then $T_i \circ \pi_{V_i}$ sends it to $v_i$ and then to $T(v_i)$, and $\pi_{W_i} \circ \bigoplus_{k \in I}T_i$ sends it to $(\ldots,0,T(v_1),\ldots,T(v_s),0,\ldots)$ and then to $T(v_i)$, so the first diagram commutes.
+
+Similarly for the second diagram, suppose we have a vector $v_i \in V_i$. Then $\bigoplus_{k \in I}T_i \circ j_{V_i}$ sends it to $(\ldots,0,v_i,0,\ldots)$ and then $(\ldots,0,T(v_i),0,\ldots)$ and $j_{W_i} \circ T_i$ sends it to $T(v_i)$ and then to $(\ldots,0,T(v_i),0,\ldots)$, so the second diagram commutes as well.
+
+\textbf{2.44 Solution.} Suppose we have a $v_i \in V_i$ for every $i \in I$. Then from $j_{W_i} \circ T_i = S \circ j_{V_i}$ we have $(\ldots,0,T_i(v_i),0,\ldots) = j_{W_i}(T_i(v_i)) = S(j_{V_i}(v_i)) = S(\ldots,0,v_i,0,\ldots)$ for every $i \in I$ (where $v_i$ and $T_i(v_i)$ have corresponding indices).
+
+Now, suppose we have any function/sequence $f$ in the domain of $S$ (which, by definition, is the same domain as $\bigoplus_{k \in I}T_k$). Then $f$ can be written as $(\ldots,0,v_{k_1},\ldots,v_{k_s},0,\ldots)$ where $k_l \in I$ and $v_{k_l} \in V_{k_l}$ for $1 \leq l \leq s$. Then since $S$ is given to be a homomorphism, and since we showed $S(\ldots,0,v_i,0,\ldots) = (\ldots,0,T_i(v_i),0,\ldots)$ for every $i \in I$, we have
+\begin{align*}
+S(\ldots,0,v_{k_1},\ldots,v_{k_s},0,\ldots) &= S(\ldots,0,v_{k_1},0,\ldots) + \ldots + S(\ldots,0,v_{k_s},0,\ldots) \\
+&= (\ldots,0,T_{k_1}(v_{k_1}),0,\ldots) + \ldots + (\ldots,0,T_{k_s}(v_{k_s}),0,\ldots) \\
+&= (\ldots,0,T_{k_1}(v_{k_1}),\ldots,T_{k_s}(v_{k_s}),0,\ldots)
+\end{align*}
+Thus $S$ and $\bigoplus_{k \in I}T_k$ agree at every point in their domain, thus $S = \bigoplus_{k \in I}T_k$.
+
+\textbf{2.45 Solution.} False. Suppose we have a function $f \in \bigoplus_{k \in I}V_k$ given by the sequence $(\ldots,0,v_{k_1},\ldots,v_{k_s},0,\ldots)$ where $k_l \in I$ and $v_{k_l} \in V_{k_l}$ for $1 \leq l \leq s$ (where more than one of the $v_{k_l}$'s are nonzero). Then $j_{V_i}(\pi_{W_i}(f)) = (\ldots,0,v_i,0,\ldots) \neq (\ldots,0,v_{k_1},\ldots,v_{k_s},0,\ldots)$, which means that $j_{V_i} \circ \pi_{W_i} \neq Id_{\bigoplus_{k \in I}V_k}$, and therefore the diagram does not commute.

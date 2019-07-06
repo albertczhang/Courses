@@ -1,0 +1,90 @@
+\section{Homework 4}
+\boxed{\text{I worked alone.}}
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item \boxed{x \equiv 10\text{ (mod 15)}}. Since $(2,15)=1$, we know that the inverse of 2 modulo 15 is unique (by Theorem \textbf{6.2}) and is 8 (since $2\cdot 8\equiv 1\text{ (mod 15)}$). Then there exists a unique solution to $2x\equiv 5\text{ (mod 15)}$ and it is $x\equiv 8\cdot5\equiv 10\text{ (mod 15)}$.
+        
+        \item There exist \boxed{\text{no solutions}} to $2x\equiv 5\text{ (mod 16)}$, because $2x$ will be even for all integers $x$ and $16m+5$ (which is all integers congruent to 5 (mod 16)) will be odd for all integers $m$, since $16m$ is even for all integers $m$.
+        
+        \item \boxed{x \equiv 2\text{ (mod 5)}}. Suppose for sake of contradiction that there exists an $0\leq a<5$ such that $x\equiv a\text{ (mod 5)}$ and $a\neq 2$ with $5x\equiv10\text{ (mod 25)}$. Then $x=5m+a$ for some integer $m$, and we have $5(5m+a)=25m+5a\equiv10\text{ (mod 25)}$. But the only $a$ that satisfies $0\leq a<5$ and $25m+5a\equiv10\text{ (mod 25)}$ is $a=2$, a contradiction. Therefore the only solution to the modular equation is $x\equiv 2\text{ (mod 5)}$.
+    \end{enumerate}
+    
+    \item \begin{enumerate}[(a)]
+        \item The GCD of 527 and 323 is \boxed{17}:
+        
+        \begin{tabular}{cc|c}
+            527x & 323y & 527x+323y \\
+            \hline
+            527(1) & 323(-1) & 204 \\
+            527(-1) & 323(2) & 119 \\
+            527(2) & 323(-3) & 85 \\
+            527(-3) & 323(5) & 34 \\
+            527(8) & 323(-13) & 17 \\
+            527(-19) & 323(31) & 0
+        \end{tabular}
+
+        \item We use the extended Euclid's algorithm to solve for $5x+27y = 1$:
+        
+        \begin{tabular}{cc|c}
+            5x & 27y & 5x+27y \\
+            \hline
+            5(-5) & 27(1) & 2 \\
+            5(11) & 27(-2) & 1
+        \end{tabular}
+        
+        So we have that $5(11)-27(2)=1$, or $5(11)\equiv1\text{ (mod 27)}$, therefore the multiplicative inverse of 5 mod 27 is \boxed{11}.
+        
+        \item We have:
+        \begin{align*}
+            5x + 26 &\equiv 3 \text{ (mod 27)} \\
+            5x + 27 &\equiv 4 \text{ (mod 27)} \\
+            5x &\equiv 4 \text{ (mod 27)}
+        \end{align*}
+        
+        Then, since the inverse of 5 mod 27 is 11, $x\equiv 4(11)\equiv \boxed{17 \text{ (mod 27)}}$.
+        
+        \item Statement is \boxed{\text{False}}. Proof by counterexample: Let $a=2$, $b=4$, and $c=8$. Then $a$ has no multiplicative inverse mod $c$, since 2 and 8 are not relatively prime (there exist no integers $x,y$ such that $2x+8y=1$). However, the equivalence $2x\equiv 4\text{ (mod 8)}$ has solutions of the form $x\equiv 2\text{ (mod 4)}$. $\square$
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item Since $13\equiv 1\text{ (mod 12)}$, $13^{2018}\equiv\boxed{1\text{ (mod 12)}}$.
+        \item Since $8\equiv -1\text{ (mod 9)}$, any even power of 8 will be congruent to 1 mod 9, whereas any odd power of 8 will be congruent to $-1\equiv\boxed{8\text{ (mod 9)}}$.
+        \item We repeatedly square to find our answer:
+        \begin{align*}
+            7^2 &\equiv 49 \equiv 5 \text{ (mod 11)} \\
+            (7^2)^2 &\equiv 25 \equiv 3 \text{ (mod 11)} \\
+            ((7^2)^2)^2 &\equiv 9 \text{ (mod 11)} \\
+            (((7^2)^2)^2)^2 &\equiv 81 \equiv 4 \text{ (mod 11)} \\
+            ((((7^2)^2)^2)^2)^2 &\equiv 16 \equiv 5 \text{ (mod 11)} \\
+            (((((7^2)^2)^2)^2)^2)^2 &\equiv 25 \equiv 3 \text{ (mod 11)} \\
+            ((((((7^2)^2)^2)^2)^2)^2)^2 &\equiv 9 \text{ (mod 11)} \\
+            (((((((7^2)^2)^2)^2)^2)^2)^2)^2 &\equiv 81 \equiv 4 \text{ (mod 11)}
+        \end{align*}
+        
+        So, $7^{256}\equiv\boxed{4\text{ (mod 11)}}$.
+        
+        \item By Fermat's Little Theorem, we have that $3^{22}\equiv1\text{ (mod 23)}$. Then $3^{160}\equiv(3^{22})^7\cdot3^6\equiv3^6\equiv(27)^2\equiv4^2\equiv \boxed{16 \text{ (mod 23)}}$.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item For prime numbers $p$, all integers from 1 to $p-1$ are relatively prime to $p$, so \boxed{\phi(p)=p-1}.
+        \item For prime numbers $p$ and positive integers $k$, all integers from 1 to $p^k$ except for multiples of $p$ are relatively prime to $p^k$. Therefore \boxed{\phi(p^k) = p^k-p^{k-1}}.
+        \item From part (a), we know that $a^{\phi(p)}=a^{p-1}$. Then by Fermat's Little Theorem, we have \boxed{a^{\phi(p)}\equiv 1\text{ (mod p)}} given the conditions on $a$ and $p$ from the problem.
+        \item We can write $a^{\phi(b)} = a^{\phi(p_1^{\alpha_1})\phi(p_2^{\alpha_2})\ldots\phi(p_k^{\alpha_k})}$. For all $1\leq i\leq k$, we know that $a^{\phi(p_i)}\equiv 1$ (mod $p_i$) since $a$ is relatively prime to $b$ (using our result from part (c)). Also, since $\phi(p_i^{\alpha_i})=\phi(p_i)\phi(p_i)\ldots\phi(p_i)$ where $\phi(p_i)$ is multiplied by itself $\alpha_i$ times, we know that $a^{\phi(p_i^{\alpha_i})}\equiv (a^{\phi(p_i)})^{\phi(p_i^{a_i-1})} \equiv (1)^{\phi(p_i^{a_i-1})} \equiv 1$ (mod $p_i$). Then since $a^{\phi(b)} = (a^{\phi(p_i^{\alpha_i})})^{\phi()\ldots\phi()}$, where $\phi()\ldots\phi()$ is the product of all the $\phi(p_j^{\alpha_j})$ where $j\neq i$, we have that $a^{\phi(b)} \equiv (1)^{\phi()\ldots\phi()} \equiv 1$ (mod $p_i$) for all $1\leq i\leq k$. $\square$
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item If $a$ and $n$ are not relatively prime, then there exists an integer $m>1$ such that we can write both $a$ and $n$ as $a=ma'$ and $n=mn'$ for integers $a'$ and $n'$. Then $a^{n-1}=(ma')^n$. Now assume for sake of contradiction that $(ma')^n\equiv 1$ (mod $mn'$). Then we can rewrite this equivalence as an equation $(ma')^n = 1 + (mn')k$ for some integer $k$. Now, we have $(ma')^n-mn'k = 1$. However, the LHS is clearly divisible by $m$, and any integer multiple of $m$ cannot equal to 1 since $m>1$, a contradiction.
+        
+        Thus if $a$ and $n$ are relatively prime, we have that $a^{n-1}\not\equiv1$ (mod $n$).
+        
+        \item Suppose we have found an $a\in S(n)$ such that $a^{n-1}\not\equiv 1$ (mod $n$). Then for every $b\in S(n)$ such that $b^{n-1}\equiv 1$ (mod $n$), we can draw a bijection between $b\longleftrightarrow ab$ such that $(ab)^{n-1}\equiv (a)^{n-1}(b)^{n-1}\equiv a^{n-1}\not\equiv 1$ (mod $n$) for all such $b$. Thus there must exist \textit{at least} as many elements in $S(n)$ that fail the FLT condition as those that pass it. In other words, we can find at least $|S(n)|/2$ such elements that fail the condition as long as we can find a single $a\in S(n)$ that fails the condition. $\square$
+        
+        \item Say we have $a\equiv b$ (mod $m_1$) and $a\equiv b$ (mod $m_2$). Then we can write $a=b+m_1k_1$ and $a=b+m_2k_2$ for some $k_1,k_2\in\mathbb{Z}$. Then $a-b=m_1k_1$ and $a-b=m_2k_2$, and we have that $m_1k_1=m_2k_2$. We can see that $m_2\mid m_1k_1$. Since $gcd(m_1,m_2)=1$, we know that $m_2$ must therefore divide $k_1$. Then we can write $k_1=m_2x$ for some $x\in\mathbb{Z}$. Then $a-b=m_1k_1=m_1m_2x$, from which we can obtain $a=b+m_1m_2x$. This is equivalent to $a\equiv b$ (mod $m_1m_2$), and we are done. $\square$
+        
+        \item From Fermat's little theorem, we have that $a^{p_i-1}\equiv 1$ (mod $p_i$) for each of the $p_i$. Then since for each of the $p_i$, we are given that $p_i-1\mid n-1$, there exists an integer $m_i$ such that $a^{n-1}=(a^{p_1-1})^{m_i}$. Now, we have for each of the $p_i$, it is true that $a^{n-1}\equiv (a^{p_1-1})^{m_i}\equiv (1)^{m_i}\equiv 1$ (mod $p_i$). Using our result from part (c), we know that each of the $p_i$ are pairwise relatively prime since they are primes, so we have $a^{n-1}\equiv 1$ (mod $p_1p_2\ldots p_k=n$) for all $a\in S(n)$, and we are done. $\square$
+        
+        \item We can write 561 in terms of its prime factorization: $3\cdot11\cdot17$. Then we check that for each prime $p$ in its prime factorization, $p-1\mid 560$. We have $2\mid560$, $10\mid560$, and $16\mid560$. Therefore for all $a$ coprime with 561 ($\forall a\in S(n)$), it is true that $a^{560}\equiv 1$ (mod 561). $\square$
+    \end{enumerate}
+\end{enumerate}

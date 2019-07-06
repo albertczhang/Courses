@@ -1,0 +1,54 @@
+\section{Homework 5}
+Sundry: I worked alone.
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item $3^{10}\equiv 1$ (mod 11), so $3^{30}\equiv 1$ (mod 11). Therefore we have $3^{33}\equiv 3^3\equiv 27 \equiv\boxed{5}$ (mod 11).
+        \item $10001\equiv 5$ (mod 17), and $5^{16}\equiv 1$ (mod 17), so we have $10001^{10001}\equiv (5^{16})^{625}(5)\equiv\boxed{5}$ (mod 17).
+        \item We have
+        \begin{align*}
+            &10^{10}+20^{20}+30^{30}+40^{40} \text{ (mod 7)} \\
+            &\equiv 3^{10}+6^{20}+2^{30}+5^{40} \text{ (mod 7)} \\
+            &\equiv (3^6)(3^4)+(6^6)^3(6^2)+(2^6)^5+(5^6)^6(5^4) \text{ (mod 7)} \\
+            &\equiv 4+1+1+2 \text{ (mod 7)} \\
+            &\equiv \boxed{1} \text{ (mod 7)}
+        \end{align*}
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item $N=pq=7\cdot 11 = \boxed{77}$.
+        \item $e$ must be relatively prime to $(p-1)(q-1)=(6)(10)=\boxed{60}$.
+        \item $60=2^2\cdot 3\cdot 5$, so the smallest prime $e$ can be is \boxed{7}.
+        \item $gcd(7,60)=\boxed{1}$.
+        \item $d$ is the inverse of $e$ mod 60, so we use Euclidean algorithm to determine $d$:
+        \begin{align*}
+            60*1 + 7*(-8) &= 4 \\
+            60*(-1) + 7*(9) &= 3 \\
+            60*(2) + 7*(-17) &= 1.
+        \end{align*}
+        So $d\equiv -17$ (mod 60) $=\boxed{43}$.
+        \item We have $30^e\equiv 30^7\equiv (30^2)^2(30^2)(30)\equiv (900)^2(900)(30)\equiv (53)^2(53)(30)\equiv (37)(53)(30)\equiv \boxed{2}$ (mod 77).
+        \item Bob will raise 2 to the $d$th power, so we have $2^{43}\equiv (2^10)^4(2^3)\equiv (1024^4)(8)\equiv (23^4)(8)\equiv (67^2)(8)\equiv (23)(8)\equiv \boxed{30}$ (mod 77), which is Alice's original message.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \setlength{\parskip}{8pt}
+        \item Consider the set $S=\{1, 2,\ldots p-1, p+1, p+2,\ldots, 2p-1, 2p+1, 2p+2,\ldots, p^2-2, p^2-1\}$, where we take the set $\{1, 2,\ldots, p^2-1\}$ of integers from 1 to $p^2-1$ and we take out all multiples of $p$. Then for every $x\in S$, we know that $x$ is relatively prime to $p$ and therefore also relatively prime to $p^2$, since $p$ is prime. Now we construct the set $S'=\{a, 2a,\ldots (p-1)a, (p+1)a, (p+2)a,\ldots, (2p-1)a, (2p+1)a, (2p+2)a,\ldots, (p^2-2)a, (p^2-1)a\}$ for some integer $a$ coprime to $p$ (and therefore $p^2$). We know that there exists a bijection between elements of $S$ and elements of $S'$ since $gcd(a,p^2)=1$. Then if we take the product of elements in $S$ it must equal to the product of elements in $S'$ mod $p^2$. That is,
+        \begin{align*}
+            (1a)(2a)\ldots((p-1)a)((p+1)a)\ldots((p^2-1)a) \\
+            \equiv (1)(2)\ldots(p-1)(p+1)\ldots(p^2-1) \text{ (mod }p^2).
+        \end{align*}
+        But since each element in $S$ is relatively prime to $p^2$, they must all have inverses (mod $p^2$), so we can multiply by their inverses on both sides to get
+        \begin{align*}
+            a^{p(p-1)} \equiv 1 \text{ (mod }p^2).
+        \end{align*}
+        
+        \item We want to show that $x^{ed}-x\equiv 0$ (mod $N$). Since $N=p^2q^2$, it is sufficient to prove that $x^{ed}-x\equiv 0$ (mod $p^2$) and $x^{ed}-x\equiv 0$ (mod $q^2$).
+        
+        Since $ed\equiv 1$ (mod $p(p-1)q(q-1)$), we know that $ed\equiv 1$ (mod $p(p-1)$). Then we can write $ed=kp(p-1)+1$ for some integer $k$. It follows that $x^{ed}-x=x(x^{kp(p-1)}-1)$. Since $x$ is relatively prime to $p$, we can use the result from part (a), i.e. we have $x^{p(p-1)}\equiv 1$ (mod $p^2$). It follows that $x((x^{p(p-1)})^k-1)\equiv x(1^k-1)\equiv 0$ (mod $p^2$). So $x^{ed}-x\equiv 0$ (mod $p^2$) and by a symmetric argument $x^{ed}-x\equiv 0$ (mod $q^2$).
+        
+        Thus $x^{ed}\equiv x$ (mod $p^2q^2$) for $x$ relatively prime to both $p$ and $q$.
+        
+        \item Suppose the RSA Squared case is broken. Then we know the value of $p^2q^2$ to be $N'$ and the value of $p(p-1)q(q-1)$ to be some integer $M'$. Then if we know the value of $pq$ to be $N$, we can deduce the value of $(p-1)(q-1)$ to be equal to $\frac{p(p-1)q(q-1)}{pq} = \frac{M'}{N} = \frac{M'}{\sqrt{N'}}$. Thus if RSA Squared can be broken, then so can the normal RSA.
+    \end{enumerate}
+\end{enumerate}

@@ -1,0 +1,103 @@
+\section{Homework 9}
+Sundry: I worked alone.
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item \begin{enumerate}
+            \setlength{\parskip}{6pt}
+            \item Distribution of $X$:
+            
+            \begin{tabular}{c|c|c|c|c|c}
+                0 & 1 & 2 & 3 & 4 & 5 \\
+                \hline
+                $\frac{243}{1024}$ & $\frac{405}{1024}$ & $\frac{270}{1024}$ & $\frac{90}{1024}$ & $\frac{15}{1024}$ & $\frac{1}{1024}$
+            \end{tabular}
+            
+            Distribution of $Y$:
+            
+            \begin{tabular}{c|c|c|c|c|c}
+                5 & 4 & 3 & 2 & 1 & 0 \\
+                \hline
+                $\frac{243}{1024}$ & $\frac{405}{1024}$ & $\frac{270}{1024}$ & $\frac{90}{1024}$ & $\frac{15}{1024}$ & $\frac{1}{1024}$
+            \end{tabular}
+            
+            \item We have $\frac{1 + 4 + 9 + 16 + 25 + 36}{6} = \frac{61}{6}$.
+        \end{enumerate}
+        
+        \item No. Suppose we are flipping a fair coin once. Then let $A$ be the number of heads and $B$ be the number of tails. Then for $i \in \{0, 1\}$, we have that $\mathbb{P}[A=i] = \frac{1}{2} = \mathbb{P}[B=i]$, however $\mathbb{P}[A=B] = 0$.
+        
+        \item No. Let $C$ be the result of rolling a fair 6-sided dice. Then we have $\mathbb{E}[C^2] = \frac{61}{6} \neq \frac{49}{4} = \mathbb{E}[C]^2$.
+        
+        \item No. Let $\mathbb{P}[X=101000] = \frac{1}{101}$ and $\mathbb{P}[X=1] = \frac{100}{101}$. Also let $\mathbb{P}[X=2] = 1$. Then $\mathbb{E}[X] = 1000\frac{100}{101} > 200 = 100\mathbb{E}[Y]$, but $\mathbb{P}[X > Y] = \frac{1}{101} \not> \frac{1}{100}$.
+        
+        \item No. Let $X$ be the number of heads when flipping a fair coin once, and let $Y$ be the number of heads when flipping another fair coin once. Then we have $\mathbb{E}[\frac{X}{X+Y}] = \frac{3}{8} \neq \frac{1}{2} = \frac{\mathbb{E}[X]}{\mathbb{E}[X+Y]}$.
+        
+        \item No. Let $\mathbb{P}[A \cap B \cap C] = \frac{1}{8}$, $\mathbb{P}[A \cap B] = \frac{3}{8}$, $\mathbb{P}[B \cap C] = \frac{2}{8}$, $\mathbb{P}[A \cap C] = \frac{1}{8}$, and $\mathbb{P}[A] = \mathbb{P}[B] = \mathbb{P}[C] = \frac{1}{2}$. Then we have that $\mathbb{P}[A \cap B \cap C] = \frac{1}{8} = \mathbb{P}[A]\mathbb{P}[B]\mathbb{P}[C]$, but $\mathbb{P}[A|B] = \frac{3}{4} \neq \frac{1}{2} = \mathbb{P}[A]$.
+        
+        \item No. The one case where $A$ is independent of itself is if $A$ has probability 1. That is, $P[A|A] = 1 = P[A]$.
+        
+        \item Yes. We have $\P[A \cap B] = \P[A]\P[B]$. If we draw a venn diagram, we notice that $\P[\overline{A} \cap \overline{B}]$ is the the space outside of both $A$ and $B$. This is also equivalent to $1 - \P[A] - \P[B] + \P[A \cap B] = 1 - \P[A] - \P[B] + \P[A]\P[B] = (1 - \P[A])(1 - \P[B]) = \P[\overline{A}]\P[\overline{B}]$. It follows that $\overline{A}$ and $\overline{B}$ are mutually independent as well.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item We can use linearity of expectation on the separate events that each individual airport is empty. Since each airport has a $\frac{1}{4}$ chance of being empty (the plane to its left flies left and the plane to its right flies right). We get $\frac{n}{4}$ expected number of empty airports.
+        
+        \item Let $A$ be the set of all airports. Then we have 
+        \[
+        \sum\limits_{i \in A}\prod\limits_{j \in N(i)} 1 - \frac{1}{deg(j)}
+        \]
+        expected number of empty airports.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item We use P.I.E. to calculate the number of integers relatively prime to both 3 and 5:
+        \[
+        n - \frac{n}{5} - \frac{n}{3} + \frac{n}{15}
+        \]
+        
+        \item By similar logic to (a), we use P.I.E. to get
+        \begin{align*}
+            \phi(n) &= n - (\sum\limits_{i = 1}^k \frac{n}{p_i}) + \dots + (-1)^k\frac{n}{p_1 \dots p_k}.
+        \end{align*}
+        From this it is easy to see that $\frac{\phi(n)}{n}$ is equal to the RHS since expanding out the RHS gives us precisely the terms from above.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item We have $\binom{n}{2}$ total pairs of vertices, so the sample space has a size of $2^{\binom{n}{2}}$ since each pair can either share an edge or not share an edge.
+        
+        \item There is exactly one way for the edges to form a clique, so the probability is $\frac{1}{2^{\binom{k}{2}}}$.
+        
+        \item Suppose we have $n$ distinguishable bins and $k$ distinguishable balls. Then there are $n^k$ ways to put the balls in the bins. Now, notice that placing one ball in $k$ selected bins disregarding the order of the balls is a viable way to place the balls into the bins, and is thus covered by the $n^k$ number of ways. Since there are $\binom{n}{k}$ ways to do this, it follows that $\binom{n}{k} \leq n^k$.
+        
+        \item There are $\binom{n}{k}$ ways we can select $k$ vertices out of the $n$ total, and for each there is a $\frac{1}{2^{\binom{k}{2}}}$ probability of containing a clique (from part (b)). Then by union bound, the probability that the graph contains a $k$-clique is less than or equal to $\frac{\binom{n}{k}}{2^{\binom{k}{2}}}$. Since $k \geq 4logn + 1$, we know that $n \leq 2^{\frac{k-1}{4}}$, so we get
+        \begin{align*}
+            \frac{\binom{n}{k}}{2^{\binom{k}{2}}} &\leq \frac{n^k}{2^{\binom{k}{2}}} \\
+            &\leq \frac{2^{\frac{k(k-1)}{4}}}{2^{\frac{k(k-1)}{2}}} \\
+            &\leq \frac{1}{2^{\frac{k-1}{4}}} \\
+            &\leq \frac{1}{n},
+        \end{align*}
+        and we are done.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item There are $\binom{n}{k}$ ways to choose the $k$ balls that land in the first bin, and $(n-1)^{n-k}$ ways to throw the remaining balls into other bins. So our probability is $\frac{\binom{n}{k}(n-1)^{n-k}}{n^n}$.
+        
+        \item Using our logic from (a), we get
+        \[
+        p = \sum\limits_{k = \frac{n}{2}}^n \frac{\binom{n}{k}(n-1)^{n-k}}{n^n}
+        \]
+        
+        \item We have $n$ bins, so using union bound we get an upper bound of $np$.
+        
+        \item Using P.I.E., we get
+        \[
+        p + p - \frac{\binom{n}{n/2}}{n^n} = 2p - \frac{\binom{n}{n/2}}{n^n}
+        \]
+        since there are $\binom{n}{n/2}$ ways to place half the balls in bin 1 and the other half in bin 2.
+        
+        \item Given that we are picking a ball from the bin that contains the first ball, there is a $\frac{\binom{n-1}{i-1}(n-1)^{n-i}}{n^n}$ chance that it contains $i$ balls (i.e. $\binom{n-1}{i-1}$ ways to choose the other $i-1$ balls to be thrown into the same bin, and $(n-1)^{n-i}$ ways to throw the remaining balls into other bins). Therefore we get that the probability that we get the first ball we threw is
+        \[
+        \sum\limits_{i = 1}^n \frac{\binom{n-1}{i-1}(n-1)^{n-i}}{in^n}
+        \]
+    \end{enumerate}
+\end{enumerate}

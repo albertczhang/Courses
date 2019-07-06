@@ -1,0 +1,176 @@
+\textbf{1.37 Solution.} The kernel of $D^n$ is the set of functions whose $n^{\text{th}}$ derivative is the 0 function, $\{f\mid f\in C^{\infty}(\mathbb{R},\mathbb{R}), f^n=0\}$. This consists of all the polynomials of degree less than $n$.
+
+If $T=D^1-Id$, then for a function $f\in C^{\infty}(\mathbb{R},\mathbb{R})$, $T(f)=D^1(f)-Id(f)=f'-f$. The kernel of $T$ is then the set of all function $f$ such that $f'-f = 0$, or $f'=f$. This is just the set $\{f(x)=a\cdot e^x\mid x\in\mathbb{R},a\in\mathbb{F}\}$.
+
+\textbf{1.38 Solution.} Suppose we have two sequences $z=(z_1,z_2,z_3,\ldots)$ and $w=(w_1,w_2,w_3,\ldots)$ such that $z,w\in V$. Then using coordinate wise addition we have $T(z+w)=T(z_1+w_1,z_2+w_2,z_3+w_3,\ldots)=(z_2+w_2,z_3+w_3,\ldots)=(z_2,z_3,\ldots)+(w_2,w_3,\ldots)=T(z_1,z_2,z_3,\ldots)+T(w_1,w_2,w_3,\ldots)=T(z)+T(w)$, satisfying additivity. Furthermore, if we have a scalar $a\in\mathbb{F}$, then by coordinate wise scalar multiplication we have $T(az)=T(az_1,az_2,az_3,\ldots)=(az_2,az_3,\ldots)=a(z_2,z_3,\ldots)=aT(z)$, satisfying homogeneity.
+
+\textbf{1.39 Solution.} For any pair $(x,y)\in\mathbb{R}^2$, define $T:(x,y)\mapsto(0,y)$ and $S:(x,y)\mapsto(y,0)$. Then $(T\circ S)(x,y)=T(y,0)=(0,0)$, but $(S\circ T)(x,y)=S(0,y)=(y,0)\neq(0,0)$.
+
+\textbf{1.40 Solution.} First, we know that every field is a vector space over itself. Then it follows that every field $\mathbb{F}$ is an algebra when we take the vector space as $\mathbb{F}$ over the field $\mathbb{F}$ with the binary operations of addition and multiplication carried over from addition and multiplication in $\mathbb{F}$. We know that the algebra must be associative because of the associativity of field multiplication, so it is an associative algebra. Furthermore, we know that the multiplicative identity exists and is the same element 1 from $\mathbb{F}$. Thus every field is a unital associative algebra.
+
+\textbf{1.41 Solution.} Since $U$ is an isomorphism, there exists an inverse $U^{-1}:W\to V$ such that $UU^{-1}=U^{-1}U=Id$. If for every $T\in End(V)$, $F$ takes $T$ to a unique $UTU^{-1}\in End(W)$, then we can reverse map every $UTU^{-1}\in End(W)$ to a unique $T'\in End(V)$ with the mapping $UTU^{-1}\mapsto U^{-1}(UTU^{-1})U=T$. But then $T'=T$ and $F$ is a bijection. Now we only need to prove that $F$ is a homomorphism that takes an endomorphism in $V$ to an endomorphism in $W$.
+
+Suppose $T:V\to V$ so that $T\in End(V)$. Then if we have vectors $v,v'\in V$ and $w,w'\in W$ such that $T(v)=v'$, $U(v)=w$, and $U(v')=w'$, we have that $UTU^{-1}(w)=UT(v)=U(v')=w'$. Therefore $UTU^{-1}$ sends each vector $w\in W$ to a unique vector $w'\in W$, so $UTU^{-1}\in End(W)$.
+
+Now, for $T,T'\in End(V)$, we have $F(T+T')=U(T+T')U^{-1}=U(TU^{-1}+T'U^{-1})=UTU^{-1}+UT'U^{-1}=F(T)+F(T')$, satisfying additivity. Furthermore, for $a\in\mathbb{F}$, we have $F(aT)=U(aT)U^{-1}=a(UTU^{-1})=aF(T)$, satisfying homogeneity.
+
+Thus $T\mapsto UTU^{-1}$ determines an isomorphism $F:End(V)\to End(W)$.
+
+\textbf{1.42 Solution.} Since $A$ and $B$ are isomorphic, suppose we have $f:A\to B$ such that $f(a\cdot a')=f(a)\cdot f(a')$. Then for all $a_1,a_2,a_3\in A$ and $b_1,b_2,b_3\in B$, we have that $b_1\cdot(b_2\cdot b_3) = f(a_1)\cdot(f(a_2)\cdot f(a_3))= f(a_1\cdot(a_2\cdot a_3))=f((a_1\cdot a_2)\cdot a_3)=(f(a_1)\cdot f(a_2))\cdot f(a_3)= (b_1\cdot b_2)\cdot b_3$. Therefore due to the bijectivity of $f$, the algebra $B$ is associative.
+
+Similarly, if replacing the word associative for unital, suppose we have the multiplicative identity $1_A\in A$ and define $1_B=f(1_A)$. Then for all $a\in A$ and $b\in B$ such that $f(a)=b$, we have $b\cdot 1_B = f(a)\cdot f(1_A) = f(a\cdot 1_A)=f(a)=b$ and also $1_B\cdot b = f(1_A)\cdot f(a) = f(1_A\cdot a)=f(a)=b$. Therefore we have $1_B\cdot b = b = b \cdot 1_B$, and thus $B$ is unital.
+
+\textbf{1.43 Solution.} 
+
+$(AB)C =
+\left[\begin{tabular}{cc}
+    2 & 2 \\
+    -1 & 13
+\end{tabular}\right]
+\left[\begin{tabular}{c}
+    3 \\
+    1
+\end{tabular}\right] =
+\left[\begin{tabular}{c}
+    8 \\
+    10
+\end{tabular}\right]$
+
+$A(BC) = 
+\left[\begin{tabular}{ccc}
+    1 & 2 & -1 \\
+    1 & 3 & 2
+\end{tabular}\right]
+\left[\begin{tabular}{c}
+    4 \\
+    2 \\
+    0
+\end{tabular}\right] =
+\left[\begin{tabular}{c}
+    8 \\
+    10
+\end{tabular}\right]$
+
+\textbf{1.44 Solution.}
+
+$A^2 = 
+\left[\begin{tabular}{ccc}
+    0 & 0 & 1 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+\end{tabular}\right]$
+
+$A^3 = AA^2 = 
+\left[\begin{tabular}{ccc}
+    0 & 1 & 1 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+\end{tabular}\right]
+\left[\begin{tabular}{ccc}
+    0 & 0 & 1 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+\end{tabular}\right] =
+\left[\begin{tabular}{ccc}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+\end{tabular}\right]$
+
+\textbf{1.45 Solution.} $AX_i$ is the $m\times 1$ matrix taken from the $i^{\text{th}}$ column of $A$. For example, if $A = 
+\left[\begin{tabular}{ccc}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9
+\end{tabular}\right]$, then $AX_1 = 
+\left[\begin{tabular}{c}
+    1 \\
+    4 \\
+    7
+\end{tabular}\right]$,
+$AX_2 = 
+\left[\begin{tabular}{c}
+    2 \\
+    5 \\
+    8
+\end{tabular}\right]$, and
+$AX_3 =
+\left[\begin{tabular}{c}
+    3 \\
+    6 \\
+    9
+\end{tabular}\right]$.
+
+\textbf{1.46 Solution.} $A^n = 
+\left[\begin{tabular}{cc}
+    cos(n$\theta$) & -sin(n$\theta$) \\
+    sin(n$\theta$) & cos(n$\theta$)
+\end{tabular}\right]$ for all real $\theta$ and $n\in\mathbb{Z}$. This can be thought of more simply as the rotational matrix of $\theta$, and so each application of $A$ just rotates by an additional $\theta$.
+
+\textbf{1.47 Solution.} Since $A$ and $B$ are nilpotent matrices, suppose $A^x=B^y=0$ for integers $x,y>0$. 
+
+Then by commutativity of $A$ and $B$, we have $(AB)^{xy}=(AB)(AB)\ldots(AB)=(A)^{xy}(B)^{yx}=(A^x)^y(B^y)^x=0^y0^x=0$. Thus $AB$ is nilpotent.
+
+To prove $A+B$ is nilpotent, we raise $A+B$ to the $(x+y)^{\text{th}}$ power to get $(A+B)^{x+y} = A^{x+y}+\binom{x+y}{1}(A^{x+y-1})(B)+\ldots+ \binom{x+y}{x+y-1}(A)(B^{x+y-1})+B^{x+y}$, the binomial expansion (note that we can do this because matrix multiplication is distributive and associative). Now, we can see that each term of the binomial expansion can be written as $\binom{x+y}{i}(A^{x+y-i})(B^{i})$ for $0\leq i\leq x+y$. Then every term has either a power of $A$ at least $x$ or a power of $B$ at least $y$. Thus each term evaluates to 0, and so the sum evaluates to 0. Therefore $A+B$ is nilpotent as well.
+
+\textbf{1.48 Solution.} Since $X$ is a set, each element must be distinct. It follows that each of the $x_i$ are distinct such that exactly one of the $\delta_{x_i}$ can evaluate to 1 and the rest to 0. Since $\{x_1,\ldots,x_k\}$ are the base points of $f$, we know that $f$ can be written as $f(x)\delta_{x_1} + f(x)\delta_{x_2} + \ldots + f(x)\delta_{x_k}$, so that $f$ evaluates to $f(x_i)$ when $x=x_i$ (since for all other $x_j\neq x_i$, $\delta_{x_j}$ evaluates to 0). Then this is just the summation $\sum_{i=1}^ka_i\delta_{x_i}$ where $a_i=f(x_i)$.
+
+\textbf{1.49 Solution.} \boxed{\text{True.}} Since the vector space is $\mathbb{R}\langle\mathbb{R}\rangle$, we define vector addition (function addition) for $f,g\in\mathbb{R}\langle\mathbb{R}\rangle$ as $(f+g)(x)=f(x)+g(x)$. Similarly we define vector multiplication (function multiplication) as $(f\cdot g)(x)=f(x)g(x)$. Then we can deduce that $\mathbb{R}\langle\mathbb{R}\rangle$ is closed under both vector addition and multiplication since they simplify to field ($\mathbb{R}$) addition and multiplication. Furthermore, it is easy to check that vector multiplication is bilinear as vector multiplication and addition just reduce to multiplication in the field $\mathbb{R}$. Thus $\mathbb{R}\langle\mathbb{R}\rangle$ is an algebra over $\mathbb{R}$ under function addition and multiplication.
+
+\textbf{1.50 Solution.} Suppose we take the vector space $\mathbb{R}$ over the field $\mathbb{R}$. Then if we have the subset of integers $\mathbb{Z}\subseteq\mathbb{R}$, we know that $\mathbb{Z}$ is closed under addition (adding any two integers returns another integer) but not scalar multiplication (multiplication by a fractional scalar does not produce an integer vector).
+
+Now suppose we take the vector space $\mathbb{C}$ over the field $\mathbb{R}$. Then if we have the union of the real and imaginary axes, which is a subset of $\mathbb{C}$, we can see that it is closed under scalar multiplication (every scalar multiple of 1 and i are in our subset), but not closed under addition (e.g. the complex number 1+i is not in our subset).
+
+A set closed under addition and scalar multiplication that is not a vector space is the empty set $\{\}$.
+
+\textbf{1.51 Solution.} First, it is easy to see that for any $a,b\in\mathbb{R}^+$, $ab>0$ so $ab\in\mathbb{R}^+$, and therefore the set is closed under "addition". Furthermore, for any $a\in\mathbb{R}^+$ and $\frac{p}{q}\in\mathbb{Q}$, we know that $a^{\frac{p}{q}}>0$, so the set is also closed under "scalar multiplication".
+
+Now, it is easy to see that $(\mathbb{R}^+,\boxplus)$ is an abelian group, since we have:
+\begin{itemize}
+    \setlength{\parskip}{0pt}
+    \item ab=ba, so $\boxplus$ is commutative.
+    \item a(bc)=(ab)c, so $\boxplus$ is associative.
+    \item the identity exists and is $1\in\mathbb{R}^+$.
+    \item the inverse of every element $a\in\mathbb{R}^+$ exists and is equivalent to $\frac{1}{a}\in\mathbb{R}^+$.
+\end{itemize}
+
+Now we confirm the remaining four axioms of a vector space for $\frac{p}{q},\frac{p'}{q'}\in\mathbb{Q}$ and $a,b\in\mathbb{R}^+$:
+\begin{itemize}
+    \setlength{\parskip}{0pt}
+    \item $(a^{\frac{p}{q}})^{\frac{p'}{q'}} = a^{(\frac{p}{q}\cdot\frac{p'}{q'})}$, satisfying associativity of scalar multiplication.
+    \item The identity of scalar multiplication exists and is the element $1\in\mathbb{Q}$, such that for every $a\in\mathbb{R}^+$, $a^1=a$.
+    \item $a^{(\frac{p}{q}+\frac{p'}{q'})} = a^{\frac{p}{q}}a^{\frac{p'}{q'}}$, satisfying distributivity over scalar addition.
+    \item $(ab)^{\frac{p}{q}}=a^{\frac{p}{q}}b^{\frac{p}{q}}$, satisfying distributivity over vector addition.
+\end{itemize}
+
+Thus we have shown that the set is indeed a vector space. The zero vector in $\mathbb{R}^+$ is the number $1$ since any positive real "added" to $1$ is the same as multiplying (classic multiplication) by $1$.
+
+\textbf{1.52 Solution.} First, it is easy to see that the power set of $X$ is closed under $\Delta$, as any set taken from the exclusive or of two subsets of $X$ is still a subset of $X$. Furthermore, $\textbf{P}(X)$ is also closed under scalar multiplication; if we define $0S=\{\}$ and $1S=S$.
+
+Now, we show that $(\textbf{P}(X),\Delta)$ is an abelian group:
+\begin{itemize}
+    \setlength{\parskip}{0pt}
+    \item Exclusive Or is clearly commutative, since it is the set of all elements in either $A\subseteq X$ or $B\subseteq X$ but not both.
+    \item Exclusive Or is also associative, since both $A\Delta(B\Delta C)$ and $(A\Delta B)\Delta C$ both evaluate to the set of all elements in exactly one of $A$, $B$, and $C$.
+    \item The identity element exists and is the empty set $\{\}$.
+    \item For every $A\in\textbf{P}(X)$, the inverse element exists and is $A$ itself.
+\end{itemize}
+
+Next, we confirm the remaining four axioms of a vector space for all $A,B\in\textbf{P}(X)$ and $x,y\in\mathbb{Z}_2$:
+\begin{itemize}
+    \setlength{\parskip}{0pt}
+    \item It is easy to check that for all combinations of $x,y\in\mathbb{Z}_2$ ($(0,0),(0,1),(1,0),(1,1)$), scalar multiplication is associative. That is, $x(yA) = (xy)A$.
+    \item The identity of scalar multiplication exists and is defined to be $1\in\mathbb{Z}_2$, such that $1A=A=A1$.
+    \item $(0+0)A = \{\} = (0A)\Delta(0A)$, $(1+0)A = A = (1A)\Delta(0A)$, $(1+1)A = \{\} = (1A)\Delta(1A)$, and $(0+1)A = A = (0A)\Delta(1A)$, satisfying distributivity over scalar addition.
+    \item $0(A+B) = \{\} = (0A)\Delta(0B)$, and $1(A+B) = A\Delta B = (1A)\Delta(1B)$, satisfying distributivity over vector addition.
+\end{itemize}
+Therefore $\textbf{P}(X)$ over the field $\mathbb{Z}_2$ under $\Delta$ is indeed a vector space.
+
+\textbf{1.53 Solution.} We will show that $\textbf{P}(\{p\})$ is the underlying set of a vector space over $\mathbb{Z}_2$ when embellished with Exclusive Or as vector addition.
+
+Since $\{p\}\subseteq\textbf{P}(X)$, from our results in exercise 1.52, all we have to show is that the set is closed under Exclusive Or and scalar multiplication.
+
+We have that $\{p\}\Delta\{\}=\{p\}$, $\{p\}\Delta\{p\}=\{\}$, and $\{\}\Delta\{\}=\{\}$, so the set is closed under vector addition. Finally, we have that $1\{p\}=\{p\}$, $0\{p\}=\{\}$, $1\{\}=\{\}$, and $0\{\}=\{\}$, therefore the set is also closed under scalar multiplication.
+
+Thus, $\textbf{P}(\{p\})$ is the underlying set of a vector space, more specifically a subspace of $\textbf{P}(X)$.
+

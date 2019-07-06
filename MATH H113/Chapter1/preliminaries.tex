@@ -1,0 +1,81 @@
+\section{Preliminary Notions}
+\subsection{Homework 1}
+\begin{enumerate}
+    \item \textbf{Solution:}
+    (fails reflexivity) First consider the set $\{T, F\}$ of the two true and false boolean values. If we use logical \textbf{and} (\&) as our binary relation, we see that:
+    \begin{itemize}
+        \item Reflexivity: is not satisfied, as F\&F is not true.
+        \item Symmetry: is satisfied. The only case we have to consider is T\&T, and switching the operands gives the same relation, which is still true.
+        \item Transitivity: is satisfied. The only situation we have to consider is if T\&T and T\&T. But then T\&T is trivial.
+    \end{itemize}
+    
+    (fails symmetry) Consider the set $\Z$ with the binary operation $|$, or "divides". Then we have:
+    \begin{itemize}
+        \item Reflexivity: is satisfied. Any integer divides itself.
+        \item Symmetry: is not satisfied. E.g. $4 | 8$ but $8 \nmid 4$.
+        \item Transitivity: is satisfied. If $a \mid b$ and $b \mid c$, then we can write $c = mb$ and $b = na$ for integers $m$ and $n$. It follows then that $c = mna$, and thus $a \mid c$.
+    \end{itemize}
+    
+    (fails transitivity) Consider the set of vectors in $\R^2$. Define a binary relation $\approx$ on $\R^2$ as $x \approx y$ if $|x - y| \leq 1$, or in other words, $x \approx y$ if the distance between the two points is less than or equal to 1. Then clearly for every $x, y \in \R^2$, $x \approx x$, and if $x \approx y$ then $y \approx x$. However, consider the points $(-1, 0)$, $(0, 0)$, and $(1, 0)$. We have that $(-1, 0) \approx (0, 0)$ and $(0, 0) \approx (1, 0)$ but $(-1, 0) \not\approx (1, 0)$.
+    
+    \item \textbf{Solution:}
+    We keep track of the coefficients as we repeatedly apply the Euclidean:
+    \begin{align*}
+        1 * 1763 - 1 * 991 &= 772 \\
+        -1 * 1763 + 2 * 991 &= 219 \\
+        4 * 1763 - 7 * 991 &= 115 \\
+        -5 * 1763 + 9 * 991 &= 104 \\
+        9 * 1763 - 16 * 991 &= 11 \\
+        -86 * 1763 + 153 * 991 &= 5 \\
+        181 * 1763 - 322 * 991 &= 1.
+    \end{align*}
+    It follows that 1763 and 991 are relatively prime. That is, $d = (1763, 991) = 1 = 181 * 1763 - 322 * 991$. In mod  1763, we have
+    \begin{align*}
+        181 * 1763 - 322 * 991 &\equiv 1 \f{(mod 1763)} \\
+        (-322) * 991 &\equiv 1 \f{(mod 1763)} \\
+        1441 * 991 &\equiv 1 \f{(mod 1763)}.
+    \end{align*}
+    Thus 991 is invertible, with inverse 1441 in mod 1763.
+    
+    \item \textbf{Solution:}
+    Consider the Norm function $N: R \to \Z$ given by $a + b\sqrt{-5} \mapsto a^2 + 5b^2$ for $a, b \in \Z$. We know that $N$ is multiplicative, that is 
+    \begin{align*}
+        N((a + b\sqrt{-5})(c + d\sqrt{-5})) &= N((ac - 5bd) + (ad + bc)\sqrt{-5}) \\
+        &= a^2c^2 + 25b^2d^2 + 5a^2d^2 + 5b^2c^2 \\
+        &= (a^2 + 5b^2)(c^2 + 5d^2) \\
+        &= N(a + b\sqrt{-5})N(c + d\sqrt{-5}).
+    \end{align*}
+    Now, suppose we have $2 = zw$ for $z, w \in R$. Then taking the norm of both sides, we get
+    \begin{align*}
+        4 &= N(2) \\
+            &= N(zw) \\
+            &= N(z)N(w),
+    \end{align*}
+    and since the codomain of $N$ is $\Z$, we get that the product $N(z)N(w)$ must either be $(\pm 2)(\pm 2)$, $(\pm 4)(\pm 1)$, or $(\pm 1)(\pm 4)$. Since the norm of any element of $R$ must be of the form $a^2 + 5b^2$, $a, b \in \Z$, the only possible values of $z$ is $\pm 1$ and $\pm 2$. It follows that 2 is irreducible in $R$. Now, to show 2 is not prime in $R$, consider
+    \begin{align}
+        2 * 3 = 6 = (1 + \sqrt{5}i)(1 - \sqrt{5}i).
+    \end{align}
+    We see that $2 \mid (1 + \sqrt{5}i)(1 - \sqrt{5}i)$, but clearly $2 \nmid (1 + \sqrt{5}i)$ and $2 \nmid (1 - \sqrt{5}i)$. Thus 2 is not prime.
+    
+    Similarly, suppose $3 = zw$ for some $z, w \in R$. Then we get $9 = N(3) = N(zw) = N(z)N(w)$, and by similar logic as above, we obtain that $N(z)N(w)$ must be $(\pm 9)(\pm 1)$ or $(\pm 1)(\pm 9)$, which implies that $z = \pm 1, \pm 3$, and 3 is irreducible in $R$. Further by (1), we get $3 \mid (1 + \sqrt{5}i)(1 - \sqrt{5}i)$ but clearly $3 \nmid (1 + \sqrt{5}i)$ and $3 \nmid (1 - \sqrt{5}i$.
+    
+    Thus, 2 and 3 are irreducible but both are not prime in $R$.
+    
+    
+    \item First, we find the 4 permutations of $X$ that induce the identity permutation on $Y$. In order for the ordering of $(VHS)$ to remain the same, the vertical partition must still be $AB$ and $CD$, the horizontal partition must still be $BC$ and $AD$, and the diagonal partition must still be $AC$ and $BD$. It is easy to verify that the only four such permutations of $X$ are:
+    \begin{align*}
+        I_0: &\quad (ABCD) &\quad \f{(identity)}\\
+        I_1: &\quad (AC)(BD) &\quad (180^\circ \f{ rotation)}\\
+        I_2: &\quad (AB)(CD) &\quad \f{(vertical reflection)} \\
+        I_3: &\quad (AD)(BC) &\quad \f{(horizontal reflection)}
+    \end{align*}
+    Now, given two permutations $\sigma_X$ and $\tau_X$ of $X$, let $\sigma_Y$ and $\tau_Y$ be their induced permutations on $Y$, respectively. It is clear that $\sigma_Y = \tau_Y$ whenever $\sigma_X = I_k\tau_X$ for some $k \in \{0, 1, 2, 3\}$. We will show that this induces an equivalence relation on the set of permutations $A(X)$ of $X$, and hence produces a one to one correspondence between each of the 6 permutations of $Y$ and equivalence classes of 4 permutations in $X$. For $\sigma, \tau \in A(X)$, say $\sigma \sim \tau$ if for some $k \in \{0, 1, 2, 3\}$, we have that $\sigma = I_k\tau$. We now verify:
+    \begin{itemize}
+        \item (reflexivity) Clearly each permutation is just the product of itself and the identity permutation $I_0 = (ABCD)$. i.e. $\sigma = I_0\sigma$ for every $\sigma \in A(X)$.
+        \item (symmetry) Note that $I_0$ and $I_1$ are their own inverses, respectively, and $I_2$ and $I_3$ are inverses of each other. It follows that if $\sigma, \tau \in A(X)$ and $\sigma \sim \tau$, or $\sigma = I_k\tau$, we can multiply by the inverse to obtain $\tau = I_k^{-1}\sigma$, or $\tau \sim \sigma$.
+        \item (transitivity) This follows from the fact that composition of any two identity permutations in $\{I_0, I_1, I_2, I_3\}$ results in another identity permutation among the same set. In particular, $I_k^2 = I_0$ and $I_0I_k = I_kI_0 = I_k$ for every $k$, $I_1I_2 = I_2I_1 = I_3$, $I_1I_3 = I_3I_1 = I_2$, and $I_2I_3 = I_3I_2 = I_1$.
+    \end{itemize}
+    
+    Now, each of the 6 permutations of $Y$ are in one to one correspondence to an equivalence class in $X$ consisting of exactly 4 permutations differing from each other only by some composition of the 4 identity permutations.
+    
+\end{enumerate}

@@ -1,0 +1,249 @@
+\section{Homework 13}
+Sundry: I worked alone.
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item Let $l$ be the distance between the midpoint of the needle and the closest horizontal line, and $w$ be the distance between the midpoint of the needle and the closest vertical line. We can see that $l, w \in [0, 1/2]$. Note that if $l \in [\frac{\f{sin}\theta}{2}, 1/2]$ and $w \in [\left|\frac{\f{cos}\theta}{2}\right|, 1/2]$, then the needle will not intersect any horizontal or vertical lines. Therefore our desired probability is 
+        \[
+        (1 - \f{sin}\theta)(1 - |\f{cos}\theta|) = 1 - |\f{cos}\theta| - \f{sin}\theta + |\f{cos}\theta|\f{sin}\theta.
+        \]
+        
+        \item We take the complement of (a) to obtain $f(x) = |\f{cos}\theta| + \f{sin}\theta - |\f{cos}\theta|\f{sin}\theta$. Since $\theta$ is distributed uniformly on the interval $[0, \pi]$, we find that the probability density at each point along the interval is $1/\pi$. Now, we notice that $f(x)$ is symmetric about $\pi/2$, so we split the integral in half to obtain
+        \begin{align*}
+            \int_0^\pi \frac{f(x)}{\pi}d\theta &= \frac{1}{\pi}\left(\int_0^{\frac{\pi}{2}}(\f{cos}\theta + \f{sin}\theta - \f{cos}\theta\f{sin}\theta)d\theta + \int_{\frac{\pi}{2}}^\pi(-\f{cos}\theta + \f{sin}\theta + \f{cos}\theta\f{sin}\theta)d\theta\right) \\
+                &= \frac{2}{\pi}\left(\int_0^{\frac{\pi}{2}}(\f{cos}\theta + \f{sin}\theta - \f{cos}\theta\f{sin}\theta)d\theta\right) \\
+                &= \frac{2}{\pi}\left(\f{sin}\theta - \f{cos}\theta + \frac{\f{cos}2\theta}{4}\right)\bigg|_{0 \f{ to } \frac{\pi}{2}} \\
+                &= \frac{3}{\pi}.
+        \end{align*}
+        
+        \item We can split $X$ into two random variables $L$ and $W$, each denoting the number of intersections with horizontal lines and verticle lines, respectively. From the notes, we know that $\E[L] = \E[W] = (1)(\P[L = W = 1]) = \frac{2}{\pi}$, since the needle can intersect at most once with horizontal lines and at most once with vertical lines. It follows that $\E[X] = \E[L + W] = \E[L] + \E[W] = \frac{4}{\pi}$.
+        
+        \item Note that the needle can intersect either 0, 1, or 2 times with the gridlines. Thus we have
+        \[
+            \E[X] = 0 \cdot \P[X = 0] + 1 \cdot \P[X = 1] + 2 \cdot \P[X = 2].
+        \]
+        Furthermore, we know that the probability of the needle intersecting at least one grid line is just $\P[X = 1] + \P[X = 2]$, so from the previous parts, we get that
+        \begin{align*}
+            \frac{4}{\pi} &= \E[X] \\
+                &= \P[X = 1] + \P[X = 2] + \P[X = 2] \\
+                &= \frac{3}{\pi} + \P[X = 2],
+        \end{align*}
+        which implies that $\P[X = 2] = \frac{1}{\pi}$. It follows that $\P[X = 1] = \frac{2}{\pi}$.
+        
+        \item We define $X = X_1 + X_2 + X_3$, where each $X_i$ is the random variable denoting the number of intersections of the $i$th side of the triangle. By linearity of expectation, we see that $\E[X]$ is rotationally invariant about the vertices. That is,
+        \begin{align*}
+            \E[X] &= \E[X_1 + X_2 + X_3] \\
+                &= \E[X_1] + \E[X_2] + \E[X_3],
+        \end{align*}
+        so we can bend the edges of the triangle so that we get our needle of unit length again. Thus, $\E[X]$ is the same as before, which is $\frac{4}{\pi}$.
+    \end{enumerate}
+    
+    \item By tail sum formula, we get that
+    \begin{align*}
+        \E[Y] &= \int_0^\infty\P[Y > m]dm \\
+            &= \int_0^1\left(\prod_{i = 1}^n\P[X_i > m]\right)dm \\
+            &= \int_0^1(1 - m)^ndm \\
+            &= \frac{-(1 - m)^{n + 1}}{n + 1}\bigg|_{0 \f{ to } 1} \\
+            &= \frac{1}{n + 1}.
+    \end{align*}
+    Similarly, we get
+    \begin{align*}
+        \E[Y^2] &= \int_0^\infty\P[Y^2 > m]dm \\
+            &= \int_0^1\left(\prod_{i = 1}^n\P[X_i > \sqrt{m}]\right)dm \\
+            &= \int_0^1(1 - \sqrt{m})^ndm,
+    \end{align*}
+    for which we use the substitution
+    \begin{align*}
+        u &= 1 - \sqrt{m} \\
+        dm &= 2(u - 1)du,
+    \end{align*}
+    to get
+    \begin{align*}
+        \int_0^1(1 - \sqrt{m})^ndm &= \int_1^0 2u^n(u - 1)du \\
+            &= \left(\frac{2u^{n + 2}}{n + 2} - \frac{2u^{n + 1}}{n + 1}\right)\bigg|_{1 \f{ to } 0} \\
+            &= \frac{2}{n + 1} - \frac{2}{n + 2}.
+    \end{align*}
+    Finally, we find the variance:
+    \begin{align*}
+        \f{Var}(Y) &= \E[Y^2] - \E[Y]^2 \\
+            &= \frac{2}{n + 1} - \frac{2}{n + 2} - \frac{1}{(n + 1)^2} \\
+            &= \frac{n}{(n + 1)^2(n + 2)}.
+    \end{align*}
+    
+    \item \begin{enumerate}
+        \item Let $X$ be the number of erasures. By Markov's inequality, we want
+        \begin{align*}
+            \P[X \geq 200] &\leq \frac{1000p}{200} \\
+                &\leq \frac{1}{10^6},
+        \end{align*}
+        so we find the upper bound to be
+        \[
+            p \leq \frac{1}{5 \cdot 10^6} = 2 \cdot 10^{-7}.
+        \]
+        
+        \item Using the same r.v. $X$ from before, we get the following inequality from Chebyshev,
+        \begin{align*}
+            \P[X - 1000p \geq c] &\leq \P[X - 1000p \geq c] + \P[1000p - X \geq c] \\
+                &= \P[|X - \mu| \geq c] \\
+                &\leq \frac{\f{Var}(X)}{c^2} \\
+                &= \frac{1000p(1 - p)}{c^2},
+        \end{align*}
+        so $\P[X \geq 1000p + c] \leq \frac{1000p(1 - p)}{c^2}$. If we let $1000p + c = 200$, then we can substitute to get the quadratic inequality
+        \[
+        \P[X \geq 200] \leq \frac{1000p(1 - p)}{(200 - 1000p)^2} \leq \frac{1}{10^6}.
+        \]
+        Solving and approximating, we get an upper bound,
+        \[
+        p \leq 0.000039986 \approx 4 \cdot 10^{-5}.
+        \]
+        
+        \item We use the error function $\f{erf}(x)$ to find the right tail position for a probability of $10^{-6}$. From Wolfram Alpha, we find the $x$ such that $\f{erf}(x) = 1 - 2 \cdot 10^{-6}$. We get $x \approx 3.361179$. Since the error function adheres to $N(0, \frac{1}{2})$, we see that we must be $\frac{3.361179}{\sqrt{0.5}} \approx 4.753425$ standard deviations to the right of the mean. Since $1000p(1 - p)$ is the variance and $1000p$ is the mean, we want the roots of the equation
+        \[
+        4.753425\sqrt{1000p(1 - p)} = 200 - 1000p.
+        \]
+        Once again utilizing Wolfram Alpha, we obtain the upper bound $p \approx 0.146802$.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item Let $E_1 = -\f{ln}U_1$. Now, for $x \geq 0$, we find the c.d.f. to be
+        \begin{align*}
+            F(x) &= \P[E_1 \leq x] \\
+                &= \P[-\f{ln}U_1 \leq x] \\
+                &= \P[\f{ln}U_1 \geq -x] \\
+                &= \P[U_1 \geq e^{-x}] \\
+                &= 1 - \P[U_1 \leq e^{-x}] \\
+                &= 1 - e^{-x},
+        \end{align*}
+        which is just the c.d.f. of $\f{Expo}(1)$. To verify, we differentiate to obtain the p.d.f.
+        \[
+        f(x) = \frac{dF}{dx} = e^{-x}.
+        \]
+        
+        \item Let $f_{N_1}(x) = \frac{1}{\sqrt{2\pi}}e^{\frac{-x^2}{2}}$ and $f_{N_2}(y) = \frac{1}{\sqrt{2\pi}}e^{\frac{-y^2}{2}}$ be the p.d.f.'s of $N_1$ and $N_2$, respectively. Since $N_1$ and $N_2$ are independent, we obtain the joint density function 
+        \[f(x, y) = f_{N_1}(x)f_{N_2}(y) = \frac{1}{2\pi}e^{\frac{-(x^2 + y^2)}{2}}.\]
+        Now, we find the c.d.f. of $E = N_1^2 + N_2^2$. Notice that the area bounded by the inequality $N_1^2 + N_2^2 \leq z$ is the solid disk $D$ of radius $\sqrt{z}$. Then we have
+        \begin{align*}
+            F(z) &= \P[E = N_1^2 + N_2^2 \leq z] \\
+                &= \int\int_D f(x, y)dxdy \\
+                &= \int_0^{2\pi}\int_0^{\sqrt{z}} f(r\f{cos}\theta, r\f{sin}\theta)rdrd\theta \\
+                &= \int_0^{2\pi}\frac{1 - e^{-\frac{z}{2}}}{2\pi}d\theta \\
+                &= 1 - e^{-\frac{z}{2}}.
+        \end{align*}
+        We differentiate to verify, obtaining the p.d.f. $g(z) = \frac{1}{2}e^{-\frac{z}{2}}$. It follows that $E = N_1^2 + N_2^2 \sim \f{Expo}(\frac{1}{2})$.
+        
+        \item Suppose WLOG that $U_1, U_2 \sim \f{Uniform}(0, 1)$. From 4(b), we know that the distance between the point $(N_1, N_2)$ where $N_1, N_2 \sim \mathcal{N}(0, 1)$ and the origin can be modeled by the square root of an exponential distribution with parameter $\lambda = \frac{1}{2}$. That is,
+        \[
+            D = \sqrt{N_1^2 + N_2^2} \sim \sqrt{\f{Expo}(1/2)}.
+        \]
+        Given the random variable $D$ which models the distance, or length of the radius, we can obtain the x-projection by taking the cosine of the angle. Therefore, we want to transform $U_1$ to sample the angle and transform $U_2$ to sample the length of the radius. Since $\theta \in [0, 2\pi)$, we get $\f{cos}(2\pi U_1)$. Furthermore, from 4(a), we know that $-\f{ln}U_2 \sim \f{Expo}(1)$, so we transform it to $\sqrt{-2\f{ln}U_2} \sim \sqrt{\f{Expo}(1/2)} \sim D$. Thus, we get
+        \[
+            \f{cos}(2\pi U_1)\sqrt{-2\f{ln}(U_2)} \sim \mathcal{N}(0, 1).
+        \]
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item For $a \in (0, 1]$ and $b \in (0, 1]$, the chain is irreducible. If at least one of $a$ or $b$ is equal to 0, then the chain is reducible.
+        
+        \item If $a = b = 1$, then for $i = 1$, we see that the set of all $n$ such that $P(1, 1) > 0$ are even nonnegative integers. Therefore, the gcd of this set is $2 \neq 1$. It follows that the chain is periodic when $a = b = 1$.
+        
+        \item If $0 < a, b < 1$, then there is a probability at each state of changing states or keeping the same state. It follows that the set of all $n$ such that $P(1, 1) > 0$ is all natural numbers. Thus the gcd must be 1. Similarly, for $i = 0$, the gcd is also 1. It follows that when $0 < a, b < 1$ the chain is aperiodic.
+        
+        \item We get the matrix:
+        \[
+        \left[\begin{tabular}{cc}
+            $P_{00}$ & $P_{01}$ \\
+            $P_{10}$ & $P_{11}$
+        \end{tabular}\right]
+        =
+        \left[\begin{tabular}{cc}
+            $1 - b$ & $b$ \\
+            $a$ & $1 - a$
+        \end{tabular}\right]
+        \]
+        
+        \item Given our matrix from 5(d), we get
+        \[
+            [\pi_0, \pi_1] = [\pi_0, \pi_1]\left[\begin{tabular}{cc}
+            $1 - b$ & $b$ \\
+            $a$ & $1 - a$
+        \end{tabular}\right],
+        \]
+        and so we get
+        \begin{align*}
+            \pi_0 &= (1 - b)\pi_0 + a\pi_1 \\
+            \pi_1 &= b\pi_0 + (1 - a)\pi_1,
+        \end{align*}
+        where $\pi_0 + \pi_1 = 1$. Solving, we get that $\pi = [\pi_0, \pi_1] = \left[\frac{a}{a + b}, \frac{b}{a + b}\right]$.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item For $i = 0$, there is a nonzero probability of moving to state 0, as well as a nonzero probability of moving to state 1 and back to state 0. Since $\f{gcd}(1, 2) = 1$, we move on to $i = 1$. There is a nonzero chance of moving to 0 and then to 0 and then to 1, as well as a nonzero chance of moving to 0 and back to 1. Since $\f{gcd}(2, 3) = 1$, we move on to $i = 2$. There is a nonzero chance of the chain moving through 2-1-0-1-2 as well as a nonzero chance of the chain moving through 2-1-0-0-1-2. Since $\f{gcd}(4, 5) = 1$, we are done. That is, all the gcds are 1 and the chain is aperiodic.
+        
+        \item We get
+        \begin{align*}
+            &\P[X(1) = 1, X(2) = 0, X(3) = 0, X(4) = 1 | X(0) = 0] \\
+            = &a\P[X(2) = 0, X(3) = 0, X(4) = 1 | X(0) = 0, X(1) = 1] \\
+            = &a(1 - b)\P[X(3) = 0, X(4) = 1 | X(0) = 0, X(1) = 1, X(2) = 0] \\
+            = &a(1 - b)(1 - a)\P[X(4) = 1 | X(0) = 0, X(1) = 1, X(2) = 0, X(3) = 0] \\
+            = &a^2(1 - b)(1 - a).
+        \end{align*}
+        
+        \item We have the transition matrix
+        \[
+        \left[\begin{tabular}{ccc}
+            $1 - a$ & $a$ & 0 \\
+            $1 - b$ & 0 & $b$ \\
+            0 & 1 & 0
+        \end{tabular}\right],
+        \]
+        from which we get the balance equations
+        \begin{align*}
+            \pi_0 &= (1 - a)\pi_0 + (1 - b)\pi_1 \\
+            \pi_1 &= a\pi_0 + \pi_2 \\
+            \pi_2 &= b\pi_1.
+        \end{align*}
+        Solving, we obtain
+        \[
+        ab\pi_0 = b(1 - b)\pi_1 = (1 - b)\pi_2,
+        \]
+        and since $\pi_0 + \pi_1 + \pi_2 = 1$, we get the invariant distribution
+        \[
+            \pi = [\pi_0, \pi_1, \pi_2] = \left[\frac{1 - b}{ab + a - b + 1}, \frac{a}{ab + a - b + 1}, \frac{ab}{ab + a - b + 1}\right].
+        \]
+        
+        \item Let $\tau_i$ be the expected number of steps to get to state 2 given that the starting state is $i$. Then $\tau_1 = \E[T_2 | X(0) = 1]$, which is what we want. We write out the first-step equations,
+        \begin{align*}
+            \tau_0 &= 1 + (1 - a)\tau_0 + a\tau_1 \\
+            \tau_1 &= 1 + (1 - b)\tau_0 \\
+            \tau_2 &= 0.
+        \end{align*}
+        Solving, we get
+        \[
+        \E[T_2 | X(0) = 1] = \tau_1 = \frac{a - b + 1}{ab}.
+        \]
+    \end{enumerate}
+    
+    \item Let $A$ be the state with no boba, $B$ be the state with 1 boba in the top compartment, $C$ be the state with 1 boba in the bottom compartment, and $D$ be the state with 1 boba in each compartment.
+    
+    \begin{enumerate}
+        \item Let $\tau_i$ be the expected number of seconds it takes for the straw to be completely filled with boba, given that the starting state is $i \in \{A, B, C, D\}$. Given probability $p$, we have
+        \begin{align*}
+            \tau_A &= 1 + (1 - p)\tau_A + p\tau_C\\
+            \tau_B &= 1 + (1 - p)\tau_A + p\tau_C \\
+            \tau_C &= 1 + (1 - p)\tau_B \\
+            \tau_D &= 0.
+        \end{align*}
+
+        \item We adjust our equations from above, obtaining
+        \begin{align*}
+            \tau_A &= (1 - p)\tau_A + p(\tau_C + 2) \\
+            \tau_B &= (1 - p)\tau_A + p(\tau_C + 2) \\
+            \tau_C &= (1 - p)(\tau_B + 2) + 3p \\
+            \tau_D &= 0.
+        \end{align*}
+        
+        \item Once a boba enters the straw, Jonathan is bound to consume it. Therefore, his long run calorie consumption per second is $10p$, since each second an expected number of $p$ bobas enter the straw.
+        
+        \item Since the expected number of bobas entering the straw is $p$, and all bobas move up the straw one compartment per second, we get the long run average number of boba in the straw to be $2p$.
+    \end{enumerate}
+\end{enumerate}

@@ -1,0 +1,55 @@
+\textbf{5.1 Solution.} Suppose we have objects $A, B \in Alg_{\mathbb{F}}$, and functions $f \in Hom_{Alg_{\mathbb{F}}}(A, B)$ and $g \in Hom_{Alg_{\mathbb{F}}}(B, A)$. Then define $Id_A : A \to A$ as the function $Id_A(a) = a$ for every $a \in |A|$. It follows that for every $a \in |A|$, we have $(f \circ Id_A)(a) = f(Id_A(a)) = f(a)$, and for every $b \in |B|$ we also have $(Id_A \circ g)(b) = Id_A(g(b)) = g(b)$, since $g(b) \in |A|$. Therefore $Alg_{\mathbb{F}}$ satisfies left and right unit axioms.
+
+Now, suppose we have objects $A, B, C, D \in Alg_{\mathbb{F}}$ and functions $f_1 \in Hom_{Alg_{\mathbb{F}}}(A, B)$, $f_2 \in Hom_{Alg_{\mathbb{F}}}(B, C)$, and $f_3 \in Hom_{Alg_{\mathbb{F}}}(C, D)$. For every $a \in |A|$, let $f_1(a) = b$ for some $b \in |B|$, and let $f_2(b) = c$ for some $c \in |C|$, and let $f_3(c) = d$ for some $d \in |D|$. Then we have that $(f_3 \circ f_2)$ sends $b$ to $d$, and similarly $(f_2 \circ f_1)$ sends $a$ to $c$. It follows that for every $a \in |A|$
+\begin{align*}
+((f_3 \circ f_2) \circ f_1)(a) &= (f_3 \circ f_2)(b) \\
+    &= d \\
+    &= f_3(c) \\
+    &= f_3 \circ (f_2 \circ f_1)(a).
+\end{align*}
+So since $(f_3 \circ f_2) \circ f_1$ and $f_3 \circ (f_2 \circ f_1)$ agree on every point in their domain, i.e. $A$, composition is associative.
+
+Thus $Alg_{\mathbb{F}}$ satisfies all the category axioms.
+
+\textbf{5.2 Solution.} For $\bf{C_1}$: The identity is simply $Id_A : A \to A$ since $(Id_A \circ Id_A)(A) = Id_A(A)$, satisfying both left and right unit axioms. Associativity follows as well since $(Id_A \circ Id_A) \circ Id_A = Id_A \circ Id_A = Id_A \circ (Id_A \circ Id_A)$.
+
+For $\bf{C_2}$: Using the same logic from $\bf{C_1}$, the identities on $A$ and $B$ satisfy left and right unit and associtivity axioms. So we only need to check unit and associtivity for the morphism $f: A \to B$. We have $(f \circ Id_A)(A) = f(Id_A(A)) = f(A)$ and $(Id_B \circ f)(A) = Id_B(f(A)) = f(A)$, satisfying unit axioms. Furthermore, since $f$ can only compose with $Id_A$ and $Id_B$, associativity easily follows for all cases.
+
+For $\bf{C_3}$: Using the same reasoning from the first two parts, unit and associtivity axioms can be verified for all pairs and individuals objects in $\bf{C_3}$. Therefore we only need to verify associativity of morphisms consisting of 3 objects. Let $f: A \to B$, $g: B \to C$, $h: C \to A$. Then we have $((h \circ g) \circ f)(A) = (h \circ g)(B) = h(g(B)) = h(C) = A = h(C) = h((g \circ f)(A)) = (h \circ (g \circ f))(A)$, satisfying associativity. Thus $\bf{C_3}$ is also a valid category.
+
+\textbf{5.3 Solution.} Suppose we have objects $A, B \in Ob(\bf{C})$ with $g: A \to B$. Also suppose that $F(A), F(B) \in Ob(\bf{D})$. We have that $F$ takes the diagram $A \to B$ to $F(A) \to F(B)$, converting $g$ to $F(g): F(A) \to F(B)$. Since $g$ is an isomorphism, we can apply $F$ to the diagram $B \to A$ obtaining $F(B) \to F(A)$, converting $g^{-1}$ to $F(g^{-1})$. It follows that the inverse of $F(g)$ exists and is $F(g^{-1})$ since the their composition results in the identities, i.e. $(F(g) \circ F(g^{-1}))(F(B)) = F(B)$ and $(F(g^{-1}) \circ F(g))(F(A)) = F(A)$. Thus $F(g)$ is an isomorphism in $\bf{D}$.
+
+\textbf{5.4 Solution.} By definition of covariant functors, all objects and arrows in a commutative diagram of $\bf{D}$ get converted by $G$ to corresponding objects and arrows in $\bf{E}$ such that the diagram in $\bf{E}$ commutes and the arrows point in the same direction. Similarly, all objects and arrows in $\bf{C}$ get converted by $F$ to corresponding objects and arrows in $\bf{D}$ such that the corresponding diagram commutes and the arrows maintain their direction. Therefore if we have any commutative diagram in $\bf{C}$, and we apply the composition $G \circ F$, we will be guaranteed to obtain a commutative diagram with arrows in the same direction in $\bf{E}$. Thus $G \circ F$ is also a covariant functor.
+
+\textbf{5.5 Solution.} For every $X \in \bf{Set}$ and $g \in V \langle X \rangle$, we have that $Free_V(Id_X)(g) = f \circ Id_X = g$, satisfying the identity axiom.
+
+Now suppose we have $X, Y, Z \in \bf{Set}$ and $f: X \to Y$ and $g: Y \to Z$. Then after applying $Free_V$, we get $Free_V(g)$ a function that takes $h \in V \langle Z \rangle$ and sends it to $h \circ g \in V \langle Y \rangle$, and we also get $Free_V(f)$ a function that takes a $h \circ g \in V \langle Y \rangle$ to a function $h \circ g \circ f \in V \langle X \rangle$. Then by composing $Free_V(f) \circ Free_V(g)$ we obtain a function that takes $h \in V \langle Z \rangle$ to $h \circ g \circ f \in V \langle X \rangle$, which is equivalent to $free_V(g \circ f)$ since $g \circ f$ takes $X$ to $Z$. Thus $Free_V$ is indeed a contravariant functor.
+
+\textbf{5.6 Solution.} For every set $X$, the function given by $P(Id_X)$ sends subsets of $X$ to themselves. This is the same as the function given by $Id_{P(X)}$, which sends elements of $P(X)$, subsets of $X$, to themselves. Thus the identity axiom holds for the power set functor.
+
+Suppose we have sets $X, Y, Z$ with set functions $f: X \to Y$ and $g: Y \to Z$. It follows that $P(f)$ sends subsets of $X$ to subsets of $Y$, which are then sent to subsets of $Z$ via $P(g)$. It follows that the composition $P(g) \circ P(f)$ is equivalent to the function $P(g \circ f)$, which sends subsets of its domain $X$ to corresponding subsets of its codomain $Z$. Thus the power set functor is covariant.
+
+The inverse power set functor is essentially the contravariant functor equivalent of the power set functor. It is easy to see that it satisfies all the axioms if we reverse the roles of $X, Y, Z$. That is, $\bf{P^{-1}}$ is also a functor.
+
+\textbf{5.7 Solution.} True. We proved this result in Exercise 5.3.
+
+\textbf{5.8 Solution.} Suppose we have a functor $F: \bf{C} \to \bf{D}$ that is full and faithful. Then there exists a bijection between $Hom_{\bf{C}}(X, Y)$ and $Hom_{\bf{D}}(F(X), F(Y))$ for every $X \in \bf{C}$ and $Y \in \bf{D}$. WLOG, fix $X$ and $Y$.
+
+For the first direction, suppose $F(X)$ and $F(Y)$ are isomorphic in $\bf{D}$. Then there exists functions $F(f): F(X) \to F(Y)$ and $F(f^{-1}): F(Y) \to F(X)$ such that $F(f) \circ F(f^{-1}) = Id_{F(Y)}$ and $F(f^{-1}) \circ F(f) = Id_{F(X)}$. Then since there is a bijection between $Hom_{\bf{C}}(X, Y)$ and $Hom_{\bf{D}}(F(X)$, we know there must exist unique corresponding functions $f: X \to Y$ and $f^{-1}: Y \to X$ such that $f \circ f^{-1} = Id_Y$ and $f^{-1} \circ f = Id_X$. It follows that $X$ and $Y$ are isomorphic in $\bf{C}$.
+
+For the converse, suppose $X$ and $Y$ are isomorphic in $\bf{C}$. Then there exists functions $f: X \to Y$ and $f^{-1}: Y \to X$ such that $f \circ f^{-1} = Id_Y$ and $f^{-1} \circ f = Id_X$. Then since there is a bijection between $Hom_{\bf{C}}(X, Y)$ and $Hom_{\bf{D}}(F(X)$, we know there must exist unique corresponding functions $F(f): F(X) \to F(Y)$ and $F(f^{-1}): F(Y) \to F(X)$ such that $F(f) \circ F(f^{-1}) = Id_{F(Y)}$ and $F(f^{-1}) \circ F(f) = Id_{F(X)}$. It follows that $F(X)$ and $F(Y)$ are isomorphic in $\bf{D}$.
+
+\textbf{5.9 Solution.} Since $X, Y \in Ob(\bf{A})$ satisfy $F(X)$ is isomorphic to $F(Y)$, we have from proposition 5.2.3 that $X$ must be isomorphic to $Y$ since $F$ is a full and faithful functor.
+
+\textbf{5.10 Solution.} %Ab -> Grp is actually full as well, since abelian group morphisms do not impose the extra condition of commutativity, so all abelian group morphisms are group morphisms
+It is easy to see that the functor $F: \bf{Ab} \to \bf{Grp}$ is faithful, since every abelian group is a group. Therefore we can send each abelian group to the corresponding group that shares its underlying set, and we can send each abelian group homomorphism to itself by forgetting the axiom of commutativity.
+
+However, $F$ is not full, since there can exist non-abelian groups that do not satisfy commutativity which do not have corresponding objects or morphisms in $\bf{Ab}$.
+
+Thus $\bf{Ab} \to \bf{Grp}$ is faithful but not full.
+
+\textbf{5.11 Solution.} True. All forgetful functors are faithful (here we are mapping each group homomorphism to its underlying function on sets, so it's one to one).
+
+False. Since there exist sets which do not uphold the axioms of a group, we can construct a function on these non-group-conforming sets and it (the function) won't have a corresponding morphism in $\bf{Grp}$.
+
+\textbf{5.12 Solution.} Suppose we have objects $U, U' \in \bf{C}$ and $V, V' \in \bf{D}$ such that we have the morphism $f: (U,V) \to (U',V')$ in $\bf{C} \times \bf{D}$. Then define the forgetful bifunctor $F: \bf{C} \times \bf{D} \to \bf{C}$ that sends ("projects" onto its component in $\bf{C}$) each object $(U,V)$ to $U$, and also sends morphisms of the form $(U,V) \to (U',V')$ to the morphism $U \to U'$. Thus we have a bifunctor $F$ that projects the product category $\bf{C} \times \bf{D}$ onto its component $\bf{C}$.

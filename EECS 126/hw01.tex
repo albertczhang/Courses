@@ -1,0 +1,58 @@
+\section{Homework 1}
+
+\begin{enumerate}
+    \item (i) By principle of inclusion exclusion, we know that the probability of event $A$ or event $B$ happening is $\P[A] + \P[B] - \P[A \cap B]$. Since this includes the probability that both $A$ and $B$ happen, we subtract $\P[A \cap B]$ to obtain $\P[A] + \P[B] - 2\P[A \cap B]$.
+    
+    (ii) If $A$ is independent of itself, then we have $\P[A \mid A] = \P[A]$. But if $A$ occurs, then we know that $A$ occurs, thus $\P[A \mid A] = 1$ if the chance of $A$ occurring is strictly positive. In this case $\P[A] = 1$. Else, if $A$ has zero chance of occurring, i.e. $\P[A] = 0$, then $\P[A \mid A] = 0$ since $A$ never occurs in the first place. It follows that $A$ is independent of itself in this case. Thus, if $A$ is independent of itself, then $\P[A]$ must equal either 0 or 1.
+    
+    \item Let $B$ be the random variable denoting the number of heads among Bob's first $n$ coins, and $A$ be the random variable denoting the number of heads among Alice's first $n$ coins. Then the probability that Bob flips more heads out of his $n + 1$ coins than Alice flips out of her $n$ coins is
+    \begin{align*}
+        \P[B > A] + \frac{1}{2}\P[A = B] &= \frac{1}{2}(2\P[B > A] + \P[A = B]) \\
+            &= \frac{1}{2}(\P[B > A] + \P[A > B] + \P[A = B]) \\
+            &= \frac{1}{2}(1) \\
+            &= \frac{1}{2}.
+    \end{align*}
+    This follows since $\P[A > B] = \P[B > A]$ by symmetry.
+    
+    \item We proceed by induction on $k$. When $k = 1$, it is clear that the probability that the last ball is white is just $\frac{w}{w + b}$.
+    
+    Now suppose for some $k > 0$, the probability of the last ball being white is $\frac{w}{w + b}$. Then the probability that the last ball being black is $1 - \frac{w}{w + b} = \frac{b}{w + b}$. If we add the $(k+1)$th jar, then the probability of the last ball (in the $(k + 1)$th jar after one of the balls was moved from the $k$th jar) being white is
+    \begin{align*}
+     &\left(\frac{w}{w + b}\right)\left(\frac{w + 1}{w + b + 1}\right) + \left(\frac{b}{w + b}\right)\left(\frac{w}{w + b + 1}\right) \\
+    &= \frac{w(w + b + 1)}{(w + b)(w + b + 1)} \\
+    &= \frac{w}{w + b}.
+    \end{align*}
+    It follows then that for any $k > 0$, the probability that the last ball is white is $\frac{w}{w + b}$.
+    
+    \item Given a fixed $N$, denote $X_i$ the event that $i$ at least $i$ people get their assigned seat. Then applying principle of inclusion exclusion, we obtain the probability that nobody gets their assigned seat:
+    \begin{align*}
+        \P[X_0] - \P[X_1] + \P[X_2] - \dots \pm \P[X_N] &= \frac{1}{N!}\left(N! - \binom{N}{1}(N - 1)! + \binom{N}{2}(N - 2)! - \dots \pm 1\right) \\
+        &= \sum\limits_{i = 0}^N \frac{(-1)^i\binom{N}{i}(N - i)!}{N!} \\
+        &= \sum\limits_{i = 0}^N(-1)^i\frac{1}{i!}.
+    \end{align*}
+    Since the taylor expansion of $e^x$ is $\sum_{i = 0}^\infty \frac{x^i}{i!}$, if we take the limit as $N \to \infty$, then we see that our desired probability is just $e^{-1}$, or $\frac{1}{e}$.
+    
+    \item WLOG, let the cities be ranked by their number: $\{1, 2, \dots, N - 1, N\}$ (so the worst city is 1, the best city is $N$). We will sum the probabilities indexed by the cases where city $N$ is in the $i$th position for $i \in \{m + 1, m + 2, \dots, N - 1, N\}$. Since the probability of city $N$ being in position $i$ is $\frac{1}{N}$, and the probability of the highest ranking city among the first $i - 1$ cities being placed among the first $m$ positions is $\frac{m}{i - 1}$, we have the summation
+    \begin{align*}
+        \sum\limits_{i = m + 1}^N \frac{1}{N} \cdot \frac{m}{i - 1} &= \frac{m}{N}\sum\limits_{i = m + 1}^N \frac{1}{i - 1} \\
+        &\approx \frac{m}{N}(\f{ln}(N) - \f{ln}(m)).
+    \end{align*}
+    Now, to find $m$ such that this probability is maximized, we differentiate over $m$ to obtain
+    \begin{align*}
+        \frac{\f{ln}N}{N} - \frac{\f{ln}m}{N} - \frac{1}{N} &= 0 \\
+        \f{ln}N - \f{ln}m - 1 &= 0 \\
+        \f{ln}m &= \f{ln}\frac{N}{e} \\
+        m &= \frac{N}{e},
+    \end{align*}
+    as an approximation for the probability maximizing value of $m$ in terms of $N$.
+    
+    \item Denote the score by $(c, s)$ where $0 \leq c \leq n$ is the captain's score and $0 \leq s \leq m$ is superman's score. We can think of each sequence of baskets as paths of an $m \times n$ grid, with $(0, 0)$ and $(n, m)$ at opposite corners. There are a total of $\binom{m + n}{n}$ such paths with no restrictions. Now, the probability that the captain scores first given $n$ and $m$ is 
+    \[
+        \frac{\binom{m + n - 1}{n - 1}}{\binom{m + n}{n}} = \frac{\frac{(m + n - 1)!}{m!(n - 1)!}}{\frac{(m + n)!}{m!n!}} = \frac{n}{m + n},
+    \]
+    since there are $\binom{m + n - 1}{n - 1}$ paths from $(1, 0)$ to $(n, m)$. Similarly, the probability (which is just the complement of the above) of superman scoring first is $\frac{m}{m + n}$. Now, in the probability that the captain scores first, there is some chance that there will be a tie later on. Consider the first instance $(k, k)$ they tie after captain scores the first point. Given that the sequence goes through $(k, k)$, we find that the conditional probability of superman scoring first and captain scoring first is the same, by symmetry. Therefore, we can just reflect the sequence across the diagonal, producing a bijection between sequences starting with $(0, 0) - (1, 0)$ and resulting in a tie somewhere down the line and sequences starting with $(0, 0) - (0, 1)$ and ending at $(n, m)$. It follows that within the probability that captain scores first, the probability that we don't want (i.e. the probability that there is a tie somewhere down the line) is just the probability of superman scoring first, $\frac{m}{n + m}$. Thus, the probability of the captain always being strictly ahead of superman is
+    \[
+        \frac{n}{n + m} - \frac{m}{n + m} = \frac{n - m}{n + m}.
+    \]
+    
+\end{enumerate}

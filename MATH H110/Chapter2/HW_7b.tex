@@ -1,0 +1,31 @@
+\textbf{2.46 Solution.} \textbf{(a)} If $V$ is the 0 vector space, it is easy to see that the inclusion map $\iota$ sends the 0 vector to the 0 vector in $V$ and then the zero map sends the 0 vector to the 0 vector in the 0 vector space.
+
+The converse is also true: since the domain of the inclusion map is the 0 vector space, it follows that for $ran(\iota) = 0$ to be the domain of the zero map, $V$ must be the 0 vector space as well since the kernel of the zero map is $V$ itself.
+
+\textbf{(b)} If the sequence is exact, we have $ran(\iota) = ker(f)$. Then suppose that we had $v_1, v_2 \in V$ and $w \in W$ such that $f(v_1) = f(v_2) = 0$. Then by linearity $f(v_1 - v_2) = 0$, so $v_1 - v_2 \in ker(f) = ran(\iota)$, but then $v_1 - v_2$ must be the zero vector. It follows that $v_1 = v_2$. So the homomorphism $f$ is injective.
+
+Now, to prove the converse, suppose $f$ were injective. Then we want to show that $ker(f) = 0$ since $ran(\iota) = 0$. Suppose we had a vector $v \in V$ with $f(v) = 0$. Clearly $f(0) = 0$, so since $f$ is injective, we must have that $v = 0$. Thus $ran(\iota) = ker(f)$, and the sequence is exact.
+
+\textbf{(c)} If the sequence is exact, we have $ran(f) = ker(\text{zero map})$. By definition, the kernel of the zero map is the domain itself, which is $W$. Thus $ran(f) = W$, implying that the homomorphism $f$ is surjective.
+
+Now, to prove the converse, suppose $f$ were surjective. Then $ran(f) = W$, and we want to show that the kernel of the zero map is $W$. But this is trivial by definition, since the kernel of the zero map is always just the whole domain, which in this case is $W$. Thus the sequence is exact.
+
+\textbf{(d)} If the given sequence is exact, then from the exact subsequence $0 \to V \to W$ we get that $f$ is injective, and from the exact subsequence $V \to W \to 0$ we get that $f$ is surjective (it should be easy to see that any subsequence of an exact sequence is in itself exact). Thus $f$ is an isomorphism between $V$ and $W$.
+
+For the converse, suppose $f$ is an isomorphism. Then $f$ is injective and surjective. By injectivity we have the the subsequence $0 \to V \to W$ is exact, and by surjectivity we have that the subsequence $V \to W \to 0$ is exact. By the definition of an exact sequence, we can glue together these two subsequences and obtain the exact sequence $0 \to V \to W \to 0$ where the morphisms are $\iota$, $f$, and the zero map in order.
+
+\textbf{2.47 Solution.} We have that $ran(\iota) = 0 = ker(i)$, so the subsequence $0 \to U \to V$ is exact. Furthermore, $ran(i) = U = ker(\pi)$, so the subsequence $U \to V \to V/U$ is also exact. Finally, since the quotient map is surjective, we have that the subsequence $V \to V/U \to 0$ is exact. Thus we get that the sequence $0 \to U \to V \to V/U \to 0$ is exact.
+
+\textbf{2.48 Solution.} \textbf{(a)} We have that $ran(0 \to U) = 0 = ker(\iota)$ since only the zero vector gets sent to $(0, 0)$. We also have that $ran(\iota) = \{(u,0) \mid u \in U\} = ker(\pi_2)$ since only ordered pairs where the second component is 0 get sent to the 0 vector in $W$. Finally, we have $ran(\pi_2) = W = ker(\text{zero map:}W \to 0)$. Thus the sequence $0 \to U \to U \oplus W \to W \to 0$ is a short exact sequence.
+
+\textbf{(b)} Since we have the exact subsequence $V \to W \to 0$, we know that the map $g: V \to W$ is surjective. Then we can define a map $h: W \to V$ that sends an vector $w \in W$ to an arbitrary vector $v$ in the preimage of $w$. it follows that the composition $g \circ w = Id_W$ (note that we can just pick an element of the preimage arbitrarily and assign it to $h(w)$ for every $w \in W$ since we only need the condition $g \circ h = Id_W$ but not the condition $h \circ g = Id_V$).
+
+\textbf{(c)} We will make use of the corollary 2.4.5, which states that for a homomorphism $g: V \to W$ we have $V \cong ran(g) \oplus ker(g)$. From earlier, we know that since $V \to W \to 0$ is an exact sequence, $g$ is surjective. Therefore $ran(g) = W$. Furthermore, from the first isomorphism theorem, we have $ran(f) \cong U / ker(f) \cong U$ since $ker(f) = 0$ (from the exact sequence $0 \to U \to V$). It follows that since $U \cong ran(f) = ker(g)$, we have $V \cong U \oplus W$.
+
+\textbf{2.49 Solution.} \textbf{(a)} This result follows directly from the more general problem in part (b).
+
+\textbf{(b)} Since we have the condition $T \circ S = 0$, we get the exact sequence $W \to V \to U$. It follows that $ran(G) = ker(T) = ran(S)$, therefore for every $v \in ran(G) = ran(S)$, we can find a $w \in W$ and $k \in K$ such that $S(w) = v$ and $G(k) = v$. Then we may define the function $F$ mapping $w$ to $k$ so that $S = G \circ F$. Additivity and homogeneity carry over from the linearity of $S$ and $G$, so we can deduce that $F$ is linear.
+
+For uniqueness, suppose we had another map $F': W \to K$ such that $S = G \circ F'$. But then we have $G \circ F' = S = G \circ F$, so $G \circ F'$ must agree at every input (vectors in $W$). Since $0 \to K \to V$ is an exact sequence, we have that $G$ is injective, which implies that $F$ and $F'$ must send every vector $w \in W$ to the same vector $k \in K$. Thus $F = F'$, and we have a unique homomorphism from $W$ to $K$.
+
+\textbf{(c)} From part (b), we can deduce that there is a unique homomorphism from $F: K' \to K$ such that $\iota' = \iota \circ F$. Furthermore, we can also find a unique homomorphism from $K$ to $K'$. Thus $F$ is an isomorphism between $K$ and $K'$.

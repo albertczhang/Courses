@@ -1,0 +1,317 @@
+\textbf{8.8 Solution.} We want to find all $\lambda \in \F$ such that
+\[
+T(z_1, z_2, z_3, \dots) = (\lambda z_2, \lambda z_3, \lambda z_4, \dots).
+\]
+That is, we to find vectors $(z_1, z_2, z_3, \dots)$ such that the coordinates satisfy
+\begin{align*}
+    z_1 &= \lambda z_2, \\
+    z_2 &= \lambda z_3, \\
+    z_3 &= \lambda z_4, \\
+        &\dots
+\end{align*}
+Note that $\lambda$ cannot be zero, for otherwise all the $z_i$ would have to be zero, which gives us the invalid zero vector. Therefore, suppose $\lambda \neq 0$, then we can divide by zero to get
+\begin{align*}
+    z_2 &= \frac{z_1}{\lambda} \\
+    z_3 &= \frac{z_1}{\lambda^2} \\
+    z_4 &= \frac{z_1}{\lambda^3} \\
+        &\dots
+\end{align*}
+It follows that the set of eigenvalues is the set $\F \setminus \{0\}$, and the $\lambda$-eigenvectors consist of all vectors whose terms are a geometric sequence with common factor $\lambda$ and initial term $z_1 \in \F$. That is, the $\lambda$-eigenspace is $\f{span}(1, \frac{1}{\lambda}, \frac{1}{\lambda^2}, \dots)$.
+
+\textbf{8.9 Solution.} First, suppose $T \in \f{End}(V)$ has a diagonal matrix with respect to basis $(v_1, \dots, v_n)$ where $n = \f{dim}(V)$. Suppose $T$ looks like
+\[\left(
+\begin{tabular}{ccc}
+$c_1$ & & \\
+ & $\ddots$ & \\
+ & & $c_n$
+\end{tabular}
+\right),\]
+from which we get that
+\begin{align*}
+    T(v_1) &= c_1v_1 \\
+    T(v_2) &= c_2v_2 \\
+        &\dots \\
+    T(v_n) &= c_nv_n.
+\end{align*}
+It follows that we have eigenvalues $\lambda_i = c_i$ and corresponding eigenvectors $v_i$ for $1 \leq i \leq n$. Since $(v_1, \dots, v_n)$ is a basis of $V$ by assumption, we obtain a basis of eigenvectors of $T$.
+
+Conversely, suppose we have a basis of eigenvectors $(v_1, \dots, v_n)$ of $T$ with corresponding eigenvalues $(\lambda_1, \dots, \lambda_n)$. Then, we can construct the matrix of $T$ with respect to basis $(v_1, \dots, v_n)$ satisfying $T(v_i) = \lambda_iv_i$ for $1 \leq i \leq n$. Since these are just the columns of the matrix, we get the diagonal matrix
+\[\left(
+\begin{tabular}{ccc}
+    $\lambda_1$ & & \\
+     & $\ddots$ & \\
+     & & $\lambda_n$
+\end{tabular}
+\right).\]
+
+\textbf{8.10 Solution.} Suppose $\lambda$ is an eigenvalue of the endomorphism $T$ of $V$. Then there exists a non-zero vector $v$ such that $Tv = \lambda v = (\lambda I)v$. Note that existence implies that the $\lambda$-eigenspace is non-zero. We get
+\begin{align*}
+    Tv &= (\lambda I)v \\
+    (T - \lambda I)v &= 0.
+\end{align*}
+It follows that $v \in \f{ker}(T - \lambda I)$. Since the eigenspace is the collection of all such vectors, we deduce that it is equal to $\f{ker}(T - \lambda I)$.
+
+Conversely, suppose the $\lambda$-eigenspace is non-zero and equals $\f{ker}(T - \lambda I)$. Since it is non-zero, there exists a non-zero vector $v \in \f{ker}(T - \lambda I)$. That is,
+\begin{align*}
+    (T - \lambda I)v &= 0 \\
+    Tv - (\lambda I)v &= 0 \\
+    Tv &= (\lambda I)v \\
+    Tv &= \lambda v,
+\end{align*}
+from which we may deduce that $\lambda$ is an eigenvalue of $T$.
+
+\textbf{8.11 Solution.} First, we show that (a) is equivalent to (b). By 8.3.6, we know that $\lambda \in \F$ is an eigenvalue of $T$ if and only if the kernel is non-zero. But the kernel being non-zero implies there exists some non-zero $v$ such that $T(v) = 0$, which contradicts injectivity since $T(0) = 0$ as well. Furthermore, if a homomorphism is non-invertible, then either it is not injective or it is not surjective. In the former case, we have distinct vectors $v, v' \in V$ such that $T(v - v') = 0$, which implies that the kernel is nonzero since $v \neq v'$. In the latter case, $T$ not being surjective implies by rank-nullity that the dimension of the kernel is non-zero, and thus the kernel itself is non-zero. So, if $T$ is not invertible we can deduce that $\f{ker}(T)$ is non-zero. Thus $\f{ker}(T)$ is non-zero if and only if $T - \lambda I$ is not invertible, and (a) is equivalent to (b).
+
+Now, we know that the determinant of a homomorphism is 0 if and only if the homomorphism is not invertible. It follows that (b) and (c) are equivalent. 
+
+Thus all three statements are equivalent.
+
+\textbf{8.12 Solution.} First, we consider the case where $\F = \R$. Taking our basis to be $(e_1, e_2)$, we get the corresponding matrix
+\[\left(
+\begin{tabular}{cc}
+    0 & -2 \\
+    1 & 0
+\end{tabular}
+\right).\]
+Now, we have
+\begin{align*}
+    \f{det}(T - \lambda I) &= \f{det}\left(\begin{tabular}{cc} $-\lambda$ & -2 \\ 1 & $-\lambda$ \end{tabular}\right) \\
+        &= \lambda^2 + 2,
+\end{align*}
+which has no real roots. Therefore $T$ has no real eigenvalues.
+
+Now, consider the case where $\F = \C$. We take our basis to be $\{(1, 0), (0, 1)\}$. Then the corresponding matrix is the same one from before, and our characteristic polynomial is also the same as before. Namely, we have
+\[
+\lambda^2 + 2 = 0,
+\]
+which has roots (eigenvalues) $\lambda_1 = i\sqrt{2}$ and $\lambda_2 = -i\sqrt{2}$. Then we want to find vectors such that $T(z, w) = \pm(i\sqrt{2})(z, w)$. For the first case, we have
+\[
+(-2w, z) = (i\sqrt{2}z, i\sqrt{2}w),
+\]
+from which we get that $z = i\sqrt{2}w$, and so the $\lambda_1$-eigenspace is $\f{span}(i\sqrt{2}, 1)$. Similarly, for the second case, we have
+\[
+(-2w, z) = (-i\sqrt{2}z, -i\sqrt{2}w),
+\]
+from which we get $z = -i\sqrt{2}w$, and so the $\lambda_2$-eigenspace is $\f{span}(i\sqrt{2}, -1)$.
+
+\textbf{8.13 Solution.} Taking our basis to be $(e_1, e_2, e_3)$, we get
+\begin{align*}
+    \f{det}(T - \lambda I) &= \f{det}\left(\begin{tabular}{ccc}
+        $-\lambda$ & -1 & 0 \\
+        0 & $-\lambda$ & 0 \\
+        2 & 0 & $-\lambda$
+        \end{tabular}\right) \\
+        &= -\lambda^3.
+\end{align*}
+So we have one eigenvalue, $\lambda = 0$, for which the corresponding eigenvector is $e_2 = (0, 1, 0)$. The $\lambda$-eigenspace is $\f{span}(0, 1, 0)$.
+
+(Note that for $\F = \C$, we'd get the same characteristic polynomial, which gives us the same eigenvalue, i.e. 0).
+
+\textbf{8.14 Solution.} Let $\lambda$ be a scalar. Then we solve for the following differential equation:
+\begin{align*}
+    \frac{df}{dx} &= \lambda f \\
+    \frac{df}{f} &= \lambda dx \\
+    \int\frac{df}{f} &= \int\lambda dx \\
+    \f{ln}|f| &= \lambda x \\
+    f &= \pm e^{\lambda x}.
+\end{align*}
+So, we get eigenvalues $\lambda \in \F$ with corresponding eigenvectors $e^{\lambda x}$.
+
+\textbf{8.15 Solution.} Suppose $\lambda \neq 0$ is an eigenvalue of $T$. Then there exists a $v \in V$ with $T(v) = \lambda v$. If $T$ is an isomorphism, then its inverse $T^{-1}$ exists. Applying $T^{-1}$ to both sides, we get $T^{-1}(T(v)) = T^{-1}(\lambda v) \implies T^{-1}(\lambda v) = \frac{1}{\lambda}(\lambda v)$. It follows that $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$.
+
+\textbf{8.16 Solution.} First, we note that solving the cases where $T_* \in \f{End}(\Lambda_k(\R^3))$ for $k = 0, 1, 2, 3$ is sufficient for solving the general case where $T_* \in \f{End}(\Lambda(\R^3))$. This is because $k$-vectors become 0 if $k > 3$, and furthermore a $k$-vector can only be a scalar multiple of another $k$-vector, not a $j$-vector for some $j \neq k$, as they'd be from different spaces.
+
+Now, suppose $a = b = c$. Then $T$ becomes
+\[\left(
+\begin{tabular}{ccc}
+    $acos\theta$ & $sin\theta$ & 0 \\
+    $-sin\theta$ & $acos\theta$ & 0 \\
+    0 & 0 & $a$
+\end{tabular}
+\right),\]
+which performs some sort of rotating/scaling action on the $xy$-plane and scales the $z$ coordinate by a factor of $a$. To see exactly what $T$ does to the $xy$-plane, we shift our viewpoint to the complex numbers. Suppose the first coordinate is the real coordinate and the second is the imaginary coordinate. Then we see that the 2x2 matrix
+\[\left(
+\begin{tabular}{cc}
+    $a\f{cos}\theta$ & $\f{sin}\theta$ \\
+    $-\f{sin}\theta$ & $a\f{cos}\theta$
+\end{tabular}
+\right)\]
+sends the vector $(x, y)$ in the $xy$-plane to $(ax\f{cos}\theta + y\f{sin}\theta, ay\f{cos}\theta - x\f{sin}\theta)$. Translating this to the complex plane, we see that the transformation sends $x + yi$ to $(ax\f{cos}\theta + y\f{sin}\theta) + (ay\f{cos}\theta - x\f{sin}\theta)i$ through multiplication of $a\f{cos}\theta + i\f{sin}\theta$. That is,
+\[
+    (x + yi)(ay\f{cos}\theta - x\f{sin}\theta) = (ax\f{cos}\theta + y\f{sin}\theta) + (ay\f{cos}\theta - x\f{sin}\theta)i.
+\]
+It follows that $T$ rotates the $xy$-plane by some angle and scales it by a factor of $\sqrt{a^2\f{cos}^2\theta + \f{sin}^2\theta}$.
+
+Now, consider the case where $k = 0$. Then $T_*$ is the identity map from $\R$ to $\R$. It follows that the only eigenvalue in this case is 1, and the eigenspace is $\R$.
+
+Let $k = 1$. Then for $v \in V$, we want to find $\lambda \in \R$ such that $T_*(v) = T(v) = \lambda v$. From before, we know that $T$ rotates the $xy$-plane by the equivalent rotation resulting from complex multiplication of $a\f{cos}\theta + i\f{sin}\theta$, and it scales the $z$ coordinate by a factor of $a$. We get $\lambda_1 = a$ with corresponding eigenspace $E_3$. If $\theta = \pi n$, then we also get $\lambda_2 = \sqrt{a^2\f{cos}^2\theta + 0} = a\f{cos}\theta$ with corresponding eigenspace $\f{span}(v)$.
+
+Let $k = 2$. Then we want all the 2-vectors whose 2-direction remains the same under $T$. That is, we want to find nonzero $u \^ v \in \Lambda_2(\R^3)$ such that there exist $\lambda \in \R$ with $T_*(u \^ v) = T(u) \^ T(v) = \lambda u \^ v$. Since $T$ rotates all vectors in the $xy$-plane by the complex number, we get an eigenvalue of $\sqrt{a^2\f{cos}^2\theta + \f{sin}^2\theta}$ with corresponding eigenspace $E_{1,2}$.
+
+Finally, for $k = 3$, we know that $\f{det}(T)u \^ v \^ w = T_*(u \^ v \^ w)$ for nonzero $u \^ v \^ w \in \Lambda_3(\R^3)$. From this we want to find $\lambda \in \R$ such that $\f{det}(T)u \^ v \^ w = \lambda u \^ v \^ w$. Since our 3-vector must be nonzero, it follows that $\f{det}(T)$ is an eigenvalue with corresponding eigenspace $\R^3$.
+
+Now, we lift the condition where $a = b = c$. The $k = 0$ case is the same since we still have that $T$ is the identity map giving $\lambda = 1$ for the eigenvalue and $\R$ as the eigenspace.
+
+If $k = 1$, we find the determinant
+\[
+\left|\begin{tabular}{ccc}
+    $a\f{cos}\theta - \lambda$ & $\f{sin}\theta$ & 0 \\
+    $-\f{sin}\theta$ & $b\f{cos}\theta - \lambda$ & 0 \\
+    0 & 0 & $c - \lambda$
+    \end{tabular}\right|
+    = (c - \lambda)(ab\f{cos}^2\theta - (a\f{cos}\theta + b\f{cos}\theta)\lambda + \lambda^2),
+\]
+from which we can solve for possible eigenvalues $\lambda$ and then go back to find the corresponding eigenspaces.
+
+If $k = 2$, by a similar argument to the $a = b = c$ case above, we can deduce that the only eigenspace is $E_{1, 2}$, as 2-vectors living in $E_{1, 2}$ are 2-direction invariant under $T$.
+
+If $k = 3$, then our eigenspace is just $\R^3$ by the same argument as above.
+
+\textbf{8.17 Solution.} Geometrically, there exists a real eigenvalue if $T$ have a nonzero invariant subspace. Then, if we consider the $E_{1,2}$ and $E_{3,4}$ subspaces of $\R^4$, we can apply the 2x2 matrix 
+\[\left(
+\begin{tabular}{cc}
+0 & -1 \\
+1 & 0
+\end{tabular}
+\right)\]
+to each subspace, rotating each plane by $\pi/2$. Thus we get the 4x4 matrix
+\[\left(
+\begin{tabular}{cccc}
+0 & -1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & -1 \\
+0 & 0 & 1 & 0
+\end{tabular}
+\right)\]
+corresponding to our desired endomorphism $T: \R^4 \to \R^4$. Since it rotates $E_{1,2}$ by $\pi/2$ and $E_{3,4}$ by $\pi/2$, the only vector that is scaled by a constant factor is the zero vector. Thus our matrix has no real eigenvalues.
+
+\textbf{8.18 Solution.} We note that $T - \lambda I$ is the left shift map where $(T - \lambda I)(a_1v_1 + a_2v_2 + a_3v_3 + a_4v_4) = a_2v_1 + a_3v_2 + a_4v_3$ for all scalars $a_1, a_2, a_3, a_4 \in \F$. Therefore we have
+\begin{align*}
+    \f{ker}(T - \lambda I) &= \f{span}(v_1) \\
+    \f{ker}((T - \lambda I)^2) &= \f{span}(v_1, v_2) \\
+    \f{ker}((T - \lambda I)^3) &= \f{span}(v_1, v_2, v_3) \\
+    \f{ker}((T - \lambda I)^4) &= \f{span}(v_1, v_2, v_3, v_4) = V \\
+    \f{ker}((T - \lambda I)^5) &= V.
+\end{align*}
+If $\lambda = 0$, then $T$ is just the left shift map given by $T(a_1v_1 + a_2v_2 + a_3v_3 + a_4v_4) = a_2v_1 + a_3v_2 + a_4v_3$ for all scalars $a_1, a_2, a_3, a_4 \in \F$.
+
+\textbf{8.19 Solution.} From the 2x2 matrix, we get the following:
+\begin{align*}
+    T(u) &= au - bv \\
+    T(v) &= bu + av.
+\end{align*}
+Now, we verify that $u \^ v$ is an eigenvector of $T_* \in \f{End}(\Lambda_2(V))$ with eigenvalue $a^2 + b^2$. We have
+\begin{align*}
+    T_*(u \^ v) &= T(u) \^ T(v) \\
+        &= (au - bv) \^ (bu + av) \\
+        &= ab\left(u - \frac{b}{a}v\right) \^ \left(u + \frac{a}{b}v\right) \\
+        &= ab\left(u - \frac{b}{a}v\right) \^ \left(\left(\frac{a}{b} + \frac{b}{a}\right)v\right) \\
+        &= (a^2 + b^2)\left(u - \frac{b}{a}v\right) \^ v \\
+        &= (a^2 + b^2)(u \^ v),
+\end{align*}
+which is what we wanted.
+
+\textbf{8.20 Solution.} By the Cayley-Hamilton Theorem, we get that $T^n = 0$ since $z^n$ is the characteristic polynomial given that the only eigenvalue is 0. It immediately follows that $T$ is nilpotent.
+
+Now, let $V$ be a real vector space. Then if $T$ is nilpotent with power $k$, suppose $\lambda$ is an eigenvalue of $T$. It follows that $T^kv = \lambda^kv = 0$, which implies that $\lambda = 0$. Since the only possible eigenvalue of a nilpotent $T$ is 0, it follows that the characteristic polynomial of $T$ must be $z^n$. Conversely, if the characteristic polynomial of $T$ is $z^n$, it follows from Cayley-Hamilton that $T^n = 0$.
+
+\textbf{8.21 Solution.} \textit{Omitted}
+
+\textbf{8.22 Solution.} The corresponding matrix for $T$ is 
+\[\left(
+\begin{tabular}{ccc}
+    1 & 1 & 1 \\
+    0 & 1 & 1 \\
+    0 & 0 & 1
+\end{tabular}
+\right),\]
+from which we get the matrix $\lambda I - T$ to be
+\[\left(
+\begin{tabular}{ccc}
+    $\lambda - 1$ & -1 & -1 \\
+    0 & $\lambda - 1$ & -1 \\
+    0 & 0 & $\lambda - 1$
+\end{tabular}
+\right).\]
+We notice that this matrix has an eigenvalue of 1 with algebraic multiplicity of 3. It is easy to see that the 1-eigenvector is $e_1$. That is, $\f{ker}(T - \lambda i) = E_1$. Now, to find the generalized eigenvector of order 2, we want vectors $v$ such that
+\[\left(
+\begin{tabular}{ccc}
+    0 & -1 & -1 \\
+    0 & 0 & -1 \\
+    0 & 0 & 0
+\end{tabular}
+\right)v
+= e_1,
+\]
+and we find $v$ to be $e_2$. That is, the corresponding eigenspace is $E_{1,2}$. Similarly, if we keep going we obtain the the generalized eigenspace of order 3 to be $\R^3$. That is, $\lambda = 1$ and $\f{ker}(T - \lambda I) = E_1$, $\f{ker}((T - \lambda I)^2) = E_{1, 2}$, and $\f{ker}((T - \lambda I)^3) = \R^3$.
+
+\textbf{8.23 Solution.} By 8.20, we deduce that the only eigenvalue of a nilpotent endomorphism is 0, so the algebraic multiplicity must be $\f{dim}(V)$. Furthermore, the geometric multiplicity is the dimension of the nullspace of $T - 0I = T$, so we want to show that the nilpotent power $k$ is bounded as
+\[
+k \leq 1 + \f{dim}(V) - \f{dim}(\f{ker}(T)) = 1 + \f{dim}(\f{ran}(T)).
+\]
+This follows by a prior lemma in chapter 4, since
+\[
+\f{ran}T^k \sqsubset \f{ran}T^{k - 1} \sqsubset \dots \sqsubset \f{ran}T^2 \sqsubset \f{ran}T \sqsubset V
+\]
+(we know they are strict subspaces for otherwise they'd all be equal), and so $k$ is bounded by 1 plus the dimension of $\f{ran}T$.
+
+\textbf{8.24 Solution.} Let $(v_j)_{j \in I}$ be a basis of a real vector space $V$. Then we have $\sum a_iv_i = 0$ implies $a_i = 0$ for any given scalars $a_i \in \R$. 
+
+Now, suppose we have $\sum (a_j + ib_j)v_j = 0$ for any given scalars $a_j, b_j \in \R$ for all $j \in I$. Then we must have that $\sum a_jv_j = 0$ and $i\sum b_jv_j = 0$. It follows that all the $a_j$ and all the $b_j$ must equal 0. Then all the $a_j + ib_j = 0$, so $(v_j)_{j \in I}$ is linearly independent in $V^\C$.
+
+To see that $(v_j)_{j \in I}$ spans $V^\C$, let $u + iv$ be any vector in $V^\C$. Then $u \in V$ and $v \in V$. Since $(v_j)_{j \in I}$ is a basis of $V$, we can find linear combinations of $u$ and $v$. We multiply the latter by $i$ and add them together to get $u + iv$.
+
+Thus $(v_j)_{j \in I}$ is also a basis of $V^\C$, and we can deduce that $\f{dim}(V) = \f{dim}(V^\C)$.
+
+\textbf{8.25 Solution.} (i) We see that $u - iv \mapsto au + bv - i(-bu + av) = (a + ib)u - i(a + ib)v = (a + ib)(u - iv)$, so $u - iv$ is an eigenvector with eigenvalue $a + ib$. Similarly, we have $u + iv \mapsto au + bv + i(-bu + av) = (a - ib)u + i(a - ib)v = (a - ib)(u + iv)$, so $u + iv$ is an eigenvector with eigenvalue $a - ib$.
+
+(ii) Suppose we have scalars $a+bi, c+di \in \C$. Then suppose we have $(a + bi)(u - iv) + (c + di)(u + iv) = 0$. We get
+\begin{align*}
+    (a + bi)(u - iv) + (c + di)(u + iv) &= au + bv + cu - dv + i(-av + bu + cv + du) \\
+        &= (a + c)u + (b - d)v + i((b + d)u + (c - a)v),
+\end{align*}
+and since $(u, v)$ is a basis of $U$, we get that $a + c = 0$, $b - d = 0$, $b + d = 0$, and $c - a = 0$. Solving, we find that $a = b = c = d = 0$. It follows that $(u - iv, u + iv)$ is linearly independent. Since $\f{dim}(U) = 2$, we deduce that $(u - iv, u + iv)$ is a basis of $U$.
+
+(iii) We find the matrix $M(T, (u,v))$ to be
+\[\left(\begin{tabular}{cc}
+    $a$ & $-b$ \\
+    $b$ & $a$
+\end{tabular}\right),\]
+and the matrix $M(T^\C, (u - iv, u + iv))$ to be
+\[\left(\begin{tabular}{cc}
+    $a + ib$ & 0 \\
+    0 & $a - ib$
+\end{tabular}\right).\]
+
+(iv) For $T$, the domain is $\R^2$, range is $\R^2$, and kernel is $\{0\}$. For $T^\C$, the domain is $\C^2$, the range is $\C^2$, and the kernel is $\{0\} = \{0 + i0\}$. In $U$, $T$ rotates vectors and scales them by a constant amount. In $U^\C$, $T^\C$ rotates and scales both the real and imaginary parts (which are vectors of $U$) by the same constant factors as $T$.
+
+\textbf{8.26 Solution.} (i) Given a complex vector $u + iv \in V^\C$, we have
+\begin{align*}
+    (S \circ T)^\C(u + iv) &= (S \circ T)(u) + i(S \circ T)v \\
+        &= S(T(u)) + iS(T(v)) \\
+        &= S^\C(T(u) + iT(v)) \\
+        &= (S^\C \circ T^\C)(u + iv).
+\end{align*}
+
+(ii) Again, given $u + iv \in V^\C$, we have
+\begin{align*}
+    (S + T)^\C(u + iv) &= (S + T)(u) + i(S + T)(v) \\
+        &= S(u) + iS(v) + T(u) + iT(v) \\
+        &= S^\C(u + iv) + T^\C(u + iv) \\
+        &= (S^\C + T^\C)(u + iv).
+\end{align*}
+
+(iii) If $S^\C = T^\C$, then given any vector $u + iv \in V^\C$, we must have
+\begin{align*}
+S(u) + iS(v) &= T(u) + iT(v) \\
+S(u) - T(u) &= i(T(v) - S(v)),
+\end{align*}
+which implies that $S(u) - T(u) = T(v) - S(v) = 0$, so $S(u) = T(u)$ for all $u \in V$. Thus $S = T$.
+
+Conversely, if $S = T$, then we know $S(u) = T(u)$ for all $u \in V$. Then given $u + iv \in V^\C$, we must haveui
+\begin{align*}
+    S^\C(u + iv) &= S(u) + iS(v) \\
+        &= T(u) + iT(v) \\
+        &= T^\C(u + iv),
+\end{align*}
+which implies $S^\C$ and $T^\C$ agree on all points $u + iv \in V^\C$. It follows that $S^\C = T^\C$.

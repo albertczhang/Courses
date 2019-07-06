@@ -1,0 +1,84 @@
+\section{Homework 8}
+Sundry: I worked alone.
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item $\binom{n+k}{k}$ or $\binom{n+k}{n}$
+        
+        \item There are $\binom{52}{13}$ different bridge hands, and $\binom{48}{13}$ different bridge hands that contain no aces, and $\binom{48}{9}$ different bridge hands that contain all four aces, and $\binom{13}{6}\binom{46}{7}$ that contain exactly six spades.
+        
+        \item $\frac{102!}{2^{52}}$.
+        
+        \item $\frac{2^{99}}{2} = 2^{98}$.
+        
+        \item There are $7! = 5040$ anagrams of FLORIDA, there are $\frac{6!}{3!}$ anagrams of ALASKA, there are $\frac{7!}{4!}$ anagrams of ALABAMA, and $\frac{7!}{2!2!}$ anagrams of MONTANA.
+        
+        \item For part (1), there are $5!$ such anagrams. For part (2), there are $\frac{6!}{2} = 360$ such anagrams.
+        
+        \item $27^9$.
+        
+        \item $\binom{7}{1} + \binom{7}{2} = \binom{8}{2}$.
+        
+        \item $\binom{9+27-1}{9} = \binom{35}{9}$.
+        
+        \item $\frac{20!}{10!2^{10}}$.
+        
+        \item $\binom{n+k-1}{n}$.
+        
+        \item $n-1$.
+        
+        \item $\binom{n-1}{k-1}$.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item There would be $\binom{n}{k}$ possible unique keychains.
+        
+        \item The total price would be $x^k y^{n-k}$.
+        
+        \item He would make a total of $\sum\limits_{k=0}^{n}\binom{n}{k}x^ky^{n-k} = \binom{n}{0}x^0y^{n} + \binom{n}{1}x^1y^{n-1} + \ldots + \binom{n}{n-1}x^{n-1}y^1 + \binom{n}{n}x^ny^0$.
+        
+        \item They are equivalent. That is, we can provide a combinatorial proof for the binomial theorem given the situation of this problem. The RHS is our result from part (c). The LHS is also equivalent to the sum of all possible prices of an $n$ length keychain. This is because each position can either cost $x$ or $y$ value and when we take the binomial expansion of $(x+y)^n$ we are adding up all the possible ways we can assign $x$ or $y$ to each position and multiply them together to get the total price.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item \begin{enumerate} 
+            \item The probability of a mine is $\frac{10}{64} = \frac{5}{32}$.
+            \item The probability of a blank space is the total number of ways we can place 10 mines nonadjacent to the 3x3 square centered at out click point over the total number of ways we can place 10 mines with no restrictions, which is $\frac{\binom{55}{10}}{\binom{64}{10}}$.
+            \item The probability of a number $k$ is the complement of the sum of the previous two parts, which is $1 - \frac{5}{32} - \frac{\binom{55}{10}}{\binom{64}{10}}$.
+        \end{enumerate}
+        
+        \item If $k = 1$, then we should pick an adjacent square, since $\frac{1}{8} < \frac{9}{55}$. But if $k > 1$, then we should pick a non-adjacent square, since $\frac{k}{8} > \frac{10 - k}{55}$ for all $k > 1$.
+        
+        \item Given the our first click was a 1, if we fix the adjacent mine then there are $\binom{55}{9}$ total arrangements for the remaining 9 mines. Now, the only way for the right adjacent square to be a 4 is if the adjacent mine is in the N, NE, S, or SE squares (4 possibilities out of 8). Now the only way for the right square to be a 4 is if the 3 squares directly the the right of squares NE, E, SE are mines, which means there are $\binom{52}{6}$ ways to arrange the remaining 6 mines. So the final probability that the right square reveals a 4 would be $\frac{\frac{1}{2}\binom{52}{6}}{\binom{55}{9}}$.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item The probability that Bob wins again Eve in a 1v1 if he shoots first is the infinite sequence
+        \begin{align*}
+        \frac{1}{3} + \left(\frac{2}{3} \cdot \frac{1}{3}\right)\frac{1}{3} + \left(\frac{2}{3} \cdot \frac{1}{3}\right)^2\frac{1}{3} + \ldots &= \frac{1}{3}\left(\frac{1}{1-\frac{2}{9}}\right) \\
+        &= \frac{3}{7}.
+        \end{align*}
+        
+        \item Similarly, the chance Bob wins against Eve if he shoots second is
+        \begin{align*}
+            \frac{1}{3} \cdot \frac{1}{3} + \frac{1}{3}\left(\frac{2}{3} \cdot \frac{1}{3}\right)\frac{1}{3} + \frac{1}{3}\left(\frac{2}{3} \cdot \frac{1}{3}\right)^2\frac{1}{3} + \ldots &= \frac{1}{9}\left(\frac{1}{1 - \frac{2}{9}}\right) \\
+            &= \frac{1}{7}.
+        \end{align*}
+        
+        \item Against Carol, Bob's $E_1$ becomes $\frac{1}{3}$, and his $E_2$ becomes $0$.
+        
+        \item Note that as long as Carol is alive, Eve will always go for Carol over Bob (Carol will just instakill her if Eve manages to kill Bob). Similarly, as long as Eve is alive, Carol will always go for Eve over Bob (Carol has a better chance shooting second against Bob than she does shooting second against Eve).
+        
+        Also notice that Bob must try to avoid shooting second against either Eve or Carol, since his chance of winning is extremeley low in both cases, whereas his chance of winning if he shoots first is higher in both cases. 
+        
+        Therefore his best course of action would be to shoot at neither, since he knows Eve and Carol are playing rationally and are trying to eliminate each other rather than him. Once one of Eve or Carol eliminate the other, Bob will get to shoot first against one of them, therefore maximizing his chances of winning.
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item The probability that Tom says it's going to snow is $\frac{1}{10} \cdot \frac{7}{10} + \frac{9}{10} \cdot \frac{5}{100} = \frac{23}{200}$. Furthermore, there is a $\frac{1}{10} \cdot \frac{7}{10} = \frac{7}{100}$ chance he predicts correctly that it is going to snow. Thus, the chance it is actually going to snow GIVEN that Tom predicts it's going to snow is $\frac{\frac{7}{100}}{\frac{23}{200}} = \frac{14}{23}$.
+        
+        \item His overall accuracy is $\frac{1}{10} \cdot \frac{7}{10} + \frac{9}{10} \cdot \frac{95}{100} = \frac{37}{40} = 92.5\%$
+        
+        \item This is possible since it snows a lot more in Alaska than in New York. For example, say it snows 100\% of the days in Alaska, and Jerry correctly predicts snow 90\% of the time when there is snow and correctly predicts no snow 100\% of the time when there is no snow. Then Jerry's overall accuracy is 90\% which is less than Tom's 92.5\%, even though Jerry clearly has better predictions in each separate category (Simpson's Paradox).
+    \end{enumerate}
+\end{enumerate}

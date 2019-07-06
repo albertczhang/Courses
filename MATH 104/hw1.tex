@@ -1,0 +1,112 @@
+\section{Homework 1}
+
+\textbf{1. [MH.1]} (a) Given $x \in \Z$ that is even, we can write $x = 2a$, where $a \in \Z$. Then for every $y \in \Z$ we have that $xy = (2a)y = 2(ay)$, where $ay \in \Z$. It follows that $xy$ is even.
+
+Negation: $(\exists x \in \Z)$ (($x$ is even) and ($\exists y \in \Z$, $xy$ is odd))
+
+(b) Given $x, y \in \Z$ both odd, we can write $x = 2a + 1$ and $y = 2b + 1$ for $a, b \in \Z$. Then $x + y = (2a + 1) + (2b + 1) = 2a + 2b + 2 = 2(a + b + 1)$, where $a + b + 1 \in \Z$. It follows that $x + y$ is even.
+
+Negation: $(\exists x, y \in \Z)$(($x$ is odd and $y$ is odd) and ($x + y$ is odd))
+
+(c) Given $x \in \Z$ odd, we can write $x = 2a + 1$ for some integer $a$. Then we have $x^3 = (2a + 1)^3 = 8a^3 + 12a^2 + 6a + 1 = 2(4a^3 + 6a^2 + 3a) + 1$, where $4a^3 + 6a^2 + 3a \in \Z$. It follows that $x^3$ is odd.
+
+Negation: $(\exists x \in \Z)$($x$ is odd and $x^3$ is even)
+
+\textbf{2. [Ross 1.9]} (a) The set of integers that satisfy the inequality $2^n > n^2$ is $\{0, 1\} \cup \{n \in \Z : n \geq 5\} = \{0, 1, 5, 6, 7, 8, \dots\}$.
+
+(b) First consider all negative integers $n < 0$. We know that $2^n < 1$, and $n^2 \geq 1$ since two negatives integers multiply to a positive integer. Therefore we cannot have $2^n > n^2$ whenever $n < 0$.
+
+Now, it is easy to check that $n = 0, 1$ satisfy $2^n > n^2$, as we have $2^0 = 1 > 0 = 0^2$ and $2^1 = 2 > 1 = 1^2$. If we keep checking, we see that $n = 2, 3, 4$ fail to satisfy the inequality. Now, we will prove that all integers greater than or equal to 5 satisfy the inequality using induction. First we check that $n = 5$ works: $2^5 = 32 > 25 = 5^2$. Now, suppose that for some positive integer $n \geq 5$, $2^n > n^2$. Note that $(n - 1)^2 > 2$ for all $n \geq 5$. From this, we get
+\begin{align*}
+    n^2 - 2n + 1 &> 2 \\
+    n^2 &> 2n + 1 \\
+    2n^2 &> n^2 + 2n + 1 \\
+    2^{n + 1} > 2n^2 &> (n + 1)^2,
+\end{align*}
+or that $2^{n + 1} > (n + 1)^2$. Thus the induction is complete, and we have obtained our desired set $\{0, 1\} \cup \{n \in \Z : n \geq 5\}$.
+
+\textbf{3. [MH.3]} A set with $n$ elements has $2^n$ subsets. We can construct each subset by counting the number of ways each element are/are not included. That is, each element can either be included or be excluded (2 options) from a subset, and with $n$ elements this gives us $2^n$ total possibilities.
+
+\textbf{4. [MH.7]} ($\subset$) Let $x \in A \cap (B - C)$. Then $x \in A$ and $x \in B - C$, which implies $x \in A$ and ($x \in B$ and $x \not\in C$). It follows that $x \in A$ and $x \in B$ and $x \not\in C$, so if $x \in A \cap B$, then it cannot be that $x \in C$. This is the same as saying $x \in A \cap B$ and $x \not\in A \cap C$. Therefore, $x \in (A \cap B) - (A \cap C)$.
+
+($\supset$) Let $x \in (A \cap B) - (A \cap C)$. Then $x \in A$ and $x \in B$ but $x \not\in A \cap C$. Given that $x \in A$, then whenever $x \in B$, it cannot be that $x \in C$. Thus $x \in B - C$ whenever $x \in A$, which implies $x \in A \cap (B - C)$.
+
+Thus $A \cap (B - C) = (A \cap B) - (A \cap C)$.
+
+No, $A \cup (B - C)$ is not always equal to $(A \cup B) - (A \cup C)$. Let $A = \{1\}$, and $B = C = \varnothing$. Then $A \cup (B - C) = \{1\}$ whereas $(A \cup B) - (A \cup C) = \varnothing$.
+
+\textbf{5. [Ross 3.1]} (a) A4: positive integers have no additive inverse in $\N$.
+
+M4: positive integers other than 1 have no multiplicative inverse in $\N$ (e.g. $5 \cdot (1/5) = 1$ but $1/5 \not\in \N$).
+
+(b) M4: integers other than 1 and -1 have no multiplicative inverse in $\Z$ (e.g. $5 \cdot (1/5) = 1$ but $1/5 \not\in \Z$).
+
+\textbf{6. [Ross 3.6]} (a) From the triangle inequality, we have
+\begin{align*}
+    |a + b + c| &= |(a + b) + c| \\
+        &\leq |a + b| + |c| \\
+        &\leq |a| + |b| + |c|.
+\end{align*}
+
+(b) Our base case $n = 1$ is trivial: $|a_1| = |a_1|$ and therefore $|a_1| \leq |a_1|$.
+
+Now, suppose the inequality holds for $n = k$ for some positive integer $k$, that is we know that $|a_1 + \dots + a_k| \leq |a_1| + \dots + |a_k|$. Then applying the triangle inequality we get
+\begin{align*}
+    |a_1 + \dots + a_k + a_{k + 1}| &= |(a_1 + \dots + a_k) + a_{k + 1}| \\
+        &\leq |a_1 + \dots + a_k| + |a_{k + 1}| \\
+        &\leq |a_1| + \dots + |a_k| + |a_{k + 1}|.
+\end{align*}
+Thus, by induction, we have that $|a_1 + \dots + a_n| \leq |a_1| + \dots + |a_n|$ for all positive integers $n$.
+
+\textbf{7. [Ross 4.1]} (a) 1, 2, 3
+(d) $\pi$, 3.15, 7
+(e) 1, 2, 3
+(n) $\sqrt{2}$, 2, 3
+(v) $\frac{1}{2}$, 1, 2
+
+\textbf{8. [Ross 4.3]} (a) 1
+(d) $\pi$
+(e) 1
+(n) $\sqrt{2}$
+(v) 1
+
+\textbf{9. [Ross 4.5]} By definition, $\f{sup}S \geq x$ for all $x \in S$. Since $\f{max}S \in S$, we get $\f{sup}S \geq \f{max}S$. Similarly, by definition $\f{max}S \geq x$ for all $x \in S$. Since $\f{sup}S \in S$, we get $\f{max}S \geq \f{sup}S$. Combining, we get $\f{max}S = \f{sup}S$. 
+
+\textbf{10. [Ross 4.10]} We are given $a > 0$ and we know $1 > 0$, so by the Archimedean property, there exists some positive integer $n_1$ such that $an_1 > 1$. Similarly, since $1 > 0$ and $a > 0$, we apply the Archimedean property again and deduce the existence of some $n_2$ such that $n_2 > a$. If we let $n = \f{max}(n_1, n_2)$, then we get
+\[
+    1 < an_1 \leq an < n^2,
+\]
+from which we get
+\[
+    \frac{1}{n} < a < n.
+\]
+
+
+% \subsection{Assignment 1}
+
+% \textbf{2.} Suppose there exists a rational number $\frac{p}{q}$, where $p$ and $q$ are relatively prime integers, whose square is 12. Then we have
+% \begin{align*}
+%     \frac{p^2}{q^2} &= 12 \\
+%     p^2 &= 12q^2.
+% \end{align*}
+% Since $3 \mid 12q^2$, it follows that $3 \mid p^2$, and so $3 \mid p$ since 3 is prime. But then we can write $p = 3m$ for some integer $m$, and $3^2 \mid 9m^2 = p^2$. But then $3^2 \mid 12q^2$, which implies $3 \mid 4q^2$, and since $(3, 4) = 1$, we get that $3 \mid q^2$, we get that $3 \mid q$. But then $p$ and $q$ have a common factor of 3, a contradiction. Thus there can exist no rational number whose square is 12.
+
+% \textbf{4.} Since $E$ is nonempty, let $x \in E$. Then we have $\alpha \leq x$ and $x \leq \beta$ since $\alpha$ and $\beta$ are lower and upper bounds, respectively. But then we have $\alpha \leq x \leq \beta$, and hence $\alpha \leq \beta$.
+
+% \textbf{5.} Let $l$ be the infimum of $A$. That is, $l = \f{inf}A$. We wish to show that $-l$ is the supremum of $-A$. Suppose we have $a' \in -A$. Then $-a' = a \in A$, which implies that $-a' = a \geq l$, or just $-a' \geq l$, from which we get $a' \leq -l$. It follows that $-l$ is the supremum of $-A$, and so $\f{inf} A = l = -(-l) = -\f{sup}(-A)$.
+
+% \textbf{8.} By the definition of ordered fields, we must have $xy > 0$ if $x > 0$ and $y > 0$ for $x, y \in \F$. Consider $x = y = i = \sqrt{-1}$. Then we have three possibilities:
+% \begin{itemize}
+%     \item (i = 0) This is impossible since the additive identity is unique.
+%     \item (i $>$ 0) This implies $i^2 > 0$, but $i^2 = -1 < 0$, a contradiction.
+%     \item (i $<$ 0) This implies $-i > 0$, so we must have $(-i)^2 > 0$, but $(-i)^2 = -1 < 0$, a contradiction.
+% \end{itemize}
+% Thus it is impossible to induce an order on the complex field.
+
+% \textbf{17.} Treat the points in Euclidean $k$-spaces as vectors in $\R^k$. Since $|\vec{v}|^2 = v \cdot v$, the dot (inner) product of $\R^k$, and that this dot product is distributive, we get
+% \begin{align*}
+%     |\vec{x} + \vec{y}|^2 + |\vec{x} - \vec{y}|^2 &= (\vec{x} + \vec{y}) \cdot (\vec{x} + \vec{y}) + (\vec{x} - \vec{y}) \cdot (\vec{x} - \vec{y}) \\
+%         &= |\vec{x}|^2 + 2\vec{x}\cdot\vec{y} + |\vec{y}|^2 + |\vec{x}|^2 - 2\vec{x}\cdot\vec{y} + |\vec{y}|^2 \\
+%         &= 2|\vec{x}|^2 + 2|\vec{y}|^2.
+% \end{align*}
+% Mapping vectors back to points in Euclidean spaces, it follows that $|x + y|^2 + |x - y|^2 = 2|x|^2 + 2|y|^2$. Geometrically, this says that if $\vec{x}$ and $\vec{y}$ are two adjacent sides of a parallelogram, then the sum of the squares of the diagonals ($|\vec{x} + \vec{y}|$ and $|\vec{x} - \vec{y}|$) is equal to the sum of the squares of all four sides.

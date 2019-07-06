@@ -1,0 +1,149 @@
+\section{Homework 10}
+\includepdf[pages=-]{midterm2}
+
+\subsection{Exponential: MLE \& MAP}
+(a) We wish to find
+\[
+\MLE[X | Y] = \argmax_x f(Y | X = x),
+\]
+so we set derivative to 0,
+\[
+e^{-xy}(1 - xy) = 0
+\]
+and find that $\MLE[X | Y] = \frac{1}{y}$.
+
+(b) We wish to find
+\[
+\MAP[X | Y] = \argmax_x f(x)f(Y | X = x)
+\]
+so we set derivative to 0,
+\[
+e^{-(1 + y)x}(1 - x(1 + y)) = 0
+\]
+and find that $\MAP[X | Y] = \frac{1}{1+y}$
+
+
+\subsection{BSC: MLE \& MAP}
+(a) Let $X$ denote the observation of the input and output. To find MLE of $\epsilon$, we simply compute
+\[
+\MLE[\epsilon | X] = \argmax_\epsilon \P[X | \epsilon],
+\]
+where $\epsilon$ is taken over the interval $[0, 0.5]$. Suppose that there are $n$ total bits observed, and $n_e$ of them are corrupted. Then we can find the MLE explicity through
+\begin{align*}
+    \frac{d}{dx}\left(\epsilon^{n_e}(1 - \epsilon)^{n - n_e}\right) &= n_e\epsilon^{n_e - 1}(1 - \epsilon)^{n - n_e} - \epsilon^{n_e}(n - n_e)(1 - \epsilon)^{n - n_e - 1},
+\end{align*}
+and so we get
+\begin{align*}
+    n_e\epsilon^{n_e - 1}(1 - \epsilon)^{n - n_e} &= \epsilon^{n_e}(n - n_e)(1 - \epsilon)^{n - n_e - 1} \\
+    \epsilon(n - n_e) &= n_e(1 - \epsilon) \\
+    \epsilon &= n_e / n
+\end{align*}
+for $\epsilon \in [0, 0.5]$.
+
+
+(b) Let $X_i$ be the input value of the $i$th bit and $Y_i$ be the output value of the $i$th bit. Then we have
+\begin{align*}
+    \MLE[\epsilon | \vec{X}, \vec{Y}] &= \argmax_\epsilon \prod_{i = 1}^n\P[Y_i | \epsilon] \\
+    &= \argmax_\epsilon \prod_{i = 1}^n\left(0.6\P[Y_i | \epsilon, X_i = 1] + 0.4\P[Y_i | \epsilon, X_i = 0]\right).
+\end{align*}
+Now suppose that $n_0$ of the outputs are 0's and $n_1$ are 1's (so that $n_0 + n_1 = n$). Then our expression becomes
+\[
+\argmax_\epsilon (0.6\epsilon + 0.4(1 - \epsilon))^{n_0}(0.6(1 - \epsilon) + 0.4\epsilon)^{n_1}
+\]
+and so we differentiate to get
+\[
+0.2n_0(0.2\epsilon + 0.4)^{n_0 - 1}(-0.2\epsilon + 0.6)^{n_1} - 0.2n_1(0.2\epsilon + 0.4)^{n_0}(-0.2\epsilon + 0.6)^{n_1 - 1} = 0,
+\]
+which we solve to get
+\[
+\epsilon = \frac{3n_0 - 2n_1}{n_0 + n_1},
+\]
+and of course set it to 0 or 0.5 if this expression goes beyond that range.
+
+(c) Stick the prior distribution of $\epsilon$ into the argmax expression:
+\[
+\MAP[\epsilon | \vec{X}, \vec{Y}] = \argmax_\epsilon \left((4 - 8\epsilon)\prod_{i = 1}^n\left(0.6\P[Y_i | \epsilon, X_i = 1] + 0.4\P[Y_i | \epsilon, X_i = 0]\right)\right)
+\]
+Using the same definitions for $n_0$ and $n_1$ for the previous part, we do some algebra (very similar to last part, except the derivative is a bit messier this time), we get:
+\[
+(8n_0 + 8n_1 + 8)\epsilon^2 + (-28n_0 + 12n_1 - 8)\epsilon + (12n_0 - 8n_1 - 48) = 0,
+\]
+and from here we can easily plug it into the quadratic formula to obtain the MAP estimate for $\epsilon$.
+
+
+\subsection{Fun with Linear Regression}
+(a) We have that
+\[
+p(y^{(i)} | x^{(i)}; w) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{\left(y^{(i)} - f(x^{(i)})\right)^2}{2\sigma^2}},
+\]
+so that the likelihood is
+\begin{align*}
+    \prod_{i = 1}^np(y^{(i)} | x^{(i)}; w) &= \left(\frac{1}{\sigma\sqrt{2\pi}}\right)^ne^{-\frac{\sum_{i = 1}^n\left(y^{(i)} - f(x^{(i)})\right)^2}{2\sigma^2}}.
+\end{align*}
+
+(b) Define:
+\[
+X = \left[\begin{tabular}{ccc}
+--- & $x^{(1)}$ & ---\\
+--- & $x^{(2)}$ & ---  \\
+--- & $\vdots$ & --- \\
+--- & $x^{(n - 1)}$ & --- \\
+--- & $x^{(n)}$ & ---
+\end{tabular}\right], \quad
+y = \left[\begin{tabular}{c}
+$y^{(1)}$ \\
+$y^{(2)}$ \\
+$\vdots$ \\
+$y^{(n - 1)}$ \\
+$y^{(n)}$
+\end{tabular}\right]
+\]
+We see that with $X$ and $y$ defined this way, the optimal points of
+\[
+\min_{w \in \R^d}||Xw - y||_2^2
+\]
+corresponds to the maximizers of the likelihood we calculated in part (a) since $e^{-x}$ is a monotonic decreasing function.
+
+(c) It is similar to the likelihood we calculated in part (a) except with append the Gaussian prior to the product:
+\begin{align*}
+p(w)\prod_{i = 1}^np(y^{(i)} | x^{(i)}; w) &= \prod_{i = 1}^d\left(\frac{1}{\tau\sqrt{2\pi}}e^{-\frac{w_i^2}{2\tau^2}}\right)\prod_{i = 1}^np(y^{(i)} | x^{(i)}; w) \\
+    &= \left(\frac{1}{\tau\sqrt{2\pi}}\right)^d e^{-\frac{\sum_{i = 1}^d w_i^2}{2\tau^2}}\left(\frac{1}{\sigma\sqrt{2\pi}}\right)^n e^{-\frac{\sum_{i = 1}^n\left(y^{(i)} - f(x^{(i)})\right)^2}{2\sigma^2}}.
+\end{align*}
+Getting rid of constants, we get the unnormalized posterior distribution:
+\[
+e^{-\left(\frac{\sum_{i = 1}^d w_i^2}{2\tau^2} + \frac{\sum_{i = 1}^n\left(y^{(i)} - f(x^{(i)})\right)^2}{2\sigma^2}\right)}
+\]
+
+(d) Define:
+\[
+X = \left[\begin{tabular}{ccc}
+--- & $x^{(1)}$ & ---\\
+--- & $x^{(2)}$ & ---  \\
+--- & $\vdots$ & --- \\
+--- & $x^{(n - 1)}$ & --- \\
+--- & $x^{(n)}$ & ---
+\end{tabular}\right], \quad
+y = \left[\begin{tabular}{c}
+$y^{(1)}$ \\
+$y^{(2)}$ \\
+$\vdots$ \\
+$y^{(n - 1)}$ \\
+$y^{(n)}$
+\end{tabular}\right], \quad
+\lambda = \frac{\sigma^2}{\tau^2}
+\]
+We see that with $X$, $y$, and $\lambda$ defined this way, the optimal point of the problem
+\[
+\min_{w \in \R^d} ||Xw - y||_2^2 + \lambda||w||_2^2
+\]
+correspond to the maximizer of the posterior distribution of $w$.
+
+
+\subsection{Community Detection using MAP}
+Let $\Theta$ be the query variable for the communities, and $G$ be the observation of the graph. Also, let $B$ be the set of all bisections of $G$, let $V$ be the vertex set, and let $E$ be the edge set. Then the MAP estimate gives us
+\begin{align*}
+\MAP[\Theta | G] &= \argmax_{\theta \in B}p(\theta)p(G | \theta) \\
+    &= \argmax_{\theta \in B}p(G|\theta) \\
+    &= \argmax_{\theta \in B}\prod_{v\neq w \in V}\P\left[\text{``$v$ and $w$ are (dis)connected by an edge in $E$"} | \theta\right],
+\end{align*}
+where the expression inside the $\P[``\quad"]$ is selected as (dis)connected based on if there is (not) an edge between $v$ and $w$ in the observed graph $G$. It follows that if $\theta$ is selected so that the number of edges that bridge the two communities is the smallest, the expression will be maximized, since $p > q$ and we want more edges (or equivalently, probabilities in the product expression) to be equal to $p$ rather than $q$. Thus the MAP estimate of the two communities is equivalent to finding the min-bisection of the graph.

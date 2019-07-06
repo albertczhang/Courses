@@ -1,0 +1,81 @@
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[left=3.0cm, right=3.0cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz-cd}
+\usepackage{pdfpages}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\f}[1]{\text{#1}}
+\newcommand{\MLE}{\text{MLE}}
+\newcommand{\MAP}{\text{MAP}}
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\renewcommand{\^}{\wedge}
+\renewcommand{\v}{\vee}
+
+
+
+\newcommand{\Nor}{\mathcal{N}}
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\today}
+\chead{EECS 126}
+\rhead{Albert Zhang}
+\cfoot{\thepage}
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+% \setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+\setlength{\textheight}{635pt}
+
+\title{\textbf{EECS 126 -- Probability \& Random Processes}}
+\author{\large Taught by K. Ramchandaran \\
+Notes \& Exercises by Albert Zhang}
+\date{Spring 2019}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% 
+\include{hw01}
+\include{hw02}
+\include{hw03}
+\include{hw05}
+\include{hw06}
+\include{hw07}
+\include{hw08}
+\include{hw09}
+\include{hw10}
+\include{hw11}
+\include{hw12}
+
+\end{document}

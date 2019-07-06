@@ -1,0 +1,123 @@
+\section{Groups}
+
+\subsection{Homework 2}
+
+1. We first show that the only possible groups of order 4 are those isomorphic to one of either $\Z_4$ or $K_4$. Or in other words, all groups of order four (given distinct elements $e, x, y, z$) have one of the two following multiplication tables (up to relabeling of $x, y, z$):
+\[
+\begin{tabular}{c|ccc}
+    & $x$ & $y$ & $z$ \\
+\hline
+$x$ & $z$ & $e$ & $y$ \\
+$y$ & $e$ & $z$ & $x$ \\
+$z$ & $y$ & $x$ & $e$
+\end{tabular}
+\quad\quad\quad\quad
+\begin{tabular}{c|ccc}
+    & $x$ & $y$ & $z$ \\
+\hline
+$x$ & $e$ & $z$ & $y$ \\
+$y$ & $z$ & $e$ & $x$ \\
+$z$ & $y$ & $x$ & $e$
+\end{tabular}
+\]
+From now on, we will denote the table on the left along with the group it represents as $L$ and the table on the right along with the group it represents as $R$.
+
+First, note that for each element $x, y, z$, its inverse must be among $x, y, z$. WlOG suppose for the first case that $x^{-1} = y$. Then $y^{-1} = x$, $xy = yx = e$. Furthermore $xz = y = zx$ for otherwise if $xz = x = zx$ or $xz = z = zx$ then either $z = e$ or $x = e$, a contradiction. Similarly, $yz = x = zy$. We also know $z^2 = e$, since $z^{-1}$ must equal $z$ and not $x$ nor $y$ ($x$ and $y$ have unique inverses). Finally, we assumed $x$ and $y$ are not their own inverses, so $x^2 \neq e \neq y^2$. Furthermore, if $x^2 = y$, then we have $xy = x^2z = yz = x$ which leads to $y = e$, a contradiction. Similarly, $y^2 \neq x$. Thus $x^2 = z = y^2$. Thus we have obtained the multiplication table of the group $L$. 
+
+On the other hand, for the second case, we suppose that all three elements $x, y, z$ are their own inverses. Then we have $x^2 = y^2 = z^2 = e$. Furthermore, by a simple cancellation argument we've used before, $x \neq xy \neq y$, for otherwise one of $x$ or $y$ would be the identity. Thus $xy = z$. Similarly, $yx = z$. Similarly, $yz = x = zy$ and $xz = y = zx$. Thus, we obtain the multiplication table of the group $R$, and there are no other valid cases for groups of order 4.
+
+Now, we just list out the multiplication tables (or give a brief explanation) of each of the groups $A$ through $G$, and match them with $L$ and $R$ to determine which are isomorphic to $L$ and which to $R$ (and thus each other). (cont. on back)
+
+\begin{align*}
+    A \cong L: & \begin{tabular}{c|ccc}
+    & 3 & 7 & 9 \\
+\hline
+3 & 9 & 1 & 7 \\
+7 & 1 & 9 & 3 \\
+9 & 7 & 3 & 1
+\end{tabular} \\
+B \cong R: & \begin{tabular}{c|ccc}
+    & 3 & 5 & 7 \\
+\hline
+3 & 1 & 7 & 5 \\
+5 & 7 & 1 & 3 \\
+7 & 5 & 3 & 1
+\end{tabular} \\
+C \cong R: & \begin{tabular}{c|ccc}
+    & (0,1) & (1,0) & (1,1) \\
+\hline
+(0,1) & (0,0) & (1,1) & (1,0) \\
+(1,0) & (1,1) & (0,0) & (0,1) \\
+(1,1) & (1,0) & (0,1) & (0,0)
+\end{tabular} \\
+D \cong L: & \begin{tabular}{c|ccc}
+    & -1 & i & -i \\
+\hline
+-1 & 1 & -i & i \\
+i & -i & -1 & 1 \\
+-i & i & 1 & -1
+\end{tabular}
+\end{align*}
+
+Now, the last three are all isomorphic to $R$. We only need to check that every element is its own inverse in these three groups. 
+
+$E$. There are three rigid motions: $180^\circ$ rotation, reflection across the vertical, and reflection across the horizontal. Each of these are clearly inverses of themselves. Thus $E \cong R$.
+
+$F$. If we label the numbers $1, 2, 3, 4$ clockwise around a rectangle, then we just get the same group as the one from $E$. Thus $F \cong R$.
+
+$G$. The only three rotations that preserve the 3 axes are: $180^\circ$ degree rotation about the $x$, $y$, and $z$ axes, respectively. These are all clearly inverses of themselves. Thus $G \cong R$.
+
+Altogether, we have the following:
+\[
+A \cong D \cong L
+\]
+and 
+\[
+B \cong C \cong E \cong F \cong G \cong R.
+\]
+
+\newpage
+2. We claim that all 4 are isomorphic to $S_3$, or the group of permutations of the vertices of a triangle.
+
+$H$. If we squash the prism flat into a triangle, then we see immediately that the rotations that preserve the prism are really just permutation of the three vertices. Thus $H \cong J = S_3$.
+
+$I$. The group $GL_2(\Z_2)$ is the group of invertible linear maps from $\Z_2^2$ to itself. Since all linear maps must send the 0 vector to itself (the vector $(0,0)$ always gets sent to itself), we see that $GL_2(\Z_2)$ is really just the group of permutations of the vertices of a triangle with vertices at $(0,1)$, $(1,1)$, and $(1,0)$. That is, the three reflections are just the matrices:
+\[
+\left[\begin{tabular}{cc} 0 & 1 \\ 1 & 0 \end{tabular}\right] \quad
+\left[\begin{tabular}{cc} 1 & 1 \\ 0 & 1 \end{tabular}\right] \quad
+\left[\begin{tabular}{cc} 1 & 0 \\ 1 & 1 \end{tabular}\right],
+\]
+and the two rotations are the matrices:
+\[
+\left[\begin{tabular}{cc} 1 & 1 \\ 1 & 0 \end{tabular}\right] \quad
+\left[\begin{tabular}{cc} 0 & 1 \\ 1 & 1 \end{tabular}\right],
+\]
+and of course the identity is just the identity matrix:
+\[
+\left[\begin{tabular}{cc} 1 & 0 \\ 0 & 1 \end{tabular}\right].
+\]
+
+$J$. We are using this group ($S_3$) as a reference to show that the other three are isomorphic to this one.
+
+$K$. In $S_3$, denote $e$ the identity element, $\phi_i$ as the reflection of the triangle across the $i$th altitude, and $\rho$ as a third of a full rotation. We construct the group homomorphism $f: G \to S_3$ where $G = (a,b)$, and $a \mapsto \phi_1$ and $b \mapsto \phi_2$. Then we can verify that $f$ is both surjective and onto, and hence an isomorphism between the two groups.
+
+We already have two elements of $S_3$: $\phi_1$ and $\phi_2$. To get $\phi_3$, consider $bab \in G$. The homomorphism $f$ sends this to $f(b)f(a)f(b) = \phi_2\phi_1\phi_2 = \phi_3$. To get $\rho$ and $\rho^2 = \rho^{-1}$, plug in $ab$ and $(ab)^2 = (ab)^{-1}$. Thus our homomorphism is an epimorphism.
+
+Now, to show injectivity, it suffices to show that $G$ has exactly 6 distinct elements. First, note that since $a^2 = b^2 = e$, we can effectively ignore all consecutive pairs of $a$'s and $b$'s in any given word in $G$. Thus all distinct elements of $G$ can be represented as a sequence of alternating $a$'s and $b$'s.
+
+Furthermore, we have that $ababab = e$ which implies $aba = bab$, since $a = a^{-1}$ and $b = b^{-1}$. Then from this we get $aba = (aba)^{-1} = (bab)^{-1} = bab$, or in other words the product of $aba$ and $bab$ in either order comes out to the identity. Then since we are concerned with sequences of alternating $a$'s and $b$'s, we can cancel out consecutive $(aba)(bab)$'s and $(bab)(aba)$'s. Therefore all distinct elements of $G$ can be represented by the following, which we simplify:
+\begin{align*}
+    ababa &= a(aba)a = b \\
+    abab &= (ab)^2 = (ab)^{-1} \\
+    aba &= aba \\
+    ab &= ab \\
+    a &= a \\
+    babab &= b(bab)b = a \\
+    baba &= b(bab) = ab \\
+    bab &= aba \\
+    ba &= b^{-1}a^{-1} = (ab)^{-1} \\
+    b &= b.
+\end{align*}
+So, we have exactly 6 distinct elements in $G$: $\{e, a, b, ab, (ab)^{-1}, aba\}$. It follows that $f$ is a monomorphism, and thus an isomorphism.
+
+Thus $H \cong I \cong J \cong K$.

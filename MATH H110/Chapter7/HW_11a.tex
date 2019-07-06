@@ -1,0 +1,229 @@
+\textbf{7.27 Solution.} (a) We get
+\[
+3dx \^ dy + dy \^ dx = 3dx \^ dy - dx \^ dy = 2dx \^ dy.
+\]
+
+(b) We get
+\begin{align*}
+    3dx \^ dy + dy \^ dx + dx \^ dz &= 2dx \^ dy + dx \^ dz \\
+        &= dx \^ (2dy + dz).
+\end{align*}
+
+(c) We get
+\begin{align*}
+    dx \^ dy + 3dz \^ dy + 4dx \^ dz &= (dx + 3dz) \^ dy + 4dx \^ dz + 12dz \^ dz \\
+        &= (dx + 3dz) \^ dy + dx \^ 4dz + 3dz \^ 4dz \\
+        &= (dx + 3dz) \^ dy + (dx + 3dz) \^ 4dz \\
+        &= (dx + 3dz) \^ (dy + 4dz).
+\end{align*}
+
+\textbf{7.28 Solution.} Evaluating, we notice that most terms are projected to zero, so we get
+\begin{align*}
+    \<dx_1 \^ dx_2 \^ dx_3 | (3e_1 - e_2) \^ 4(e_1 - e_3) \^ e_2\> &= (-1)dx_1(3e_1 - e_2)dx_2(e_2)dx_3(4(e_1 - e_3)) \\
+        &= -(3)(1)(-4) \\
+        &= 12.
+\end{align*}
+
+\textbf{7.29 Solution.} First, we find
+\begin{align*}
+    \omega(u) &= (2dx_1 - 3dx_2)(-e_1 + 2e_2) \\
+        &= 2(-1) - 3(2) \\
+        &= -8.
+\end{align*}
+Similarly, we have
+\begin{align*}
+    \omega(v) &= (2dx_1 - 3dx_2)(e_1 + e_2) \\
+        &= 2(1) - 3(1) \\
+        &= -1.
+\end{align*}
+Next, we have
+\begin{align*}
+    \eta(u) &= (dx_1 + dx_2)(-e_1 + 2e_2) \\
+        &= (-1 + 2) \\
+        &= 1.
+\end{align*}
+And finally,
+\begin{align*}
+    \eta(v) &= (dx_1 + dx_2)(e_1 + e_2) \\
+        &= 1 + 1 \\
+        &= 2.
+\end{align*}
+Now, we compute
+\begin{align*}
+    (\omega \^ \eta)(u \^ v) &= (-1)^0\omega(u)\eta(v) + (-1)^1\omega(v)\eta(u) \\
+        &= (-8)(2) - (-1)(1) \\
+        &= -15.
+\end{align*}
+Since we have that $(dx_1 \^ dx_2)(u \^ v) = (-1)(1) - (1)(2) = -3$, we can deduce that $\omega \^ \eta = -15 = 5(-3) = 5(dx_1 \^ dx_2)$.
+
+\textbf{7.30 Solution.} \textit{Omitted}
+% Suppose we have two equivalent k-vectors $\alpha_1 = u_1 \^ \dots \^ u_n$ and $\alpha_2 = v_1 \^ \dots \^ v_n$  That is, $\alpha_1 \sim \alpha_2$.
+
+\textbf{7.31 Solution.} From the definition of $M$, we get that
+\begin{align*}
+    T(e_1) &= e_1cos(\theta) + e_2sin(\theta), \\
+    T(e_2) &= -e_1sin(\theta) + e_2cos(\theta), \\
+    T(e_3) &= e_3.
+\end{align*}
+
+It follows that
+\begin{align*}
+    T_\star(e_2 \^ e_3) &= (-e_1sin(\theta) + e_2cos(\theta)) \^ e_3 \\
+        &= -sin(\theta)e_1 \^ e_3 + cos(\theta)e_2 \^ e_3, \\
+    T_\star(e_3 \^ e_1) &= e_3 \^ (e_1cos(\theta) + e_2sin(\theta)) \\
+        &= cos(\theta)e_3 \^ e_1 + sin(\theta)e_3 \^ e_2, \\
+    T_\star(e_1 \^ e_2) &= (e_1cos(\theta) + e_2sin(\theta)) \^ (-e_1sin(\theta) + e_2cos(\theta)) \\
+        &= e_1 \^ e_2 
+\end{align*}
+are the columns of the matrix. Therefore we obtain
+\[\left(\begin{tabular}{ccc}
+    $cos(\theta)$ & $sin(\theta)$ & 0 \\
+    $-sin(\theta)$ & $cos(\theta)$ & 0 \\
+    0 & 0 & 1
+\end{tabular}\right)\]
+
+\textbf{7.32 Solution.} By definition of $T^\star$, we get
+\begin{align*}
+    \<T^\star(\omega) | 5e_1 \^ e_2\> &= \omega(T_\star(5e_1 \^ e_2)) \\
+    &= \omega(5T(e_1) \^ T(e_2)) \\
+    &= \omega(5(2e_1 - e_2) \^ (-e_1 + e_2)) \\
+    &= 15(dx_1 \^ dx_2)((2e_1 - e_2) \^ (-e_1 + e_2)) \\
+    &= 15((2)(1) - (-1)(-1)) \\
+    &= 15.
+\end{align*}
+
+\textbf{7.33 Solution.} Again, by definition of $T_\star$, we get
+\begin{align*}
+    \<T^\star(\omega) | e_2 \^ e_3 - e_2 \^ 2e_3\> &= \omega(T_\star(-e_2 \^ e_3)) \\
+    &= \omega(-T(e_2) \^ T(e_3)) \\
+    &= \omega(-(2e_3) \^ (e_1)) \\
+    &= (dx_1 \^ dx_2 - 4dx_2 \^ dx_3 + 9dx_1 \^ dx_3)(-(2e_3) \^ (e_1)) \\
+    &= ((dx_1 + 4dx_3) \^ (dx_2 + 9dx_3))(-(2e_3) \^ (e_1)) \\
+    &= ((-8)(0) - (1)(-18)) \\
+    &= 18.
+\end{align*}
+
+Now, if $\eta = 3dx_1 + dx_2 - dx_3$, then we get
+\begin{align*}
+    \<T^\star(\eta) | e_2 + 2e_3\> &= \eta(T_\star(e_2 + 2e_3)) \\
+    &= \eta(T(e_2) + T(e_3)) \\
+    &= \eta(2e_3 + 2e_1) \\
+    &= (3dx_1 + dx_2 - dx_3)(2e_3 + 2e_1) \\
+    &= (-2) + (6) \\
+    &= 4.
+\end{align*}
+
+\textbf{7.34 Solution.} Suppose $(v_1 \^ \dots \^ v_n)$ is a basis of the one dimensional space $\Lambda_n(V)$ where $(v_i)_{1 \leq i \leq n}$ is a basis of $V$. Since scalars float in and out of terms of a k-vector, we have by Thm. 7.2.23 that
+\begin{align*}
+    \f{det}(cT)v_1 \^ \dots \^ v_n &= (cT)_\star(v_1 \^ \dots \^ v_n) \\
+    &= (cT)(v_1) \^ \dots \^ (cT)(v_n) \\
+    &= c^n(T(v_1) \^ \dots \^ T(v_n)) \\
+    &= c^nT_\star(v_1 \^ \dots \^ v_n) \\
+    &= c^n\f{det}(T)v_1 \^ \dots \^ v_n.
+\end{align*}
+And thus since $(v_1 \^ \dots \^ v_n)$ is a basis of $\Lambda_n(V)$, we deduce that $\f{det}(cT) = c^n\f{det}(T)$.
+
+The statement $\f{det}(S + T) = \f{det}(S) + \f{det}(T)$ is false. A simple counterexample would be $S = T = \f{Id}_{\R^2}$. We get $\f{det}(\f{Id}_{\R^2} + \f{Id}_{\R^2}) =\f{det}(2\f{Id}_{\R^2}) = 4\f{det}(\f{Id}_{\R^2}) = 4$ from our result above. However, we also have $\f{det}(\f{Id}_{\R^2}) + \f{det}(\f{Id}_{\R^2}) = 2\f{det}(\f{Id}_{\R^2}) = 2$, a contradiction.
+
+\textbf{7.35 Solution.} Suppose $(v_1, \dots, v_n)$ is a basis of $V$ and $(v^1, \dots, v^n)$ is the corresponding basis of the dual space $V^\star$. We define an isomorphism $P:V \to V^\star$ given by $P(v_i) = v^i$ for $1 \leq i \leq n$ and extending linearly. Then we also have $P^-1(v^i) = v_i$ for $1 \leq i \leq n$ which we also extend linearly. We will show that $T = P^{-1} T^\star P$. For any $v \in V$, we can write $v$ as a linear combination $a_1v_1 + \dots + a_nv_n$. Then we have
+\[
+T(v) = a_1T(v_1) + \dots + a_nT(v_n).
+\]
+We also have
+\begin{align*}
+    (P^{-1} T^\star P)(v) &= (P^{-1} T^\star)(a_1v^1 + \dots a_nv^n) \\
+    &= P^{-1}(a_1T^\star(v^1) + \dots + a_nT^\star(v^n)) \\
+    &= P^{-1}(a_1v^1T + \dots + a_nv^nT) \\
+    &= a_1P^{-1}(v^1T) + \dots + a_nP^{-1}(v^nT) \\
+    &= a_1T(v_1) + \dots + a_nT(v_n).
+\end{align*}
+Thus, since $T$ and $P^{-1} T^\star P$ agree on all point of their domain, we deduce that $T$ and $T^\star$ are similar. Therefore by 7.2.28, we see that $\f{det}(T) = \f{det}(T^\star)$.
+
+\textbf{7.36 Solution.} Let $(e_1, e_2, e_3)$ be a basis of $\R^3$. From 7.2.24, we get
+\begin{align*}
+    \f{det}(T)e_1 \^ e_2 \^ e_3 &= T_\star(e_1 \^ e_2 \^ e_3) \\
+    &= T(e_1) \^ T(e_2) \^ T(e_3) \\
+    &= (ae_1) \^ (e_1 + ae_2) \^ (e_2 + ae_3) \\
+    &= (ae_1) \^ (ae_2) \^ (e_2 + ae_3) \\
+    &= (ae_1) \^ (ae_2) \^ (ae_3) \\
+    &= a^3(e_1 \^ e_2 \^ e_3).
+\end{align*}
+Thus, we deduce that $\f{det}(T) = a^3$.
+
+\textbf{7.37 Solution.} Suppose we have $(u_1, \dots, u_k)$ a basis of $U$ and $(w_1, \dots, w_j)$ a basis of $J$ such that $k + j = \f{dim}(V) = n$. Then we have
+\[
+\f{det}(T)(u_1 \^ \dots \^ u_k) \^ (w_1 \^ \dots \^ w_j) = T(u_1) \^ \dots \^ T(u_k) \^ T(w_1) \^ \dots \^ T(w_j).
+\]
+Since $F \oplus G$ is a direct sum of maps equal to $T$ where $U$ is $F$-invariant and $W$ is $G$-invariant, we know that $T = F$ when the domain is $U$ and $T = G$ when the domain is $W$. Thus we have
+\begin{align*}
+T(u_1) \^ \dots \^ T(u_k) \^ T(w_1) \^ \dots \^ T(w_j) &= (F(u_1) \^ \dots \^ F(u_k)) \^ (G(w_1) \^ \dots \^ G(w_j)) \\
+&= (\f{det}(F)u_1 \^ \dots \^ u_k) \^ (\f{det}(G)w_1 \^ \dots \^ w_j) \\
+&= \f{det}(F)\f{det}(G)(u_1 \^ \dots \^ u_k) \^ (w_1 \^ \dots \^ w_j).
+\end{align*}
+It follows that $\f{det}(T) = \f{det}(F)\f{det}(G)$.
+
+\textbf{7.38 Solution.} Since both k-vectors are nonzero, we know that $(v_1, \dots, v_k)$ and $(cw_1, w_2, \dots, w_k)$ are both linearly independent subsets of $V$. By Proposition 7.2.36, we know that $\f{span}(v_1, \dots, v_k) = \f{dir}(v_1 \^ \dots \^ v_k) = \f{dir}(cw_1 \^ \dots \^ w_k) = \f{span}(w_1, \dots, w_k)$. Notice the scalar $c$ is lost since span covers all scalar multiples of a vector. Thus the two sets span the same subspace of $V$.
+
+Conversely, suppose $\f{span}(v_1, \dots, v_k) = \f{span}(w_1, \dots, w_k)$ and that this span is some $k$-dimensional subspace. It follows that $(v_1, \dots, v_k)$ and $(w_1, \dots, w_k)$ are both linearly independent subsets of $V$. Then for every $w_i \in (w_1, \dots, w_k)$, we can write $w_i$ as a unique linear combination of the $(v_1, \dots, v_k)$ since $w_i \in \f{span}(v_1, \dots, v_k)$. Therefore we have $w_1 \^ \dots \^ w_k = (a_{11}v_1 + a_{12}v_2 + \dots + a_{1k}v_k) \^ \dots \^ (a_{k1}v_1 + a_{k2}v_2 + \dots + a_{kk}v_k)$. Now, since $k$-vectors with duplicate terms are the zero vector, we can procedurally shave off terms until each term of the $k$-vector is a scalar multiple of exactly one basis vector. That is, we get
+\[
+w_1 \^ \dots \^ w_k = cv_1 \^ \dots \^ v_k
+\]
+for some nonzero $c$.
+
+\textbf{7.39 Solution.} We obtain isomorphisms $T$ with $u_i \mapsto v_i$, $T'$ with $u_i' \mapsto v_i'$, $S$ with $u_i \mapsto u_i'$, and $S'$ with $v_i \mapsto v_i'$ for all $1 \leq i \leq k$. Then we have $T = S'^{-1}T'S$. Since determinant is multiplicative, we get $\f{det}(T) = \f{det}(S'^{-1})\f{det}(T')\f{det}(S)$. From the definition of determinant, we find
+\[
+\f{det}(S)u_1 \^ \dots \^ u_k = u_1' \^ \dots \^ u_k',
+\]
+and so since $u_1 \^ \dots \^ u_k = u_1' \^ \dots \^ u_k' = \alpha$ by assumption, we know that $\f{det}(S) = 1$. Similarly, $\f{det}(S'^{-1}) = 1$. It follows that $\f{det}(T) = \f{det}(T')$, so orientation is indeed independent of choice of representative, and thus well-defined.
+
+\textbf{7.40 Solution.} We check bilinearity:
+\begin{align*}
+    \f{(additivity)} ~~~ \<f_1 + f_2, g\> &= \int_\R (f_1(x) + f_2(x))g(x)dx \\
+    &= \int_\R f_1(x)g(x)dx + \int_\R f_2(x)g(x)dx \\
+    &= \<f_1, g\> + \<f_2, g\> \\
+    \f{(homogeneity)} ~~~ \<af, g\> &= \int_\R af(x)g(x)dx \\
+    &= a\int_\R f(x)g(x)dx \\
+    &= a\<f, g\>.
+\end{align*}
+Additivity and homogeneity of the second term follows by a symmetric argument.
+
+Symmetry follows simply because multiplication of real values is commutative.
+
+Now, for non-degenerate and positive definite properties, we know that $f(x)^2 \geq 0$ for all $x \in \R$. Therefore for all square integrable functions $f$, we have
+\[
+\<f, f\> = \int_\R f(x)f(x)dx = \int_\R f(x)^2dx \geq 0,
+\]
+where equality holds if and only if $f$ is zero everywhere, i.e. $f$ is the zero map. It follows that our inner product is non-degenerate and positive definite.
+
+\textbf{7.41 Solution.} We want to show that for any two orthonormal bases $(v_i)$ and $(w_i)$ where $1 \leq i \leq k$ spanning the same subspace, that $v_1 \^ \dots \^ v_k = \pm w_1 \^ \dots \^ w_k$. From there we get the isomorphism $P$ with $P(v_i) = w_i$ such that $\f{det}(P)v_1 \^ \dots \^ v_k = w_1 \^ \dots \^ w_k$, which implies $|\f{det}(P)| = 1$.
+
+Alternatively, by Proposition 7.2.48, we have that the volume of the parallelepiped constructed from $(v_i)$ is $\f{det}(P)$ times the volume of the parallelepiped constructed from $(w_i)$. Since the vectors are orthonormal, we have that the volumes are $\pm 1$. It follows that $|\f{det}(P)| = 1$.
+
+\textbf{7.42 Solution.} (Clifford Algebras) \textit{Omitted.}
+
+\textbf{7.43 Solution.} From exercise 7.26, we know that $e_1 \^ e_2 = v_1 \^ v_2$, where $v_1$ and $v_2$ are $e_1$ and $e_2$ rotated counterclockwise by $\pi/4$. It follows that $e_1 \^ e_2 + v_1 \^ v_2 = 2e_1 \^ e_2$, which is simple. However, $e_1 \otimes e_2 + v_1 \otimes v_2$ is not simple by exercise 6.10. Therefore this statement is false.
+
+\textbf{7.44 Solution.} Since $\alpha$ is nonzero, we can write it as $v_1 \^ v_2 \^ v_3$ where $(v_1, v_2, v_3)$ is a linearly independent subset of $V$. It follows that $u \^ \alpha = 0$ whenever $u \in \f{span}(v_1, v_2, v_3)$, i.e. whenever $(u, v_1, v_2, v_3)$ is linearly dependent. Thus $U = \f{span}(u) = \f{span}(v_1, v_2, v_3)$, which is a vector space of dimension 3.
+
+\textbf{7.45 Solution.} By the rank-nullity theorem, we get $ n = \f{dim}(V) = \f{dim}(\f{ker}(ker(f)) + \f{dim}(\f{ran}(f))$. Since $\f{ran}(f)$ is the one-dimensional vector space $\F$, we see that $\f{dim}(\f{ker}(f)) = n - 1$. Now, since $\f{dir}(v_0) = \f{span}(v_0)$, which is a one-dimensional vector space, we deduce that $\f{dim}(V) = n = (n - 1) + 1 = \f{dim}(\f{ker}(f)) + \f{dim}(\f{dir}(v_0)) = \f{dim}(\f{ker}(f) \oplus \f{dir}(v_0))$. It follows that $V$ and $\f{ker}(f) \oplus \f{dir}(v_0)$ are isomorphic.
+
+\textbf{7.46 Solution.} First, we rewrite $S \otimes T = (S \circ Id_U) \otimes (Id_V \circ T) = (S \otimes Id_V) \circ (Id_U \otimes T)$. Now, suppose $(u_1, \dots, u_m)$ is a basis of $U$ and $(v_1, \dots, v_n)$ is a basis of $V$. Then we have $Id_V = Id_{v_1} \oplus \dots \oplus Id_{v_n}$, so $S \otimes Id_V = S \otimes (Id_{v_1} \oplus \dots \oplus Id_{v_n}) = (S \otimes Id_{v_1}) \oplus \dots \oplus (S \otimes Id_{v_n}) = S \oplus \dots \oplus S$. From Thm. 7.2.29, we get $\f{det}(S \otimes Id_V) = \f{det}(S)^n$. By a symmetric argument, we get $\f{det}(Id_U \otimes T) = \f{det}(T)^m$. Thus, we have $\f{det}(S \otimes T) = \f{det}((S \otimes Id_V) \circ (Id_U \otimes T)) = \f{det}(S)^n\f{det}(T)^m$.
+
+\textbf{7.47 Solution.} This system of equations corresponds to the 3 by 3 matrix:
+\[\left(\begin{tabular}{ccc}
+    3 & 2 & -1 \\
+    2 & -2 & 4 \\
+    -1 & 1/2 & -1
+\end{tabular}\right)\]
+Observing the column vectors, we get that
+\begin{align*}
+    T(e_1) &= 3e_1 + 2e_2 - e_3 \\
+    T(e_2) &= 2e_1 - 2e_2 + 1/2e_3 \\
+    T(e_3) &= -e_1 + 4e_2 - e_3.
+\end{align*}
+Applying our definition of determinant using the wedge product, we get
+\begin{align*}
+    \f{det}(T)e_1 \^ e_2 \^ e_3 &= T(e_1) \^ T(e_2) \^ T(e_3) \\
+    &= (3e_1 + 2e_2 - e_3) \^ (2e_1 - 2e_2 + 1/2e_3) \^ (-e_1 + 4e_2 - e_3).
+\end{align*}
+From here, we can apply Leibniz's formula, and reduce the wedge product on the RHS to $e_1 \^ e_2 \^ e_3$. It follows that $\f{det}(T) = 1 \neq 0$, and thus $T$ is invertible, so there is a unique solution.

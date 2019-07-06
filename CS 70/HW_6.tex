@@ -1,0 +1,114 @@
+\section{Homework 6}
+Sundry: I worked alone.
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item \begin{enumerate}
+            \item Denote $deg(f)$ and $deg(g)$ to be the degrees of $f$ and $g$ respectively. The polynomial $f + g$ has at least \boxed{0} roots (consider the case where $f(x) = x^2 + x + 1$ and $g(x) = -x^2 - x + 1$, then $f + g = 2$, which never equals 0). On the other hand, the polynomial $f + g$ can have at most \boxed{max(deg(f), deg(g))} number of roots.
+            
+            \item If $f(x) = x^2 + 1$ and $g(x) = 1$, then $f \cdot g = x^2 + 1$, which as no real roots, so $f \cdot g$ has at least \boxed{0} roots. On the other hand, since $f$ can have at most $deg(f)$ number of roots and $g$ can have at most $deg(g)$ number of roots, $f \cdot g$ can have at most \boxed{deg(f) + deg(g)} number of roots.
+            
+            \item Suppose $f(x) = x^3 + x$ and $g(x) = x$, then $f / g = x^2 + 1$, which has no real roots, so $f / g$ has at least \boxed{0} roots. On the other hand, if $f / g$ is a polynomial then every root of $g$ must cancel out a root of $f$, so $f / g$ can have at most \boxed{deg(f) - deg(g)} number of roots.
+            \end{enumerate}
+            
+        \item \begin{enumerate}
+            \item \boxed{\text{True.}} Suppose $h$ is the polynomial resulting from $f \cdot g$ in the usual field $\mathbb{R}$, then for $f \cdot g$ to equal 0 in the galois field of $p$, the prime $p$ must divide each of the coefficients of $h$. But then in the fully factored form of $f \cdot g$ there must be a scalar factor of $p = 0$ (mod $p$). This scalar factor must either go into $f$ or $g$, and therefore either $f$ or $g$ must equal to 0.
+            
+            \item For every $n \in \mathbb{N}$, the term $x^n$ can be rewritten as $x^{m(p-1) + k}$ where $m, k$ are integers such that $k < p$. Then by Fermat's Little Theorem, we have $x^{m(p-1) + k} = (x^{p-1})^m (x^k) = 1^m (x^k) = x^k$ (mod $p$) since $x \in \{1, 2, \ldots, p-1\}$. Therefore for any polynomial $f$ such that $deg(f) \geq p$, we can rewrite all the terms to form a polynomial $g = f$ such that $deg(g) < p$ in galois field of $p$.
+            
+            \item Since it takes $d+1$ distinct points to determine a polynomial of degree $d$, and since one of the points has already been determined ($f(0) = a$), then we have $p$ options for each of the remaining $d$ points (if we fix the input values). Thus there are \boxed{p^d} such polynomials $f$.
+        \end{enumerate}
+        
+        \item Via Lagrange Interpolation, we obtain the polynomial:
+        \begin{align*}
+            (1)\frac{(x-2)(x-4)}{3} + (2)\frac{(x)(x-4)}{-4} + 0 &= \boxed{4x^2 + 1}
+        \end{align*}
+        Now, note that the total number of polynomials $f$ is the total number of polynomials of degree $<5$. This consists of all polynomials determined by 5 distinct points (note that sometimes 5 distinct points can produce a degree 3 or 2 polynomial). Since 3 of the points are already determined, and we have $p = 5$ options for the remaining 2, we have a total of $5^2 = \boxed{25}$ possible polynomials $f$.
+        \end{enumerate}
+        
+        \item \begin{enumerate}
+            \item Since $n_1$ and $n_2$ are coprime, we know that there exists integers $a,b$ such that $an_1 + bn_2 = 1$. Then $(-a)n_1 + 1 = bn_2$, so if we let $x = (-a)n_1 + 1 = bn_2$, we have found a solution to the system
+            \begin{align*}
+                x &\equiv 1 (\text{mod } n_1) \\
+                x &\equiv 0 (\text{mod } n_2).
+            \end{align*}
+            
+            \item Suppose we have two systems involving $x_1$ and $x_2$:
+            \begin{align*}
+                x_1 &\equiv 1 (\text{mod } n_1) \\
+                x_1 &\equiv 0 (\text{mod } n_2) \\
+                x_2 &\equiv 0 (\text{mod } n_1) \\
+                x_2 &\equiv 1 (\text{mod } n_2).
+            \end{align*}
+            By part (a) we know that solutions exist for $x_1$ and $x_2$. Then we have that $a_1x_1 + a_2x_2 \equiv a_1 + 0 \equiv a_1$ (mod $n_1$) and $a_1x_1 + a_2x_2 \equiv 0 + a_2 \equiv a_2$ (mod $n_2$). Thus a solution to the system
+            \begin{align*}
+                x &\equiv a_1 (\text{mod } n_1) \\
+                x &\equiv a_2 (\text{mod } n_2)
+            \end{align*}
+            exists and is the value $a_1x_1 + a_2x_2$.
+            
+            To show all possible solutions are equivalent (mod $n_1n_2$), suppose we have two solutions $x, x'$ to the system. Then we have \begin{align*}
+                x &\equiv a_1 (\text{mod } n_1) \\
+                x &\equiv a_2 (\text{mod } n_2) \\
+                x' &\equiv a_1 (\text{mod } n_1) \\
+                x' &\equiv a_2 (\text{mod } n_2).
+            \end{align*}
+            Subtracting the third equation from the first, we get $x - x' \equiv 0$ (mod $n_1$), so $x \equiv x'$ (mod $n_1$). Similarly subtracting the fourth from the second, we get $x \equiv x'$ (mod $n_2$). It follows that $x \equiv x'$ (mod $n_1n_2$).
+        
+            \item Proof by induction on $k$:
+            
+            Base cases: The case $k = 1$ is trivial and the case $k = 2$ is given by part (b)
+            
+            Inductive Hypothesis: Assume that for some $k \geq 1$, there exists a unique solution (mod $n_1 \ldots n_k$) to the given system of modular equations.
+            
+            Inductive Step: Suppose the solution to the system of $k$ equations is $x \equiv a$ (mod $n_1 \ldots n_k$). Since all the $n_i$'s are pairwise relatively prime, we know that the product $n_1 \ldots n_k$ is relatively prime to $n_{k+1}$. Then if we have the additional equation $x \equiv a_{k+1}$ (mod $n_1 \ldots n_k$), by part (b) we have that the solution to these $k + 1$ equations exists and is unique since we have essentially reduced the problem to two equations.
+            
+            Thus a unique solution exists for arbitrary $k$.
+            
+            \item For two polynomials $p(x)$ and $q(x)$, we will define $p(x)$ (mod $q(x)$) as the polynomial $r(x)$ where $p(x) = m(x)q(x) + r(x)$ such that the degree of $r$ is strictly less than the degree of $q$. It follows that $p(x)$ (mod $(x-1)$) is just the remainder of degree 0 when we perform polynomial division of $p(x) / (x - 1)$.
+            
+            \item Since CRT still holds when replacing the integers mod $p$ for polynomials, then we only need to show that the $(x - x_i)$ are pairwise coprime. Assume for sake of contradiction that $x - x_i$ is not coprime with $x - x_j$ for any distinct pairs $i,j$. That is, there exists a degree one polynomial that divides both of them. Then the quotient of dividing $x - x_i$ is a degree 0 constant $\lambda_i$ and the quotient of dividing $x - x_j$ is a degree 0 constant $\lambda_j$. Then we must have
+            \begin{align*}
+                \frac{x - x_i}{\lambda_i} &= \frac{x - x_j}{\lambda_j} \\
+                x - x_i &= \frac{\lambda_i}{\lambda_j}(x - x_j) \\
+                x - x_i &= \frac{\lambda_i}{\lambda_j}x - \frac{\lambda_i x_j}{\lambda_j}.
+            \end{align*}
+            But then since $\lambda_i$ and $\lambda_j$ are constants, we know $\frac{\lambda_i}{\lambda_j} = 1$ for equality to hold. It follows that $x - x_i = x - x_j$, a contradiction. Thus all the $(x - x_i)$ are pairwise coprime.
+        \end{enumerate}
+        
+        \item Bob$_1$ can simply change his $p(1)$ value to some fake value $p'(1) \neq p(1)$. Then if the $n+1$ Bob's use lagrange interpolation they will obtain the wrong polynomial. To see this, notice in the expansion of lagrange interpolation
+        \begin{align*}
+            p'(1)\left(\frac{(x-2) \ldots (x - (n + 1))}{(1-2) \ldots (1 - (n+1))}\right) + \ldots
+        \end{align*}
+        the only term that gets changed if Bob$_1$ changes his $p(1)$ to $p'(1)$ is the first term (everything else is the same). But as long as $p'(1) \neq p(1)$, we know the value of $p(0)$ will be wrong since the first term does not evaluate to 0 when $x = 0$ (since the numerator would be $(0-2)(0-3)\ldots(0-(n+1))$, where all the terms in the product are nonzero).
+        
+        \item \begin{enumerate}
+            \item $E(x)$ has degree 1, and $Q(x)$ has degree 3. So let $E(x) = x - e$ for some constant $e$, and $Q(x) = ax^3 + bx^2 + cx + d$. Then we have the system of equations:
+            \begin{align*}
+                d + 3e &= 0 \\
+                a + b + c + d + 7e &= 7 \\
+                8a + 4b + 2c + d &= 0 \\
+                5a + 9b + 3c + d + 2e &= 6 \\
+                9a + 5b + 4c + d + 10e &= 7
+            \end{align*}
+            to which the solutions are $a = 3, b = 6, c = 5, d = 8, e = 1$. Thus the error is located at index 1.
+            
+            \item From part (a), we found the solutions to be $a = 3, b = 6, c = 5, d = 8, e = 1$, so the error is located at index 1. Thus $r_1$ is the corrupted packet. We also have that $Q(x) = 3x^3 + 6x^2 + 5x + 8$ and $E(x) = x - 1$.
+            
+            \item Dividing $Q(x)$ by $E(x)$ we get $P(x) = $
+            \begin{align*}
+                \frac{3x^3 + 6x^2 + 5x + 8}{x - 1} = 3x^2 + 9x + 3.
+            \end{align*}
+            
+            Then the original message that Hector wanted to send would be $(0, P(0) = 3), (1, P(1) = 4), (2, P(2) = 0)$. In other words, $m_0 = 3, m_1 = 4, m_2 = 0$.
+            \end{enumerate}
+            
+            \item We propose the following scheme: Alice will produce $k$ additional points from her polynomial $P$ of degree $n - 1$ (derived from the $n$ points of her original message). Then, Bob will perform lagrange interpolation on all $\binom{n+k}{n}$ possible choices of $n$ points out of the $n + k$ that Alice sent. If the polynomial is the same in each of these $\binom{n+k}{n}$ instances, then Bob will deduce $P$ is the polynomial that he derived. Else, if any of these $\binom{n+k}{n}$ polynomials are different from each other, then Bob knows there is an error and will toss away the message.
+            
+            Proof that it works: If there was at least one error but not more than $k$ errors among the $n + k$ points sent by Alice, then among the $\binom{n+k}{n}$ polynomials that Bob produces, at least one of them will be the correct polynomial $P$ (i.e. Alice's original polynomial). Since $P$ has points that differ from other polynomials, any polynomial that Bob produces using at least one of the corrupted symbols will be different from $P$. Therefore Bob will with certainty know if there is at least one error by performing lagrange interpolation on the $\binom{n+k}{n}$ possible subsets of $n$ points. And if there was no error, then Bob will be able to figure out $P$ from any subset of $n$ points out of the $n + k$ given.
+            
+            Proof that it is optimal: Suppose Alice were to give Bob $n + k'$ less than $n + k$ symbols. Then suppose there were exactly $k$ errors. Then since less than $n$ of the $n + k'$ symbols are correct, all possible subsets of $n$ points that Bob takes will contain at least one error. But then there exists instances where Bob cannot know for certain whether or not there are errors in the transmission. For example, if all the $n + k'$ points (after $k$ symbols are corrupted) lie on the same polynomial, then Bob will get the same polynomial for all $\binom{n+k'}{n}$ possible subsets of $n$ points, even though there were actually errors.
+        
+        
+        
+\end{enumerate}

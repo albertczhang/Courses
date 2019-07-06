@@ -1,0 +1,136 @@
+\section{Homework 1}
+ 
+Sundry? (that's some spicy vocab) :
+
+I worked alone and TeX-ed my solutions as I solved the problems.
+
+\begin{enumerate}
+    %%%%%%%%%% TAUTOLOGY AND CONTRADICTIONS %%%%%%%%%
+    \item\begin{enumerate}[(a)]
+        % Part A
+        \item \boxed{\text{Contradiction.}} \newline 
+        \begin{tabular}{c|c|c|c|c}
+            x & y & x$\Rightarrow$y & $\neg$y & (a) \\ \hline
+            T & T & T & F & F \\ \hline
+            T & F & F & T & F \\ \hline
+            F & T & T & F & F \\ \hline
+            F & F & T & T & F
+        \end{tabular}
+        % Part B
+        \item \boxed{\text{Tautology.}} \newline
+        \begin{tabular}{c|c|c|c}
+            x & y & x$\vee$y & (b) \\ \hline
+            T & T & T & T \\ \hline
+            T & F & T & T \\ \hline
+            F & T & T & T \\ \hline
+            F & F & F & T
+        \end{tabular}
+        % Part C
+        \item \boxed{\text{Tautology.}} \newline
+        \begin{tabular}{c|c|c|c|c}
+            x & y & x$\vee$y & x$\vee\neg$y & (c) \\ \hline
+            T & T & T & T & T \\ \hline
+            T & F & T & T & T \\ \hline
+            F & T & T & F & T \\ \hline
+            F & F & F & T & T
+        \end{tabular}
+        % Part D
+        \item \boxed{\text{Tautology.}} \newline
+        \begin{tabular}{c|c|c|c|c}
+            x & y & x$\Rightarrow$y & x$\Rightarrow\neg$y & (d) \\ \hline
+            T & T & T & F & T \\ \hline
+            T & F & F & T & T \\ \hline
+            F & T & T & T & T \\ \hline
+            F & F & T & T & T
+        \end{tabular}
+        % Part E
+        \item \boxed{\text{Neither.}} \newline
+        \begin{tabular}{c|c|c|c|c}
+            x & y & x$\vee$y & $\neg$(x$\wedge$y) & (d) \\ \hline
+            T & T & T & F & F \\ \hline
+            T & F & T & T & T \\ \hline
+            F & T & T & T & T \\ \hline
+            F & F & F & T & F
+        \end{tabular}
+        % Part F
+        \item \boxed{\text{Contradiction.}} \newline
+        \begin{tabular}{c|c|c|c|c|c}
+            x & y & x$\Rightarrow$y & $\neg$x$\Rightarrow$y & $\neg$y & (f)\\ \hline
+            T & T & T & T & F & F \\ \hline
+            T & F & F & T & T & F \\ \hline
+            F & T & T & T & F & F \\ \hline
+            F & F & T & F & T & F
+        \end{tabular}
+    \end{enumerate}
+    
+    %%%%%%%%%%%%%% MISC LOGIC %%%%%%%%%%%%%%%%%%%%
+    \item\begin{enumerate}[(a)]
+        \item\begin{enumerate}[(i)]
+            \item \boxed{\text{Possibly True.}} It can be false if there exists some other $y\neq4$ s.t. $G(3, y)$ is true. It is true simply when $G(3, 4)$ is true.
+            \item \boxed{\text{Possibly True.}} It will be false when there exists an $x$ s.t. $G(x,3)$ is not true, and instead there exists a $y\neq3$ s.t. $G(x,y)$ is true. It is true simply when $G(x,3)$ is true for all $x$.
+            \item \boxed{\text{Certainly True.}} Since $3\in\mathbb{R}$, there must exist a $y$ s.t. $G(3,y)$ is true.
+            \item \boxed{\text{Certainly False.}} Since $3\in\mathbb{R}$, there exists at least one $y$ s.t. $\neg G(3,y)$ is false, so $\neg G(3,y)$ can't be true for all $y$.
+            \item \boxed{\text{Possibly True.}} It is true if, let's say, $G(0, 4)$ were true (or as long as for some arbitrary $x$, $G(x, 4)$ is true). It is false when the only $G(x, 3)$ is true for all $x$ but $G(x,4)$ is false for all $x$.
+        \end{enumerate}
+        \item \boxed{(X \vee Y \vee Z)\wedge\neg((X\wedge Y)\vee(Y\wedge Z)\vee(X\wedge Z)).}
+    \end{enumerate}
+    
+    %%%%%%%%% PROPOSITIONAL PRACTICE %%%%%%%%%
+    \item\begin{enumerate}[(a)]
+        \item \boxed{(\exists x\in\mathbb{R})(x\notin\mathbb{Q}).} Statement is \boxed{\text{True}}, as numbers like $\pi$ or $e$ are irrational real numbers.
+        \item \boxed{(\forall x\in\mathbb{Z})((x\in \mathbb{N}\vee x<0)\wedge\neg(x\in\mathbb{N}\wedge x<0)).} Statement is \boxed{\text{False}}, as the integer 0 is not included in the set.
+        \item \boxed{(n\in\mathbb{N})(6\mid n \Rightarrow ((2\mid n) \vee (3\mid n))).} Statement is \boxed{\text{True}} but weak. If 6 divides $n$ then both 2 \textit{and} 3 must divide $n$.
+        \item All real numbers are also complex numbers. Statement is \boxed{\text{True}}, as all real numbers are essentially complex numbers of the form $a+bi$ where $b=0$.
+        \item If an integer is divisible by 2 or divisible by 3, then it is divisible by 6. Statement is \boxed{\text{False}}. E.g. 2 is divisible by 2 \textit{or} 3 but neither are divisible by 6.
+        \item If a natural number $x$ is greater than 7, then there exists natural numbers $a$ and $b$ that sum to $x$. Statement is \boxed{\text{True}}, as the smallest natural number is 1, so therefore all natural numbers at least 2 can be represented by the sum of two natural numbers.
+    \end{enumerate}
+    
+    %%%%%%%%%%%% PROOFS %%%%%%%%%%%%%%%%%%
+    \item\begin{enumerate}[(a)]
+        \item \boxed{\text{Proof by Contraposition.}} The contrapositive states that if 10 divides $x$ or 10 divides $y$, then 10 divides $xy$. This is true because WLOG (without loss of generality) assume that 10 divides $x$, then $x=10a$ for some integer $a$. Then $xy=10ay$, and so 10 divides $xy$ and thus since the contrapositive is true, the original statement must also be true.
+        \item I just did.
+        \item The converse states that if 10 does not divide $x$ and 10 does not divide $y$ then 10 does not divide $xy$. However, if $x=2$ and $y=5$, then 10 divides $xy$. Thus the converse is \boxed{\text{False.}}
+    \end{enumerate}
+    
+    %%%%%%%%%%% PROVE OR DISPROVE %%%%%%%%%%%%%%%%
+    \item\begin{enumerate}[(a)]
+        \item \boxed{\text{True.}} If $n$ is odd then $n^2$ is odd and $2n$ is even, and so the sum $n^2+2n$ must also be odd.
+        \item \boxed{\text{True.}} If $x<y$, then the RHS would evaluate to $(x+y+(x-y))/2=x$. If $x>y$, then the RHS would evaluate to $(x+y-(x-y))/2=y$. therefore the statement is true.
+        \item \boxed{\text{True.}} We proceed by examining two cases. Let $a$ and $b$ be any real numbers s.t. $a+b\leq10$. Case 1: if $a\leq7$, then we are done as one of the conditions on the right is satisfied. Case 2: if $a>7$, then let $a=7+k$ for some positive real number $k$. Then the original inequality simplifies to $k+b\leq3$, or $b<3$, which is satisfied by the second condition on the right, $b\leq3$. Thus the statement is always true.
+        \item \boxed{\text{True.}} Assume for sake of contradiction that $r+1$ is rational. So $r+1=\frac{p}{q}$ for some integers $p$ and $q$. Then $r=\frac{p-q}{q}$. Since the RHS is a fraction whose numerator and denominator are both integers, it follows that $r$ is also a rational number $\Rightarrow\Leftarrow$. Thus by contradiction if $r$ is irrational, then so is $r+1$.
+        \item \boxed{\text{False.}} Counterexample: let $n=6$. Then $10(6)^2=360\ngtr720=6!$.
+    \end{enumerate}
+    
+    %%%%%%%%%% PRESERVING SET OPERATIONS %%%%%%%%%%
+    \item\begin{enumerate}[(a)]
+        \item On the LHS, we have $S_1=f^{-1}(A\cup B)=\{x\mid f(x)\in A\cup B\}$. On the RHS, we have $S_2=f^{-1}(A)\cup f^{-1}(B)=\{x\mid f(x)\in A\}\cup\{x\mid f(x)\in B\}$.
+
+        If $a\in S_1$, then $f(a)\in A\cup B$. It then follows that $f(a)\in A \vee f(a)\in B$. Then $(a\in\{x\mid f(x)\in A\})\vee (a\in\{x\mid f(x)\in B\})$, which is equivalent to $a\in S_2$.
+        
+        On the other hand, if $a\in S_2$, then $f(a)\in A \vee f(a)\in B$. It follows that $f(a)\in A\cup B$, which means that $a\in S_1$.
+        
+        Thus $S_1=S_2$, and we are done.
+        
+        \item On the LHS, we have $S_1=f^{-1}(A\cap B)=\{x\mid f(x)\in A\cap B\}$. On the RHS, we have $S_2=f^{-1}(A)\cap f^{-1}(B)=\{x\mid f(x)\in A\}\cap\{x\mid f(x)\in B\}$.
+        
+        If $a\in S_1$, then $f(a)\in A\cap B$. It then follows that $f(a)\in A \wedge f(a)\in B$. Then $(a\in\{x\mid f(x)\in A\})\wedge (a\in\{x\mid f(x)\in B\})$, which is equivalent to $a\in S_2$.
+        
+        On the other hand, if $a\in S_2$, then $f(a)\in A \wedge f(a)\in B$. It follows that $f(a)\in A\cap B$, which means that $a\in S_1$.
+        
+        Thus $S_1=S_2$, and we are done.
+        
+        \item On the LHS, we have $S_1=f^{-1}(A\setminus B)=\{x\mid f(x)\in A\setminus B\}$. On the RHS, we have $S_2=f^{-1}(A)\setminus f^{-1}(B)=\{x\mid f(x)\in A\}\setminus\{x\mid f(x)\in B\}$.
+        
+        If $a\in S_1$, then $f(a)\in A\setminus B$. It then follows that $f(a)\in A \wedge f(a)\notin B$. Then $(a\in\{x\mid f(x)\in A\})\wedge(a\notin\{x\mid f(x)\in B\})$, which is equivalent to $a\in\{x\mid f(x)\in A\}\setminus\{x\mid f(x)\in B\}= S_2$.
+        
+        On the other hand, if $a\in S_2$, then $f(a)\in A \wedge f(a)\notin B$. It follows that $f(a)\in A\setminus B$, which means that $a\in S_1$.
+        
+        Thus $S_1=S_2$, and we are done.
+        
+        \item Let $S=f(A\cup B)$, so every element that is either in $A$ or in $B$ gets mapped to an element in $S$. Then the image space of both $f(A)$ and $f(B)$ lie in $S$. The same is true backwards. If an $y\in f(A)\cup f(B)$, then $x$ s.t $f(x)=y$ must have been mapped from the set $A$ or the set $B$, and so $x\in A\cup B$. Therefore $y\in S$. Thus the statement is indeed an equivalency.
+        
+        \item For $x\in A\cap B$, let $f(x)=y$, so $y\in f(A\cap B)$. Then, since $x\in A$ and $x\in B$, $y\in f(A)$ and $y\in f(B)$, so $y\in f(A)\cap f(B)$. Thus $f(A\cap B) \subseteq f(A)\cap f(B)$. Example where equality does not hold: Let $A=\{0\}$ and $B=\{1\}$. Also let $f(0)=f(1)=42$. Then $f(A\cap B)$ is the empty set whereas $f(A)\cap f(B)$ is the set $\{42\}$.
+        
+        \item For $y\in f(A)\setminus f(B)$, define $x$ s.t. $y=f(x)$. Then $x\in A$ and $x\notin B$, or $x\in A\setminus B$. Therefore $y\in f(A\setminus B)$. Example where equality does not hold: Let $A=\{0, 1\}$ and $B=\{1\}$. Also let $f(0)=f(1)=42$. Then $f(A\setminus B)=\{42\}\supset\{ \}=f(A)\setminus f(B)$. 
+    \end{enumerate}
+\end{enumerate}
